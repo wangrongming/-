@@ -33,3 +33,5 @@ db.storage.aggregate( {
         }
     }
 } )
+--4 模糊查询
+db.getCollection('WT_SpareManage').find({"useDate":{"$regex":"2019-02"}})
