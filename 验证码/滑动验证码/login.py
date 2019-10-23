@@ -9,8 +9,8 @@ from io import BytesIO
 import base64
 from pymongo import MongoClient
 
-# client = MongoClient(host='10.1.6.173', port=28018)
-client = MongoClient(host='127.0.0.1', port=27017)
+# client = MongoClient(host='192.168.0.93', port=27017)
+client = MongoClient(host='10.1.6.173', port=28018)
 db =client.get_database('kf_cookie')
 collection = db.get_collection('cookie')
 code_db = client.get_database('TCL_PHONE_CODE')
@@ -52,7 +52,7 @@ async def get_tracks(distance, seconds, ease_func):
 
 
 async def creat_browser():
-    browser = await launch(headless=False, userDataDir='.userdata', defaultViewport={'width': 1280, 'height': 800},
+    browser = await launch(headless=True, userDataDir='.userdata', defaultViewport={'width': 1280, 'height': 800},
                            args=['--enable-automation','--no-sandbox'])
     page = await browser.newPage()
     await page.setViewport(viewport={'width': 1280, 'height': 800})
@@ -70,7 +70,7 @@ async def login(page, username, password, url):
         # 'headless': False如果想要浏览器隐藏更改False为True
         # browser = await launch({'headless': False, 'args': ['--no-sandbox']})
         while True:
-            result, url = await taobao(username, password, url, page)
+            result,url = await taobao(username, password, url, page)
             if 'passport' not in url:
                 break
         if result:
@@ -124,7 +124,7 @@ async def taobao(username, password, url, page):
             elemnt = await page.J('.JDJRV-slide-btn')
             i = await elemnt.boundingBox()
             # 因为下载的图片是360大小所以要根据网页图片大小调整路径长度
-            offsets, tracks = await get_tracks(await get_gap() * 278 / 360, 3, 'ease_out_expo')
+            offsets, tracks = await get_tracks(await get_gap() * 278 / 360*1.2, 3, 'ease_out_expo')
             # 因为hover滑块之后鼠标在滑块中间,这个时候down之后,鼠标在坏块27像素之前移动都无法造成滑块移动
             lenth = i['x'] + 27
             high = i['y']
@@ -166,7 +166,6 @@ async def download_pic(page):
     imagedata = base64.b64decode(pic_bs64)
     with open('code.png', 'wb') as f:
         f.write(imagedata)
-        print("识别图片")
 
 
 async def get_gap():
@@ -213,7 +212,7 @@ async def save_cookie(item):
     collection.insert_one(item)
 
 async def del_cookie():
-    collection.delete_many({})
+    collection.remove()
 
 
 def input_time_random():
@@ -229,7 +228,7 @@ async def run(username,password):
     return cookie
 
 
-def main(username,password):
+def main(username, password):
     loop = asyncio.get_event_loop()
     task = asyncio.ensure_future(run(username, password))
     loop.run_until_complete(task)
@@ -237,6 +236,4 @@ def main(username,password):
 
 
 if __name__ == '__main__':
-    # main("TCL服务之星-数据","")
-    main("云听李云杨自营", "")
-    main("云听李云杨", "")
+    main("18363031210", "Mingming@2")

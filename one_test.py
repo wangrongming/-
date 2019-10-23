@@ -1,16 +1,12 @@
-import click
+import requests
 
+url = "https://www.zhihu.com/api/v4/search_v3?t=general&q=oppok5&correction=1&offset=20&limit=20&lc_idx=21&show_all_topics=0&search_hash_id=&vertical_info=0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C1"
 
-@click.command()
-@click.option('--count', default=2, help='Number of greetings.')
-@click.option('--name', prompt='Your name', help='The person to greet.')
-@click.option('--password', default='', type=str, help='Number of greetings.')
-def hello(count, name, password):
-    """Simple program that greets NAME for a total of COUNT times."""
-    for x in range(count):
-        click.echo('Hello %s! %s' % (name, password))
+headers = {
+    'cookie': '_zap=e8a7a969-0a35-4cd6-bbb2-dc225f2c3104; _xsrf=DD1olh0ega1oa043n6BARyUeochR2thN; d_c0="AMArCQtrMhCPTqPAZKwX84AkNpQEcmGVnyc=|1571041410"; tst=r; q_c1=c2c737ec54eb407e89e666d4e7afa318|1571212546000|1571212546000; __utmz=51854390.1571212542.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmv=51854390.000--|3=entry_date=20191016=1; Hm_lvt_98beee57fd2ef70ccdd5ca52b9740c49=1571041410,1571044284,1571212537,1571286523; l_n_c=1; n_c=1; __utmc=51854390; tgw_l7_route=09d79e3f366a36232a851b7951d1bbd9; capsion_ticket="2|1:0|10:1571804242|14:capsion_ticket|44:ODVjOWFjZThiMjgwNDIwMzkyZDgyMTdlNjdiMDNlNTc=|351479ae3de2606ef2f4cc1f4c70809c4abcf2c5a44f5f8cf5e4139e3b137cdd"; Hm_lpvt_98beee57fd2ef70ccdd5ca52b9740c49=1571804239; l_cap_id="MzgxMzEyNzEyM2U3NDdjNTgzODgwNWFjMGE4ZmU2NmQ=|1571804262|7b2ec710ce3fb9e2542fbe023a3e39a5fe939b0b"; r_cap_id="OGM0Mjc4YTA3MzhjNGIyNmEyYjRmYTI2NzJlYWI2MDI=|1571804262|84577f6b58df0d7b6dbf29217e57d67e1f1a0d2d"; cap_id="OTg0NzIwMjE4MTlkNDFhMjgyODVjN2RiMWZkNmJkYWM=|1571804262|ba163325c5e3c4f2c8562b8fc67b084d965faa97"; __utma=51854390.29302988.1571212542.1571802104.1571804250.5; __utmb=51854390.0.10.1571804250,_zap=e8a7a969-0a35-4cd6-bbb2-dc225f2c3104; _xsrf=DD1olh0ega1oa043n6BARyUeochR2thN; d_c0="AMArCQtrMhCPTqPAZKwX84AkNpQEcmGVnyc=|1571041410"; tst=r; q_c1=c2c737ec54eb407e89e666d4e7afa318|1571212546000|1571212546000; __utmz=51854390.1571212542.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmv=51854390.000--|3=entry_date=20191016=1; Hm_lvt_98beee57fd2ef70ccdd5ca52b9740c49=1571041410,1571044284,1571212537,1571286523; l_n_c=1; n_c=1; __utmc=51854390; tgw_l7_route=09d79e3f366a36232a851b7951d1bbd9; capsion_ticket="2|1:0|10:1571804242|14:capsion_ticket|44:ODVjOWFjZThiMjgwNDIwMzkyZDgyMTdlNjdiMDNlNTc=|351479ae3de2606ef2f4cc1f4c70809c4abcf2c5a44f5f8cf5e4139e3b137cdd"; Hm_lpvt_98beee57fd2ef70ccdd5ca52b9740c49=1571804239; l_cap_id="MzgxMzEyNzEyM2U3NDdjNTgzODgwNWFjMGE4ZmU2NmQ=|1571804262|7b2ec710ce3fb9e2542fbe023a3e39a5fe939b0b"; r_cap_id="OGM0Mjc4YTA3MzhjNGIyNmEyYjRmYTI2NzJlYWI2MDI=|1571804262|84577f6b58df0d7b6dbf29217e57d67e1f1a0d2d"; cap_id="OTg0NzIwMjE4MTlkNDFhMjgyODVjN2RiMWZkNmJkYWM=|1571804262|ba163325c5e3c4f2c8562b8fc67b084d965faa97"; __utma=51854390.29302988.1571212542.1571802104.1571804250.5; __utmb=51854390.0.10.1571804250; _xsrf=mqRbHVh8xwwh3J8lvmMKKQqNVRKVeNq0; l_n_c=1; l_cap_id="MGNhNDE5NTU3M2U5NDhkYjgzZDlhMmI1NGIzNGViZWY=|1571804296|34669ef584ae02c99f4eb598469faea85abc2a5b"; r_cap_id="OTcxN2IxZDIzZGYxNDJkYjhmNGM0N2Y4ZWVkMTA4NzY=|1571804296|72f39dc9c6bdc2957b42c28134c90db9ef4afeb5"; cap_id="MmEzMDM1NjY0NzEzNGY0ZTgxYzIzOGY3YjRmOTFhNjA=|1571804296|fa794e27656d0ad2fd527b6ec29e38f078f6c495"; n_c=1',
+    'user-agent': "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36",
+    }
 
+response = requests.request("GET", url, headers=headers)
 
-if __name__ == '__main__':
-    # hello()
-    print(repr(r"""京东当天到，17号，成都<br><img class="BDE_Image" src="https://imgsa.baidu.com/forum/w%3D580/sign=1a36a1749d58d109c4e3a9bae159ccd0/a53e1295a4c27d1e1579f9ce14d5ad6eddc43864.jpg" size="328689" changedsize="true" width="560" height="746" size="328689">', 'post_no': 1, 'type': '0', 'comment_num': 0, 'is_fold': 0, 'props': None, 'post_index': 0, 'pb_tpoint': None}}, 'source_code': '<div class="d_post_content j_d_post_content " id="post_content_127961898402" style="display:;">            京东当天到，17号，成都<br/><img changedsize="true" class="BDE_Image" height="746" size="328689" src="https://imgsa.baidu.com/forum/w%3D580/sign=1a36a1749d58d109c4e3a9bae159ccd0/a53e1295a4c27d1e1579f9ce14d5ad6eddc43864.jpg" width="560"/></div>"""))
+print(response.text)
