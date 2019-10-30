@@ -116,10 +116,10 @@ class KafkaTemplate:
 if __name__ == '__main__':
     import time
 
-    kafka_template = KafkaTemplate("192.168.0.158:9092")
-    kafka_template.consume("kk", "kk_amazing",
+    kafka_template = KafkaTemplate(['10.1.6.25:9092', '10.1.6.24:9092'])
+    kafka_template.consume("DATA_SECURITY_FILTER", "amazing",
                            lambda key, value, topic, partition, offset: print(key, value, topic, partition, offset),
                            async_param=True)
-    for i in range(10):
-        kafka_template.produce("kk", f"{i}: sefsefesfesggsgsegesgsegsegsegse")
+    # for i in range(10):
+    #     kafka_template.produce("DATA_SECURITY_FILTER", f"{i}: sefsefesfesggsgsegesgsegsegsegse")
     time.sleep(60)

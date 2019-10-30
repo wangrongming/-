@@ -1,0 +1,36 @@
+{'href': '//item.jd.com/32796441851.html', 'title': 'OPPO K1 千元智能拍照游戏手机 屏下指纹解锁 6.4英寸水滴屏 2500万像素 梵星蓝（6+64G）'}
+{'href': '//item.jd.com/47716923935.html', 'title': 'OPPO K3【至高优惠200】千元高通骁龙710 升降摄像头 光感屏下指纹解锁 全面屏智能拍照手机 秘境黑 全网通(6G RAM+64G ROM)'}
+{'href': '//item.jd.com/57129211043.html', 'title': '【新品首销】OPPO K5 6400万超清四摄30W VOOC闪充 骁龙730G全面屏拍照游戏手机 奇幻森林 8GB+128GB 官方标配'}
+{'href': '//item.jd.com/49501523569.html', 'title': 'OPPO K3 千元智能手机 高通骁龙710 升降摄像头 屏下指纹6.5英寸全面屏 8GB+256G 秘境黑 全网通(8G RAM+256G ROM)'}
+{'href': '//item.jd.com/53533015440.html', 'title': 'OPPO K3 电波蓝 高通骁龙710升降摄像头光感屏下指纹解锁全面屏 拍照游戏智能手机 升降摄像头 电波蓝（8GB+128GB）'}
+{'href': '//item.jd.com/38373056583.html', 'title': 'OPPO K1 墨玉黑 光感屏下指纹解锁 6.4英寸水滴全面屏千元智能手机 全网通 4+64G'}
+{'href': '//item.jd.com/34182462559.html', 'title': 'OPPO K1 千元拍照智能游戏手机 6.4英寸水滴屏 AI智慧拍照 光感屏下指纹解锁4GB+64G 梵星蓝'}
+{'href': '//item.jd.com/54715299354.html', 'title': 'OPPO Reno 4800万超清像素全网通双卡双待拍照游戏智能全面屏手机 光感屏幕指纹 升降摄像头 极夜黑（6GB+128GB）'}
+{'href': '//item.jd.com/55279829289.html', 'title': 'OPPO Reno2【现货赠音箱加湿器+6期免息】4800万变焦四摄视频防抖6.5英寸阳光护眼全面屏 薄雾粉超值套餐（8GB+128GB）'}
+{'href': '//item.jd.com/48676863457.html', 'title': 'OPPO Reno Z水滴屏全面屏游戏拍照手机 全网通 4800W超清像素 光感屏幕指纹 支持闪充 星辰紫 全网通(8G RAM+128G ROM)'}
+{'href': '//item.jd.com/58800408212.html', 'title': '【预定至高优惠200】OPPO Reno Ace高通骁龙855Plus90Hz电竞屏游戏智能手机闪充 星际蓝8GB+256GB 标配版'}
+{'href': '//item.jd.com/58000200925.html', 'title': '【预定至高优惠200】OPPO Reno Ace高通骁龙855Plus超级闪充90Hz电竞屏游戏手机 星际蓝8GB+256GB 标配版'}
+{'href': '//item.jd.com/44242741734.html', 'title': '【预定享6期免息赠音箱】OPPO Reno 4800万超清像素全网通拍照游戏智能全面屏手机屏幕指纹 星云紫（6G+128G）'}
+{'href': '//item.jd.com/52640401696.html', 'title': '【限量版】OPPO Reno 10倍变焦版 FC巴萨全面屏拍照手机高通骁龙855 8GB+256GB FC巴萨限量版'}
+{'href': '//item.jd.com/48860923484.html', 'title': 'OPPO Reno Z水滴屏全面屏游戏拍照手机全网通 VOOC闪充3.0 4800万像素光感屏幕指纹 星辰紫 全网通(8G RAM+128G ROM)'}
+{'href': '//item.jd.com/56564325500.html', 'title': '【国家宝藏之洛神赋】OPPO Reno 2 4800万变焦四摄视频防抖 6.5英寸护眼全景屏智能手机 薄雾粉（8GB+128GB）'}
+{'href': '//item.jd.com/47340147110.html', 'title': '【皮卡丘限量礼盒】OPPO Reno 10倍混合光学变焦版 全景屏骁龙855 智能拍照游戏手机全网通 极夜黑（8G+256G'}
+{'href': '//item.jd.com/46071779012.html', 'title': '【皮卡丘限量礼盒】OPPO Reno 10倍混合光学变焦版 全景屏骁龙855 智能拍照游戏手机全网通 8+256G 极夜黑'}
+{'href': '//item.jd.com/48396701726.html', 'title': '【预定享12期免息赠蓝牙音箱+赠皮卡丘礼盒】OPPO Reno 10倍变焦版 骁龙855 拍照游戏 雾海绿（皮卡丘礼盒版） 全网通(6G RAM+128G ROM)'}
+{'href': '//item.jd.com/46071270099.html', 'title': '【皮卡丘限量礼盒】OPPO Reno 10倍混合光学变焦版 骁龙855全景屏 智能拍照游戏手机全网通 雾海绿（6G+256G）'}
+{'href': '//item.jd.com/58891110886.html', 'title': 'OPPO Reno Ace 高达定制版 高通骁龙855Plus 65W超级闪充 90Hz电竞屏手机 高达定制版8GB+256GB 标配版'}
+{'href': '//item.jd.com/59531121980.html', 'title': '【新品预定】OPPO Reno2 Z 4800万夜拍四摄 VOOC 3.0闪充 4000mAh大电量 深海夜光(128GB 8GB) 标配版'}
+{'href': '//item.jd.com/54906424758.html', 'title': 'OPPO R17 Pro 屏下指纹解锁全面水滴屏 智能拍照游戏手机 全网通双卡双待 支持超级闪充 凝光绿（8GB+128GB）'}
+{'href': '//item.jd.com/34707945520.html', 'title': 'OPPO R17 Pro【至高优惠500】屏下指纹解锁6.4英寸水滴全面屏拍照手机 全网通双卡双待 凝光绿 全网通(6G RAM+128G ROM)'}
+{'href': '//item.jd.com/34371096358.html', 'title': 'OPPO R15x 光感屏下指纹水滴全面屏 6G+128G智能全网通手机 后置AI双摄拍照手机 星云渐变色'}
+{'href': '//item.jd.com/31427830935.html', 'title': 'OPPO R17 幻色渐变机身屏下指纹解锁手机 6.4英寸水滴屏 全网通AI智能双摄拍照 支持闪充 霓光紫 全网通(8G RAM+128G ROM)'}
+{'href': '//item.jd.com/40232270288.html', 'title': '【3期免息】OPPO A5 超视野全面屏拍照手机 全屏双摄 超长续航 智能全网通手机 3G+32G 凝夜紫'}
+{'href': '//item.jd.com/57269170310.html', 'title': 'OPPO A11x 4800万四摄大内存5000mAh大电池 视频超清防抖 全网通4G 游戏拍照手机 A11x 湖光绿（8GB+128GB） 标配版'}
+{'href': '//item.jd.com/32356925464.html', 'title': '【3期免息】OPPO A5 超视野全面屏拍照手机 全屏双摄 超长续航 智能全网通手机 3G+64G 幻镜蓝'}
+{'href': '//item.jd.com/29783158622.html', 'title': '【3期免息】OPPO A5 超视野全面屏 智能千元手机全网通 全屏双摄强悍续航 AI智慧美颜拍照手机 幻镜粉（4G+64G）'}
+{'href': '//item.jd.com/46999144760.html', 'title': '【3期免息】OPPO A9 1600万超清双摄 4020mAh大电池全网通拍照手机 4G+128G版 萤石紫'}
+{'href': '//item.jd.com/47721162547.html', 'title': '【3期免息】OPPO A9x 4800万像素 VOOC闪充 6GB+128GB 全面屏拍照游戏手机 冰玉白'}
+{'href': '//item.jd.com/36911900172.html', 'title': 'OPPO A7 6.2英寸水滴全面屏 4G+64G 全网通4G智能拍照手机 双卡双待 超长续航 琥珀金'}
+{'href': '//item.jd.com/47047149481.html', 'title': '【3期免息】OPPO A9 1600万超清双摄 4020mAh大电池全网通拍照手机 6G+128G版 萤石紫套装版'}
+{'href': '//item.jd.com/58692533510.html', 'title': '【新品首销】OPPO A11 骁龙665 千元四摄全面屏拍照游戏手机 大电池超长续航超长广角拍照 A11 流云白（4GB+128GB） 标配版'}
+{'href': '//item.jd.com/32522275991.html', 'title': '【3期免息】OPPO A7x  6.3英寸水滴全面屏  4G+128G大内存手机 AI智慧美颜拍照 星空紫'}

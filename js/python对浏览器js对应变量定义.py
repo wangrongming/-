@@ -1,6 +1,6 @@
 # coding:utf-8
 
-# 说明 navicate = {}
+# 说明 navicate = {};
 """
 pip install PyExecJS
 python  执行execjs代码实例

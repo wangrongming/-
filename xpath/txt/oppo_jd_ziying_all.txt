@@ -1,0 +1,38 @@
+{'href': '//item.jd.com/100002598208.html', 'title': 'OPPO A5 全面屏拍照手机 3GB+32GB 珊瑚红 全网通 移动联通电信4G 双卡双待手机'}
+{'href': '//item.jd.com/100005702160.html', 'title': 'OPPO K3 高通骁龙710 升降摄像头 VOOC闪充 8GB+128GB 星云紫 全网通4G 全面屏拍照游戏智能手机'}
+{'href': '//item.jd.com/100004918031.html', 'title': '【超级爆品】OPPO Reno Ace 8GB+256GB 星际蓝 65W超级闪充 90Hz电竞屏 高通骁龙855+ 4G智能游戏手机'}
+{'href': '//item.jd.com/100004918021.html', 'title': '【超级爆品】OPPO K5 8GB+128GB 奇幻森林 6400万超清四摄 VOOC闪充4.0 高通骁龙730G 4G游戏智能手机'}
+{'href': '//item.jd.com/100000727128.html', 'title': 'OPPO K1 光感屏幕指纹 水滴屏拍照手机 6GB+64GB 梵星蓝 全网通 移动联通电信4G 双卡双待手机'}
+{'href': '//item.jd.com/100007697136.html', 'title': 'OPPO Reno2 4800万变焦四摄 视频防抖 6.5英寸阳光护眼全面屏 8GB+128GB 薄雾粉 拍照游戏智能手机'}
+{'href': '//item.jd.com/100003575875.html', 'title': 'OPPO Reno Z 4800万超清像素 超清夜景2.0 VOOC闪充 8GB+128GB 星辰紫 全网通4G 全面屏拍照智能游戏手机'}
+{'href': '//item.jd.com/100004544986.html', 'title': 'OPPO Reno 4800万超清像素 NFC 超清夜景 6GB+128GB 星云紫 全网通 双卡双待手机 全面屏拍照智能游戏手机'}
+{'href': '//item.jd.com/100004542222.html', 'title': 'OPPO原装VOOC闪充 R11s/R11/A79快充数据线 原厂正品盒装 DL118闪充数据线（不含充电头）'}
+{'href': '//item.jd.com/100004853688.html', 'title': 'OPPO VOOC闪充充电器电源适配器 VC54JBCH（不带数据线）'}
+{'href': '//item.jd.com/100004845601.html', 'title': 'OPPO A11x 4800万四摄 5000mAh大电池 8GB+128GB 暮辰紫 全网通4G 全面屏拍照游戏智能手机'}
+{'href': '//item.jd.com/100003242107.html', 'title': 'OPPO A9 全面屏拍照手机 4GB+128GB 萤石紫 全网通 移动联通电信4G 双卡双待手机'}
+{'href': '//item.jd.com/100002840415.html', 'title': 'OPPO 原装 MH135 有线入耳式手机游戏音乐耳机  3.5mm接口'}
+{'href': '//item.jd.com/100005158163.html', 'title': 'OPPO A11 5000mAh大电池 AI四摄 视频防抖 4GB+128GB 流云白 全网通4G 全面屏拍照游戏智能手机'}
+{'href': '//item.jd.com/100004851976.html', 'title': 'OPPO 原装 O-Fresh 立体声耳机 入耳式有线高音质 K1/K3/A5/A9/RENO等系列3.5mm接口手机通用  深邃黑'}
+{'href': '//item.jd.com/100003487497.html', 'title': 'OPPO VOOC闪充移动电源 20W双向闪充 10000mAh充电宝 适用于OPPOK3/Reno/FindX/R17/R17pro系列等手机'}
+{'href': '//item.jd.com/100008940212.html', 'title': 'OPPO Enco Q1 高达定制版无线降噪耳机 ANC双重主动降噪/颈挂式/入耳式/蓝牙5.0/游戏/手机通话耳机'}
+{'href': '//item.jd.com/100003487493.html', 'title': 'OPPO K3保护壳 四角包边抗震防摔手机保护套 黑色'}
+{'href': '//item.jd.com/100005088618.html', 'title': 'OPPO Reno 10倍变焦版 高通骁龙855 4800万超清三摄 6GB+128GB 雾海绿 全网通 全面屏拍照智能游戏手机'}
+{'href': '//item.jd.com/100006155274.html', 'title': 'OPPO 智美心品 手机三脚架无线蓝牙自拍杆  防抖/直播/旅游/便携/遥控/多功能/安卓/苹果通用 雅致黑'}
+{'href': '//item.jd.com/100001108951.html', 'title': 'OPPO耳机 O-free蓝牙无线耳机 真无线蓝牙耳机 双耳立体声 波尔多红'}
+{'href': '//item.jd.com/100002983255.html', 'title': '【正品】OPPO Reno PU皮质保护壳 原装正品 藏青色'}
+{'href': '//item.jd.com/7572496.html', 'title': 'OPPO 夏日时光礼盒（活动奖品专属购买链接，不支持单独购买）'}
+{'href': '//item.jd.com/5708494.html', 'title': '【赠品】M11蓝牙音箱 白（活动奖品专属购买链接，不支持单独购买）'}
+{'href': '//item.jd.com/100000154518.html', 'title': '时尚帆布包（电商）'}
+{'href': '//item.jd.com/8561130.html', 'title': 'OPPO Find X兰博基尼版 8GB+512GB 黑色 全网通 移动联通电信全网通4G 双卡双待手机'}
+{'href': '//item.jd.com/100009347368.html', 'title': '【超级爆品】【预售版】OPPO Reno Ace 8GB+128GB 电音紫 65W超级闪充 90Hz电竞屏 高通骁龙855Plus 4G智能游戏手机'}
+{'href': '//item.jd.com/100001897804.html', 'title': '【音箱套装】OPPO A5 全面屏拍照手机 3GB+64GB 幻镜蓝 全网通 移动联通电信4G 双卡双待手机'}
+{'href': '//item.jd.com/100008962420.html', 'title': 'OPPO C1手机游戏手柄 高达定制版 线性马达/4D游戏振感/和平精英/吃鸡神器/王者荣耀/手游/蓝牙 苹果手机通用'}
+{'href': '//item.jd.com/100009289576.html', 'title': 'OPPO Reno2 Z 8G+128G 深海夜光 4800万夜拍四摄 VOOC闪充 炫彩升降 全网通4G 全面屏拍照游戏智能手机'}
+{'href': '//item.jd.com/100003440803.html', 'title': 'OPPO A9x 4800万像素 VOOC闪充 6GB+128GB 曜石黑 全网通4G 全面屏拍照游戏智能手机'}
+{'href': '//item.jd.com/100001332668.html', 'title': 'OPPO R17 Pro 全面屏拍照手机 6GB+128GB 凝光绿 全网通移动联通电信4G手机 双卡双待'}
+{'href': '//item.jd.com/100000988391.html', 'title': 'OPPO R15x 光感屏幕指纹手机  6G+128G 星云渐变 全网通 移动联通电信4G 双卡双待手机'}
+{'href': '//item.jd.com/100001964354.html', 'title': 'OPPO A7 全面屏拍照手机 4GB+64GB 湖光绿 全网通 移动联通电信4G 双卡双待手机'}
+{'href': '//item.jd.com/100000435251.html', 'title': 'OPPO R17 2500万美颜拍照 6.4英寸水滴屏 光感屏幕指纹 6GB+128GB 流光蓝 全网通 双卡双待手机'}
+{'href': '//item.jd.com/100000260076.html', 'title': 'OPPO A7x 全面屏拍照手机 4GB+128GB 星空紫 全网通 移动联通电信4G 双卡双待手机'}
+{'href': '//item.jd.com/100001332626.html', 'title': 'OPPO R17 Pro 全面屏拍照手机 8GB+128GB 雾光渐变 全网通移动联通电信4G手机 双卡双待'}
+{'href': '//item.jd.com/100000178749.html', 'title': 'OPPO R17 2500万美颜拍照 6.4英寸水滴屏 光感屏幕指纹 6G+128G 霓光紫 全网通 移动联通电信4G 双卡双待手机'}

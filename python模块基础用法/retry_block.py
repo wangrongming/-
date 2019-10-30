@@ -31,6 +31,27 @@ def get_info():
     raise Exception
 
 
+def is_need_login(res):
+    if not res.text:
+        return
+    if True:
+        print("cookie过期需要重新登录")
+        raise requests.exceptions.RequestException
+
+
+@tenacity.retry(stop=stop_after_attempt(3), wait=wait_fixed(0.1))
+def req():
+        while True:
+            try:
+                print("开始请求")
+                res = requests.get("http://www.google.com", timeout=3)
+                # is_need_login(res)
+                return res
+            except requests.exceptions.RequestException:
+                time.sleep(0.01)
+
+
 if __name__ == '__main__':
-    one_test(time)
-    get_info()
+    # one_test(time)
+    # get_info()
+    req()
