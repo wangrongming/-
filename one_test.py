@@ -1,17 +1,65 @@
-import random
+import time
+
+import requests
+from lxml import etree
 
 
-def one_test():
-    old_cookie = {'l': 'dBIMbwrmqGmTlXf9KOCNdZaF1u7OSIRAguWbLcYMi_5BC1L6Wp7OkZl7gep6VfXftlTBqFNLRKy9-etUikJXJfIpXUJ6CxDc.', 'cookieCheck': '45139', 'uc1': 'cookie14=UoTbnKo97ZokZw%3D%3D', 'isg': 'BAkJYuyzsApgNUz-rOWJoYHlGDxpV_qM4_973at-hfAv8ikE86YNWPegMB9hqpXA', 'cna': '3jU3Fq3o/U4CAT2NQL+R8Ub+', '_tb_token_': '7db37317b3ebe', 'v': '0', 'cookie2': '1a4a9a7d347baacf80bde8b217ee69d7', 't': 'ca794abe039717bcaef5eff36822504c'}
+def one():
+    url = "http://tieba.baidu.com/f"
 
-    COOKIE = ''
-    for i in old_cookie:
-        COOKIE += i + '=' + old_cookie[i] + ';'
-    print(COOKIE)
+    # querystring = {"kw":"%E5%B0%8F%E7%B1%B3","ie":"utf-8","pn":"0"}
+    querystring = {"kw":"%E5%B0%8F%E7%B1%B3","ie":"utf-8","pn":"50"}
 
+    headers = {
+        'Connection': "keep-alive",
+        'Upgrade-Insecure-Requests': "1",
+        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36",
+        'Accept': "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
+        'Accept-Encoding': "gzip, deflate",
+        'Accept-Language': "zh-CN,zh;q=0.9",
+        'Cookie': "BAIDUID=605814558314225655B02F4A7CD0727A:FG=1; BIDUPSID=605814558314225655B02F4A7CD0727A; PSTM=1571018906; TIEBAUID=e624cd11040b60fb9b3b781a; TIEBA_USERTYPE=628f5f1020112c4945750e63; bdshare_firstime=1571041299685; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; H_PS_PSSID=1467_21112_18560_29567_29699_29220; wise_device=0; Hm_lvt_98b9d8c2fd6608d564bf2ac2ae642948=1573001604,1573002130,1573009550,1573009672; BDSFRCVID=Dk-OJeCinGA4cFTwkZJitB6YteKK0goTH6hK_yz1cxZNeuaxdimtEG0PHx8g0Ku-S2-AogKK3gOTH4PF_2uxOjjg8UtVJeC6EG0Ptf8g0M5; H_BDCLCKID_SF=tRAOoC8XfCvjDb7GbKTD-tFO5eT22-us3I0L2hcH0bT_spDm-Ujx5PPlyxrJ3j5kbITiaKJjaMb1MRnoBnr0DttbW4T--4oO5I5LLp5TtUJ1JKnTDMRhqqJXqtQyKMnitKv9-pP2LpQrh459XP68bTkA5bjZKxtq3mkjbPbDfn028DKu-n5jHjJLDG-D3D; delPer=0; PSINO=6; Hm_lpvt_98b9d8c2fd6608d564bf2ac2ae642948={}".format(int(time.time())),
+        'Cache-Control': "no-cache",
+        'Host': "tieba.baidu.com",
+        'cache-control': "no-cache"
+        }
+
+    response = requests.request("GET", url, headers=headers, params=querystring)
+    html = response.text.replace('<!--', '').replace('-->', '')
+    sel = etree.HTML(html)
+    selector = sel.xpath("//*[@id='thread_list']/li")
+    print(len(selector))
+    print(html)
+    print(len(selector))
+
+def two():
+
+    url = "http://tieba.baidu.com/f"
+
+    querystring = {"kw":"%E5%B0%8F%E7%B1%B3","ie":"utf-8","pn":"0"}
+
+    headers = {
+        'Connection': "keep-alive",
+        'Cache-Control': "max-age=0",
+        'Upgrade-Insecure-Requests': "1",
+        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36",
+        'Accept': "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
+        'Accept-Encoding': "gzip, deflate",
+        'Accept-Language': "zh-CN,zh;q=0.9",
+        'Cookie': "BAIDUID=605814558314225655B02F4A7CD0727A:FG=1; BIDUPSID=605814558314225655B02F4A7CD0727A; PSTM=1571018906; TIEBAUID=e624cd11040b60fb9b3b781a; TIEBA_USERTYPE=628f5f1020112c4945750e63; bdshare_firstime=1571041299685; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; H_PS_PSSID=1467_21112_18560_29567_29699_29220; wise_device=0; Hm_lvt_98b9d8c2fd6608d564bf2ac2ae642948=1573001604,1573002130,1573009550,1573009672; BDSFRCVID=Dk-OJeCinGA4cFTwkZJitB6YteKK0goTH6hK_yz1cxZNeuaxdimtEG0PHx8g0Ku-S2-AogKK3gOTH4PF_2uxOjjg8UtVJeC6EG0Ptf8g0M5; H_BDCLCKID_SF=tRAOoC8XfCvjDb7GbKTD-tFO5eT22-us3I0L2hcH0bT_spDm-Ujx5PPlyxrJ3j5kbITiaKJjaMb1MRnoBnr0DttbW4T--4oO5I5LLp5TtUJ1JKnTDMRhqqJXqtQyKMnitKv9-pP2LpQrh459XP68bTkA5bjZKxtq3mkjbPbDfn028DKu-n5jHjJLDG-D3D; delPer=0; PSINO=6; Hm_lpvt_98b9d8c2fd6608d564bf2ac2ae642948=1573111493",
+        'Postman-Token': "1fe82088-8d6b-4949-9895-d2b20b6d0283,c61afcce-0cc5-42b6-bff0-fee605a4393f",
+        'Host': "tieba.baidu.com",
+        'cache-control': "no-cache"
+        }
+
+    response = requests.request("GET", url, headers=headers, params=querystring)
+
+    html = response.text
+    sel = etree.HTML(html)
+    selector = sel.xpath("//*[@id='thread_list']/li")
+    print(len(selector))
+    print(html)
+    print(len(selector))
 
 if __name__ == '__main__':
-    one_test()
-
-# l=dB_Z0bh4qkSTfrjoBOCanurza77OSIRYYuPzaNbMi_5aq6T6pL7OkZliaF96Vfj1gFYBqFNLRKJ9-etUZnrCIAutZrPGrgsbHFZ_UBMKUxf..;cna=3jU3Fq3o/U4CAT2NQL+R8Ub+;v=0;skt=f0a5c43956572653;sn=oppo%E5%AE%98%E6%96%B9%E6%97%97%E8%88%B0%E5%BA%97%3A%E7%BE%8A%E7%BE%8A;_tb_token_=5577bf7b3056e;unb=2200784750096;cookie2=1d4d67f6ecccaa7bc7e56bab8f975011;isg=BGpqwUyXw5epRE95Y0MLDSa1u9kG2ukxZOo4GPQjFr1IJwrh3Gs-RbDVsxqezGbN;uc1=cookie14=UoTbnKo97ZZw%2Bw%3D%3D&lng=zh_CN;x=901409638;csg=05c7e161;t=ca794abe039717bcaef5eff36822504c;
-# l=-etUikJXJfIpXUJ6CxDc.;cookieCheck=45139;uc1=cookie14=UoTbnKo97ZokZw%3D%3D;isg=BAkJYuyzsApgNUz-rOWJoYHlGDxpV_qM4_973at-hfAv8ikE86YNWPegMB9hqpXA;cna=3jU3Fq3o/U4CAT2NQL+R8Ub+;_tb_token_=7db37317b3ebe;v=0;cookie2=1a4a9a7d347baacf80bde8b217ee69d7;t=ca794abe039717bcaef5eff36822504c;dBIMbwrmqGmTlXf9KOCNdZaF1u7OSIRAguWbLcYMi_5BC1L6Wp7OkZl7gep6VfXftlTBqFNLRKy9
+    # one()
+    two()

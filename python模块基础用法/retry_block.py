@@ -41,14 +41,15 @@ def is_need_login(res):
 
 @tenacity.retry(stop=stop_after_attempt(3), wait=wait_fixed(0.1))
 def req():
-        while True:
+        if True:
             try:
                 print("开始请求")
-                res = requests.get("http://www.google.com", timeout=3)
-                # is_need_login(res)
-                return res
-            except requests.exceptions.RequestException:
-                time.sleep(0.01)
+                # res = requests.get("http://www.google.com", timeout=1)
+                # # is_need_login(res)
+                # return res
+                raise Exception
+            except Exception as e:
+                print(e)
 
 
 if __name__ == '__main__':

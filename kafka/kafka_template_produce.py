@@ -49,7 +49,7 @@ class KafkaTemplate:
 
     def __init__(self, bootstrap_server, client_id=None):
         self.bootstrap_server = bootstrap_server
-        self.client_id = client_id if client_id else "".join(random.sample('abcderghijklmnopqrstuvwxyz', 6))
+        self.client_id = client_id if client_id else "".join(random.sample('asdfads', 6))
         # 生产者懒加载
         self.producer = None
 
@@ -113,18 +113,14 @@ class KafkaTemplate:
         self.producer.send(topic, value=value, key=key, partition=partition).get(timeout)
 
 
-def one_test(key, value, topic, partition, offset):
-    print("我被运行了好多次")
-    print(key, value, topic, partition, offset)
-
-
 if __name__ == '__main__':
     import time
+
     # kafka_template = KafkaTemplate(['10.1.6.25:9092', '10.1.6.24:9092'])
     kafka_template = KafkaTemplate('192.168.0.158:9092')
-    kafka_template.consume("DATA_SECURITY_FILTER", "amazing",
-                           one_test,
-                           async_param=True)
-    # for i in range(10):
-    #     kafka_template.produce("DATA_SECURITY_FILTER", f"{i}: sefsefesfesggsgsegesgsegsegsegse")
-    time.sleep(6000)
+    # kafka_template.consume("DATA_SECURITY_FILTER", "amazing",
+    #                        lambda key, value, topic, partition, offset: print(key, value, topic, partition, offset),
+    #                        async_param=True)
+    for i in range(10):
+        kafka_template.produce("DATA_SECURITY_FILTER", f"{i}: asdf")
+    # time.sleep(60)

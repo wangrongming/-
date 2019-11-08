@@ -27,4 +27,14 @@ print(info)
 str_time = datetime.datetime.strptime("2019-10-11 11:26:34", '%Y-%m-%d %H:%M:%S')
 print(str_time)
 print(int(str_time.timestamp()))
+import time
 
+
+def deal_time(st_time="2019-11-05 20:20"):
+    str_time = datetime.datetime.strptime(st_time, '%Y-%m-%d %H:%M:%S')
+    print(str_time)
+    print(int(time.time() - int(str_time.timestamp())))
+
+
+if __name__ == '__main__':
+    deal_time()

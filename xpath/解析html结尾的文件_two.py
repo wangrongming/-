@@ -7,6 +7,7 @@ from lxml.html import fromstring, tostring
 from lxml import etree
 
 info = """
+
 <ul id="thread_list" class="threadlist_bright j_threadlist_bright">
     <li class=" j_thread_list clearfix" data-field='{&quot;id&quot;:6315543849,&quot;author_name&quot;:&quot;S\u8f69\u8f95\u4e7e\u5764R&quot;,&quot;author_nickname&quot;:null,&quot;author_portrait&quot;:&quot;849c53e8bda9e8be95e4b9bee59da452fc14&quot;,&quot;first_post_id&quot;:128094757382,&quot;reply_num&quot;:104,&quot;is_bakan&quot;:null,&quot;vid&quot;:&quot;&quot;,&quot;is_good&quot;:null,&quot;is_top&quot;:null,&quot;is_protal&quot;:null,&quot;is_membertop&quot;:null,&quot;is_multi_forum&quot;:null,&quot;frs_tpoint&quot;:null}' data-tid='6315543849' data-thread-type="0" data-floor='1' '>
     <div class="t_con cleafix">
@@ -107,7 +108,7 @@ info = """
     </div>
     </div>                    </div>
     <div class="threadlist_author pull_right">
-    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 遇见👧">
+    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 遇见?">
     <i class="icon_replyer"></i>
     <a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;\u534e\u706f\u521d\u4e0a929&quot;,&quot;id&quot;:&quot;da7be58d8ee781afe5889de4b88a3932394641&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=%E5%8D%8E%E7%81%AF%E5%88%9D%E4%B8%8A929&ie=utf-8&id=da7be58d8ee781afe5889de4b88a3932394641&fr=frs" target="_blank">遇见<img src="//tb1.bdstatic.com/tb/cms/nickemoji/2-34.png" class="nicknameEmoji" style="width:13px;height:13px"/></a></span>
     <span class="threadlist_reply_date pull_right j_reply_data" title="最后回复时间">
@@ -139,7 +140,7 @@ info = """
             <div class="threadlist_text pull_left">
               <div class="threadlist_abs threadlist_abs_onlyline ">小米cc9pro 730g是完全带不动自己的相机是吗，好像都要转一会，还不能连拍。是不是所有模式都有这个毛病</div></div>
             <div class="threadlist_author pull_right">
-              <span class="tb_icon_author_rely j_replyer" title="最后回复人: 魔像级😡">
+              <span class="tb_icon_author_rely j_replyer" title="最后回复人: 魔像级?">
                 <i class="icon_replyer"></i>
                 <a rel="noreferrer" data-field='{&quot;un&quot;:&quot;\u6653\u98ce\u767d\u7fbd&quot;,&quot;id&quot;:&quot;tb.1.5ca40ff3.Ov82eBWViJXIp0Tkbc5WhQ&quot;}' class="frs-author-name j_user_card " href="/home/main/?un=%E6%99%93%E9%A3%8E%E7%99%BD%E7%BE%BD&ie=utf-8&id=tb.1.5ca40ff3.Ov82eBWViJXIp0Tkbc5WhQ&fr=frs" target="_blank">魔像级
                   <img src="//tb1.bdstatic.com/tb/cms/nickemoji/1-32.png" class="nicknameEmoji" style="width:13px;height:13px" /></a></span>
@@ -189,7 +190,7 @@ info = """
             <div class="threadlist_title pull_left j_th_tit ">
               <a rel="noreferrer" href="/p/6328425514" title="还以为总价是2499的，没想到一共就减400，总价是2599" target="_blank" class="j_th_tit ">还以为总价是2499的，没想到一共就减400，总价是2599</a></div>
             <div class="threadlist_author pull_right">
-              <span class="tb_icon_author " title="主题作者: a接w外圈刮🔥" data-field='{&quot;user_id&quot;:1228906933}'>
+              <span class="tb_icon_author " title="主题作者: a接w外圈刮?" data-field='{&quot;user_id&quot;:1228906933}'>
                 <i class="icon_author"></i>
                 <span class="frs-author-name-wrap">
                   <a rel="noreferrer" data-field='{&quot;un&quot;:&quot;\u9b42\u5c11V5&quot;,&quot;id&quot;:&quot;b5a1e9ad82e5b09156353f49&quot;}' class="frs-author-name j_user_card " href="/home/main/?un=%E9%AD%82%E5%B0%91V5&ie=utf-8&id=b5a1e9ad82e5b09156353f49&fr=frs" target="_blank">a接w外圈...</a></span>
@@ -221,7 +222,7 @@ info = """
               </div>
             </div>
             <div class="threadlist_author pull_right">
-              <span class="tb_icon_author_rely j_replyer" title="最后回复人: a接w外圈刮🔥">
+              <span class="tb_icon_author_rely j_replyer" title="最后回复人: a接w外圈刮?">
                 <i class="icon_replyer"></i>
                 <a rel="noreferrer" data-field='{&quot;un&quot;:&quot;\u9b42\u5c11V5&quot;,&quot;id&quot;:&quot;b5a1e9ad82e5b09156353f49&quot;}' class="frs-author-name j_user_card " href="/home/main/?un=%E9%AD%82%E5%B0%91V5&ie=utf-8&id=b5a1e9ad82e5b09156353f49&fr=frs" target="_blank">a接w外圈...</a></span>
               <span class="threadlist_reply_date pull_right j_reply_data" title="最后回复时间">11:44</span></div>
@@ -270,7 +271,7 @@ info = """
             <div class="threadlist_title pull_left j_th_tit  member_thread_title_frs ">
               <a rel="noreferrer" href="/p/6325567366" title="有没有人来科普一下730G是什么水平" target="_blank" class="j_th_tit ">有没有人来科普一下730G是什么水平</a></div>
             <div class="threadlist_author pull_right">
-              <span class="tb_icon_author no_icon_author" title="主题作者: ✨秀晶✨" data-field='{&quot;user_id&quot;:1833980850}'>
+              <span class="tb_icon_author no_icon_author" title="主题作者: ?秀晶?" data-field='{&quot;user_id&quot;:1833980850}'>
                 <i class="icon_author"></i>
                 <span class="pre_icon_wrap pre_icon_wrap_theme1 frs_bright_preicon">
                   <a class="icon_tbworld icon-crown-super-v4" href="/tbmall/tshow" data-field='{&quot;user_id&quot;:1833980850}' target="_blank" title="贴吧超级会员"></a>
@@ -314,7 +315,7 @@ info = """
     <div class="threadlist_title pull_left j_th_tit ">
     <a rel="noreferrer" href="/p/6328077650" title="k20-8加512和12加512只有内存的差别吗" target="_blank" class="j_th_tit ">k20-8加512和12加512只有内存的差别吗</a></div><div class="threadlist_author pull_right">
     <span class="tb_icon_author "
-    title="主题作者: ☞执着的男人"
+    title="主题作者: ?执着的男人"
     data-field='{&quot;user_id&quot;:1632620450} ' ><i class="icon_author"></i><span class="frs-author-name-wrap"><a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;\u6e90\u4f86\u54f2\u9ebd\u566f\u5979&quot;,&quot;id&quot;:&quot;a2cfe6ba90e4be86e593b2e9babde599afe5a5b94f61&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=%E6%BA%90%E4%BE%86%E5%93%B2%E9%BA%BD%E5%99%AF%E5%A5%B9&ie=utf-8&id=a2cfe6ba90e4be86e593b2e9babde599afe5a5b94f61&fr=frs" target="_blank"><img src="//tb1.bdstatic.com/tb/cms/nickemoji/1-11.png" class="nicknameEmoji" style="width:13px;height:13px"/>执着的...</a></span><span class="icon_wrap  icon_wrap_theme1 frs_bright_icons "></span></span>
     <span class="pull-right is_show_create_time" title="创建时间">07:00</span></div>
     </div>
@@ -325,7 +326,7 @@ info = """
     </div>
     </div>
     <div class="threadlist_author pull_right">
-    <span class="tb_icon_author_rely j_replyer" title="最后回复人: ☞执着的男人">
+    <span class="tb_icon_author_rely j_replyer" title="最后回复人: ?执着的男人">
     <i class="icon_replyer"></i>
     <a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;\u6e90\u4f86\u54f2\u9ebd\u566f\u5979&quot;,&quot;id&quot;:&quot;a2cfe6ba90e4be86e593b2e9babde599afe5a5b94f61&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=%E6%BA%90%E4%BE%86%E5%93%B2%E9%BA%BD%E5%99%AF%E5%A5%B9&ie=utf-8&id=a2cfe6ba90e4be86e593b2e9babde599afe5a5b94f61&fr=frs" target="_blank"><img src="//tb1.bdstatic.com/tb/cms/nickemoji/1-11.png" class="nicknameEmoji" style="width:13px;height:13px"/>执着的...</a></span>
     <span class="threadlist_reply_date pull_right j_reply_data" title="最后回复时间">
@@ -372,7 +373,7 @@ info = """
               </div>
             </div>
             <div class="threadlist_author pull_right">
-              <span class="tb_icon_author_rely j_replyer" title="最后回复人: 沐雨ლ初心">
+              <span class="tb_icon_author_rely j_replyer" title="最后回复人: 沐雨?初心">
                 <i class="icon_replyer"></i>
                 <a rel="noreferrer" data-field='{&quot;un&quot;:&quot;\u5730\u72f1\u7684\u592a\u9633day&quot;,&quot;id&quot;:&quot;tb.1.281cc0f1.7-JjwaONgRzJwPSLHqE27w&quot;}' class="frs-author-name j_user_card " href="/home/main/?un=%E5%9C%B0%E7%8B%B1%E7%9A%84%E5%A4%AA%E9%98%B3day&ie=utf-8&id=tb.1.281cc0f1.7-JjwaONgRzJwPSLHqE27w&fr=frs" target="_blank">沐雨
                   <img src="//tb1.bdstatic.com/tb/cms/nickemoji/1-9.png" class="nicknameEmoji" style="width:13px;height:13px" />初心</a></span>
@@ -498,7 +499,7 @@ info = """
     </div>
     </div>                    </div>
     <div class="threadlist_author pull_right">
-    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 遇见👧">
+    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 遇见?">
     <i class="icon_replyer"></i>
     <a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;\u534e\u706f\u521d\u4e0a929&quot;,&quot;id&quot;:&quot;da7be58d8ee781afe5889de4b88a3932394641&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=%E5%8D%8E%E7%81%AF%E5%88%9D%E4%B8%8A929&ie=utf-8&id=da7be58d8ee781afe5889de4b88a3932394641&fr=frs" target="_blank">遇见<img src="//tb1.bdstatic.com/tb/cms/nickemoji/2-34.png" class="nicknameEmoji" style="width:13px;height:13px"/></a></span>
     <span class="threadlist_reply_date pull_right j_reply_data" title="最后回复时间">
@@ -606,7 +607,7 @@ info = """
             <div class="threadlist_title pull_left j_th_tit ">
               <a rel="noreferrer" href="/p/6328398616" title="想换个小米手机，学生党，预算两千以内，想要内存大一点，哪一款" target="_blank" class="j_th_tit ">想换个小米手机，学生党，预算两千以内，想要内存大一点，哪一款</a></div>
             <div class="threadlist_author pull_right">
-              <span class="tb_icon_author " title="主题作者: 俞子安🌱" data-field='{&quot;user_id&quot;:344427277}'>
+              <span class="tb_icon_author " title="主题作者: 俞子安?" data-field='{&quot;user_id&quot;:344427277}'>
                 <i class="icon_author"></i>
                 <span class="frs-author-name-wrap">
                   <a rel="noreferrer" data-field='{&quot;un&quot;:&quot;\u5230\u6700\u540e\u7684\u5915\u9633&quot;,&quot;id&quot;:&quot;0d8be588b0e69c80e5908ee79a84e5a495e998b38714&quot;}' class="frs-author-name j_user_card " href="/home/main/?un=%E5%88%B0%E6%9C%80%E5%90%8E%E7%9A%84%E5%A4%95%E9%98%B3&ie=utf-8&id=0d8be588b0e69c80e5908ee79a84e5a495e998b38714&fr=frs" target="_blank">俞子安
@@ -639,7 +640,7 @@ info = """
               </div>
             </div>
             <div class="threadlist_author pull_right">
-              <span class="tb_icon_author_rely j_replyer" title="最后回复人: 遇见👧">
+              <span class="tb_icon_author_rely j_replyer" title="最后回复人: 遇见?">
                 <i class="icon_replyer"></i>
                 <a rel="noreferrer" data-field='{&quot;un&quot;:&quot;\u534e\u706f\u521d\u4e0a929&quot;,&quot;id&quot;:&quot;da7be58d8ee781afe5889de4b88a3932394641&quot;}' class="frs-author-name j_user_card " href="/home/main/?un=%E5%8D%8E%E7%81%AF%E5%88%9D%E4%B8%8A929&ie=utf-8&id=da7be58d8ee781afe5889de4b88a3932394641&fr=frs" target="_blank">遇见
                   <img src="//tb1.bdstatic.com/tb/cms/nickemoji/2-34.png" class="nicknameEmoji" style="width:13px;height:13px" /></a></span>
@@ -689,7 +690,7 @@ info = """
             <div class="threadlist_title pull_left j_th_tit ">
               <a rel="noreferrer" href="/p/6327902857" title="小米9ccPro要想向数码相机看齐，个人觉得还有几点要加强。" target="_blank" class="j_th_tit ">小米9ccPro要想向数码相机看齐，个人觉得还有几点要加强。</a></div>
             <div class="threadlist_author pull_right">
-              <span class="tb_icon_author " title="主题作者: 渐冬渐冬🎓" data-field='{&quot;user_id&quot;:719026879}'>
+              <span class="tb_icon_author " title="主题作者: 渐冬渐冬?" data-field='{&quot;user_id&quot;:719026879}'>
                 <i class="icon_author"></i>
                 <span class="frs-author-name-wrap">
                   <a rel="noreferrer" data-field='{&quot;un&quot;:&quot;90Star01&quot;,&quot;id&quot;:&quot;bf7a3930537461723031db2a&quot;}' class="frs-author-name j_user_card " href="/home/main/?un=90Star01&ie=utf-8&id=bf7a3930537461723031db2a&fr=frs" target="_blank">渐冬渐冬
@@ -792,7 +793,7 @@ info = """
           </div>
           <div class="threadlist_detail clearfix">
             <div class="threadlist_text pull_left">
-              <div class="threadlist_abs threadlist_abs_onlyline ">🐕东现在9，2499。k20pro现在2299没券，后悔前天没上车了。有没有老哥给个建议</div></div>
+              <div class="threadlist_abs threadlist_abs_onlyline ">?东现在9，2499。k20pro现在2299没券，后悔前天没上车了。有没有老哥给个建议</div></div>
             <div class="threadlist_author pull_right">
               <span class="tb_icon_author_rely j_replyer" title="最后回复人: 钱德勒帕森斯7">
                 <i class="icon_replyer"></i>
@@ -824,7 +825,7 @@ info = """
     </div>
     </div>
     <div class="threadlist_author pull_right">
-    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 遇见👧">
+    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 遇见?">
     <i class="icon_replyer"></i>
     <a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;\u534e\u706f\u521d\u4e0a929&quot;,&quot;id&quot;:&quot;da7be58d8ee781afe5889de4b88a3932394641&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=%E5%8D%8E%E7%81%AF%E5%88%9D%E4%B8%8A929&ie=utf-8&id=da7be58d8ee781afe5889de4b88a3932394641&fr=frs" target="_blank">遇见<img src="//tb1.bdstatic.com/tb/cms/nickemoji/2-34.png" class="nicknameEmoji" style="width:13px;height:13px"/></a></span>
     <span class="threadlist_reply_date pull_right j_reply_data" title="最后回复时间">
@@ -885,7 +886,7 @@ info = """
               </div>
             </div>
             <div class="threadlist_author pull_right">
-              <span class="tb_icon_author_rely j_replyer" title="最后回复人: 宇智波青韦🐴">
+              <span class="tb_icon_author_rely j_replyer" title="最后回复人: 宇智波青韦?">
                 <i class="icon_replyer"></i>
                 <a rel="noreferrer" data-field='{&quot;un&quot;:&quot;z1639698450&quot;,&quot;id&quot;:&quot;tb.1.8d12865e.j-JgEeMHZwJfARUDqcvlWQ&quot;}' class="frs-author-name j_user_card " href="/home/main/?un=z1639698450&ie=utf-8&id=tb.1.8d12865e.j-JgEeMHZwJfARUDqcvlWQ&fr=frs" target="_blank">宇智波青...</a></span>
               <span class="threadlist_reply_date pull_right j_reply_data" title="最后回复时间">11:40</span></div>
@@ -922,7 +923,7 @@ info = """
     </div>
     </div>                    </div>
     <div class="threadlist_author pull_right">
-    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 遇见👧">
+    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 遇见?">
     <i class="icon_replyer"></i>
     <a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;\u534e\u706f\u521d\u4e0a929&quot;,&quot;id&quot;:&quot;da7be58d8ee781afe5889de4b88a3932394641&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=%E5%8D%8E%E7%81%AF%E5%88%9D%E4%B8%8A929&ie=utf-8&id=da7be58d8ee781afe5889de4b88a3932394641&fr=frs" target="_blank">遇见<img src="//tb1.bdstatic.com/tb/cms/nickemoji/2-34.png" class="nicknameEmoji" style="width:13px;height:13px"/></a></span>
     <span class="threadlist_reply_date pull_right j_reply_data" title="最后回复时间">
@@ -941,7 +942,7 @@ info = """
             <div class="threadlist_title pull_left j_th_tit ">
               <a rel="noreferrer" href="/p/6323766908" title="为啥小米这两年几乎全是水滴刘海屏，真的无爱 只有一个k20是" target="_blank" class="j_th_tit ">为啥小米这两年几乎全是水滴刘海屏，真的无爱 只有一个k20是</a></div>
             <div class="threadlist_author pull_right">
-              <span class="tb_icon_author " title="主题作者: 可爱范儿erº" data-field='{&quot;user_id&quot;:407524191}'>
+              <span class="tb_icon_author " title="主题作者: 可爱范儿er?" data-field='{&quot;user_id&quot;:407524191}'>
                 <i class="icon_author"></i>
                 <span class="frs-author-name-wrap">
                   <a rel="noreferrer" data-field='{&quot;un&quot;:&quot;timfan2&quot;,&quot;id&quot;:&quot;5f5374696d66616e324a18&quot;}' class="frs-author-name j_user_card " href="/home/main/?un=timfan2&ie=utf-8&id=5f5374696d66616e324a18&fr=frs" target="_blank">可爱范儿e...</a></span>
@@ -957,7 +958,7 @@ info = """
             <div class="threadlist_text pull_left">
               <div class="threadlist_abs threadlist_abs_onlyline ">为啥小米这两年几乎全是水滴刘海屏，真的无爱 只有一个k20是升降 但是整体配置又有些缩水 不像个旗舰机</div></div>
             <div class="threadlist_author pull_right">
-              <span class="tb_icon_author_rely j_replyer" title="最后回复人: 宇智波青韦🐴">
+              <span class="tb_icon_author_rely j_replyer" title="最后回复人: 宇智波青韦?">
                 <i class="icon_replyer"></i>
                 <a rel="noreferrer" data-field='{&quot;un&quot;:&quot;z1639698450&quot;,&quot;id&quot;:&quot;tb.1.8d12865e.j-JgEeMHZwJfARUDqcvlWQ&quot;}' class="frs-author-name j_user_card " href="/home/main/?un=z1639698450&ie=utf-8&id=tb.1.8d12865e.j-JgEeMHZwJfARUDqcvlWQ&fr=frs" target="_blank">宇智波青...</a></span>
               <span class="threadlist_reply_date pull_right j_reply_data" title="最后回复时间">11:39</span></div>
@@ -976,7 +977,7 @@ info = """
     <div class="threadlist_title pull_left j_th_tit ">
     <a rel="noreferrer" href="/p/6328401721" title="小米的笔记本怎么样？" target="_blank" class="j_th_tit ">小米的笔记本怎么样？</a></div><div class="threadlist_author pull_right">
     <span class="tb_icon_author "
-    title="主题作者: 呼唲嗨呦♬"
+    title="主题作者: 呼唲嗨呦?"
     data-field='{&quot;user_id&quot;:1630385954} ' ><i class="icon_author"></i><span class="frs-author-name-wrap"><a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;\u773c\u89d2\u6e29\u6696\u4f9d\u65e7&quot;,&quot;id&quot;:&quot;22b7e79cbce8a792e6b8a9e69a96e4be9de697a72d61&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=%E7%9C%BC%E8%A7%92%E6%B8%A9%E6%9A%96%E4%BE%9D%E6%97%A7&ie=utf-8&id=22b7e79cbce8a792e6b8a9e69a96e4be9de697a72d61&fr=frs" target="_blank">呼唲嗨呦<img src="//tb1.bdstatic.com/tb/cms/nickemoji/1-10.png" class="nicknameEmoji" style="width:13px;height:13px"/></a></span><span class="icon_wrap  icon_wrap_theme1 frs_bright_icons "></span></span>
     <span class="pull-right is_show_create_time" title="创建时间">11:29</span></div>
     </div>
@@ -987,7 +988,7 @@ info = """
     </div>
     </div>
     <div class="threadlist_author pull_right">
-    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 呼唲嗨呦♬">
+    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 呼唲嗨呦?">
     <i class="icon_replyer"></i>
     <a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;\u773c\u89d2\u6e29\u6696\u4f9d\u65e7&quot;,&quot;id&quot;:&quot;22b7e79cbce8a792e6b8a9e69a96e4be9de697a72d61&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=%E7%9C%BC%E8%A7%92%E6%B8%A9%E6%9A%96%E4%BE%9D%E6%97%A7&ie=utf-8&id=22b7e79cbce8a792e6b8a9e69a96e4be9de697a72d61&fr=frs" target="_blank">呼唲嗨呦<img src="//tb1.bdstatic.com/tb/cms/nickemoji/1-10.png" class="nicknameEmoji" style="width:13px;height:13px"/></a></span>
     <span class="threadlist_reply_date pull_right j_reply_data" title="最后回复时间">
@@ -1006,7 +1007,7 @@ info = """
             <div class="threadlist_title pull_left j_th_tit ">
               <a rel="noreferrer" href="/p/6321937612" title="大家如何看待这样的小米用户?大晚上的差点没笑抽过去" target="_blank" class="j_th_tit ">大家如何看待这样的小米用户?大晚上的差点没笑抽过去</a></div>
             <div class="threadlist_author pull_right">
-              <span class="tb_icon_author " title="主题作者: 魔像级😡" data-field='{&quot;user_id&quot;:448250924}'>
+              <span class="tb_icon_author " title="主题作者: 魔像级?" data-field='{&quot;user_id&quot;:448250924}'>
                 <i class="icon_author"></i>
                 <span class="frs-author-name-wrap">
                   <a rel="noreferrer" data-field='{&quot;un&quot;:&quot;\u6653\u98ce\u767d\u7fbd&quot;,&quot;id&quot;:&quot;tb.1.5ca40ff3.Ov82eBWViJXIp0Tkbc5WhQ&quot;}' title="该用户已经连续签到51天了，连续30天一举“橙”名" class="frs-author-name sign_highlight j_user_card " href="/home/main/?un=%E6%99%93%E9%A3%8E%E7%99%BD%E7%BE%BD&ie=utf-8&id=tb.1.5ca40ff3.Ov82eBWViJXIp0Tkbc5WhQ&fr=frs" target="_blank">魔像级
@@ -1232,7 +1233,7 @@ info = """
     <div class="threadlist_title pull_left j_th_tit ">
     <a rel="noreferrer" href="/p/6328414030" title="我的是mix2s，这就是安卓10版本了？" target="_blank" class="j_th_tit ">我的是mix2s，这就是安卓10版本了？</a></div><div class="threadlist_author pull_right">
     <span class="tb_icon_author "
-    title="主题作者: 爱尼丝😺😻🙀😹"
+    title="主题作者: 爱尼丝????"
     data-field='{&quot;user_id&quot;:1876410110} ' ><i class="icon_author"></i><span class="frs-author-name-wrap"><a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;\u54c6\u5c0f\u5566\u5c0f\u68a6&quot;,&quot;id&quot;:&quot;tb.1.576ed5de.8Th3H1DyslrSgIUG8guZGA&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=%E5%93%86%E5%B0%8F%E5%95%A6%E5%B0%8F%E6%A2%A6&ie=utf-8&id=tb.1.576ed5de.8Th3H1DyslrSgIUG8guZGA&fr=frs" target="_blank">爱尼丝<img src="//tb1.bdstatic.com/tb/cms/nickemoji/2-20.png" class="nicknameEmoji" style="width:13px;height:13px"/>...</a></span><span class="icon_wrap  icon_wrap_theme1 frs_bright_icons "></span></span>
     <span class="pull-right is_show_create_time" title="创建时间">11:37</span></div>
     </div>
@@ -1250,7 +1251,7 @@ info = """
     </div>
     </div>                    </div>
     <div class="threadlist_author pull_right">
-    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 爱尼丝😺😻🙀😹">
+    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 爱尼丝????">
     <i class="icon_replyer"></i>
     <a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;\u54c6\u5c0f\u5566\u5c0f\u68a6&quot;,&quot;id&quot;:&quot;tb.1.576ed5de.8Th3H1DyslrSgIUG8guZGA&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=%E5%93%86%E5%B0%8F%E5%95%A6%E5%B0%8F%E6%A2%A6&ie=utf-8&id=tb.1.576ed5de.8Th3H1DyslrSgIUG8guZGA&fr=frs" target="_blank">爱尼丝<img src="//tb1.bdstatic.com/tb/cms/nickemoji/2-20.png" class="nicknameEmoji" style="width:13px;height:13px"/>...</a></span>
     <span class="threadlist_reply_date pull_right j_reply_data" title="最后回复时间">
@@ -1304,7 +1305,7 @@ info = """
     <div class="threadlist_title pull_left j_th_tit ">
     <a rel="noreferrer" href="/p/6328386284" title="求助帖：怎么关闭小爱同学长按开机键唤醒 ？" target="_blank" class="j_th_tit ">求助帖：怎么关闭小爱同学长按开机键唤醒 ？</a></div><div class="threadlist_author pull_right">
     <span class="tb_icon_author "
-    title="主题作者: N的N次方💤"
+    title="主题作者: N的N次方?"
     data-field='{&quot;user_id&quot;:1933398029} ' ><i class="icon_author"></i><span class="frs-author-name-wrap"><a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;liukuohang&quot;,&quot;id&quot;:&quot;0d506c69756b756f68616e673d73&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=liukuohang&ie=utf-8&id=0d506c69756b756f68616e673d73&fr=frs" target="_blank">N的N次方<img src="//tb1.bdstatic.com/tb/cms/nickemoji/3-34.png" class="nicknameEmoji" style="width:13px;height:13px"/></a></span><span class="icon_wrap  icon_wrap_theme1 frs_bright_icons "></span></span>
     <span class="pull-right is_show_create_time" title="创建时间">11:20</span></div>
     </div>
@@ -1315,7 +1316,7 @@ info = """
     </div>
     </div>
     <div class="threadlist_author pull_right">
-    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 遇见👧">
+    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 遇见?">
     <i class="icon_replyer"></i>
     <a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;\u534e\u706f\u521d\u4e0a929&quot;,&quot;id&quot;:&quot;da7be58d8ee781afe5889de4b88a3932394641&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=%E5%8D%8E%E7%81%AF%E5%88%9D%E4%B8%8A929&ie=utf-8&id=da7be58d8ee781afe5889de4b88a3932394641&fr=frs" target="_blank">遇见<img src="//tb1.bdstatic.com/tb/cms/nickemoji/2-34.png" class="nicknameEmoji" style="width:13px;height:13px"/></a></span>
     <span class="threadlist_reply_date pull_right j_reply_data" title="最后回复时间">
@@ -1389,7 +1390,7 @@ info = """
     <div class="col2_right j_threadlist_li_right ">
     <div class="threadlist_lz clearfix">
     <div class="threadlist_title pull_left j_th_tit ">
-    <a rel="noreferrer" href="/p/6328374320" title="我是更还是不更??😂😂我感觉10挺好的。我还没用多久呐，感觉" target="_blank" class="j_th_tit ">我是更还是不更??😂😂我感觉10挺好的。我还没用多久呐，感觉</a></div><div class="threadlist_author pull_right">
+    <a rel="noreferrer" href="/p/6328374320" title="我是更还是不更????我感觉10挺好的。我还没用多久呐，感觉" target="_blank" class="j_th_tit ">我是更还是不更????我感觉10挺好的。我还没用多久呐，感觉</a></div><div class="threadlist_author pull_right">
     <span class="tb_icon_author "
     title="主题作者: deku♂咔酱"
     data-field='{&quot;user_id&quot;:2854903933} ' ><i class="icon_author"></i><span class="frs-author-name-wrap"><a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;\u559c\u6b22\u803d\u5575\u9171\u8d5b\u590f&quot;,&quot;id&quot;:&quot;7d60e5969ce6aca2e880bde595b5e985b1e8b59be5a48f2aaa&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=%E5%96%9C%E6%AC%A2%E8%80%BD%E5%95%B5%E9%85%B1%E8%B5%9B%E5%A4%8F&ie=utf-8&id=7d60e5969ce6aca2e880bde595b5e985b1e8b59be5a48f2aaa&fr=frs" target="_blank">deku<img src="//tb1.bdstatic.com/tb/cms/nickemoji/1-8.png" class="nicknameEmoji" style="width:13px;height:13px"/>咔酱</a></span><span class="icon_wrap  icon_wrap_theme1 frs_bright_icons "></span></span>
@@ -1398,7 +1399,7 @@ info = """
     <div class="threadlist_detail clearfix">
     <div class="threadlist_text pull_left">
     <div class="threadlist_abs threadlist_abs_onlyline ">
-    我是更还是不更??😂😂我感觉10挺好的。我还没用多久呐，感觉电很耐用
+    我是更还是不更????我感觉10挺好的。我还没用多久呐，感觉电很耐用
     </div>
     <div class="small_wrap j_small_wrap">
     <a rel="noreferrer"  href="#" onclick="return false;" class="small_btn_pre j_small_pic_pre" style="display:none"></a>
@@ -1548,7 +1549,7 @@ info = """
     </div>
     </div>
     <div class="threadlist_author pull_right">
-    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 遇见👧">
+    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 遇见?">
     <i class="icon_replyer"></i>
     <a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;\u534e\u706f\u521d\u4e0a929&quot;,&quot;id&quot;:&quot;da7be58d8ee781afe5889de4b88a3932394641&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=%E5%8D%8E%E7%81%AF%E5%88%9D%E4%B8%8A929&ie=utf-8&id=da7be58d8ee781afe5889de4b88a3932394641&fr=frs" target="_blank">遇见<img src="//tb1.bdstatic.com/tb/cms/nickemoji/2-34.png" class="nicknameEmoji" style="width:13px;height:13px"/></a></span>
     <span class="threadlist_reply_date pull_right j_reply_data" title="最后回复时间">
@@ -1614,7 +1615,7 @@ info = """
     <div class="threadlist_title pull_left j_th_tit ">
     <a rel="noreferrer" href="/p/6325289821" title="香吗？还是再等等？" target="_blank" class="j_th_tit ">香吗？还是再等等？</a></div><div class="threadlist_author pull_right">
     <span class="tb_icon_author "
-    title="主题作者: 雷布斯💨"
+    title="主题作者: 雷布斯?"
     data-field='{&quot;user_id&quot;:643760757} ' ><i class="icon_author"></i><span class="frs-author-name-wrap"><a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;QQ1114780207&quot;,&quot;id&quot;:&quot;75025151313131343738303230375f26&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=QQ1114780207&ie=utf-8&id=75025151313131343738303230375f26&fr=frs" target="_blank">雷布斯<img src="//tb1.bdstatic.com/tb/cms/nickemoji/3-35.png" class="nicknameEmoji" style="width:13px;height:13px"/></a></span><span class="icon_wrap  icon_wrap_theme1 frs_bright_icons "><a style="background: url(//tb1.bdstatic.com/tb/cms/com/icon/104_14.png?stamp=1572611820) no-repeat -4050px  0;top:0px;left:0px" data-slot="1"  data-name="starmaster" data-field='{&quot;name&quot;:&quot;starmaster&quot;,&quot;end_time&quot;:&quot;1735660800&quot;,&quot;category_id&quot;:104,&quot;slot_no&quot;:&quot;1&quot;,&quot;title&quot;:&quot;\u624b\u6e385\u661f\u8fbe\u4eba&quot;,&quot;intro&quot;:&quot;\u5728\u624b\u6e38\u73a9\u5bb6\u5427\u6210\u4e3a\u624b\u6e385\u661f\u8fbe\u4eba\u8ba4\u8bc1\u7528\u6237\uff0c\u5373\u53ef\u83b7\u53d6\u54e6~&quot;,&quot;intro_url&quot;:&quot;http:\/\/tieba.baidu.com\/f?kw=\u73a9\u5bb6\u8ba4\u8bc1&amp;ie=utf-8&quot;,&quot;price&quot;:0,&quot;value&quot;:&quot;6&quot;,&quot;sprite&quot;:{&quot;1&quot;:&quot;1572611820,76&quot;,&quot;2&quot;:&quot;1572611820,77&quot;,&quot;3&quot;:&quot;1572611820,78&quot;,&quot;4&quot;:&quot;1572611820,79&quot;,&quot;5&quot;:&quot;1572611820,80&quot;,&quot;6&quot;:&quot;1572611820,81&quot;}} ' target="_blank"   href="http://tieba.baidu.com/f?kw=玩家认证&amp;ie=utf-8"  class="j_icon_slot"  title="手游5星达人"  locate="starmaster_6#icon"  style="top: 0px; left:0px">  <div class=" j_icon_slot_refresh"></div></a></span></span>
     <span class="pull-right is_show_create_time" title="创建时间">11-5</span></div>
     </div>
@@ -1698,7 +1699,7 @@ info = """
     <div class="threadlist_title pull_left j_th_tit ">
     <a rel="noreferrer" href="/p/6324917140" title="老铁们，选那个，求推荐" target="_blank" class="j_th_tit ">老铁们，选那个，求推荐</a></div><div class="threadlist_author pull_right">
     <span class="tb_icon_author "
-    title="主题作者: 李时珍的皮9▫"
+    title="主题作者: 李时珍的皮9?"
     data-field='{&quot;user_id&quot;:2936397793} ' ><i class="icon_author"></i><span class="frs-author-name-wrap"><a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;nb1341205561&quot;,&quot;id&quot;:&quot;e1df6e623133343132303535363105af&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=nb1341205561&ie=utf-8&id=e1df6e623133343132303535363105af&fr=frs" target="_blank">李时珍的...</a></span><span class="icon_wrap  icon_wrap_theme1 frs_bright_icons "><a style="background: url(//tb1.bdstatic.com/tb/cms/com/icon/104_14.png?stamp=1572611820) no-repeat -4050px  0;top:0px;left:0px" data-slot="1"  data-name="starmaster" data-field='{&quot;name&quot;:&quot;starmaster&quot;,&quot;end_time&quot;:&quot;1735660800&quot;,&quot;category_id&quot;:104,&quot;slot_no&quot;:&quot;1&quot;,&quot;title&quot;:&quot;\u624b\u6e385\u661f\u8fbe\u4eba&quot;,&quot;intro&quot;:&quot;\u5728\u624b\u6e38\u73a9\u5bb6\u5427\u6210\u4e3a\u624b\u6e385\u661f\u8fbe\u4eba\u8ba4\u8bc1\u7528\u6237\uff0c\u5373\u53ef\u83b7\u53d6\u54e6~&quot;,&quot;intro_url&quot;:&quot;http:\/\/tieba.baidu.com\/f?kw=\u73a9\u5bb6\u8ba4\u8bc1&amp;ie=utf-8&quot;,&quot;price&quot;:0,&quot;value&quot;:&quot;6&quot;,&quot;sprite&quot;:{&quot;1&quot;:&quot;1572611820,76&quot;,&quot;2&quot;:&quot;1572611820,77&quot;,&quot;3&quot;:&quot;1572611820,78&quot;,&quot;4&quot;:&quot;1572611820,79&quot;,&quot;5&quot;:&quot;1572611820,80&quot;,&quot;6&quot;:&quot;1572611820,81&quot;}} ' target="_blank"   href="http://tieba.baidu.com/f?kw=玩家认证&amp;ie=utf-8"  class="j_icon_slot"  title="手游5星达人"  locate="starmaster_6#icon"  style="top: 0px; left:0px">  <div class=" j_icon_slot_refresh"></div></a></span></span>
     <span class="pull-right is_show_create_time" title="创建时间">11-5</span></div>
     </div>
@@ -1716,7 +1717,7 @@ info = """
     </div>
     </div>                    </div>
     <div class="threadlist_author pull_right">
-    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 在下御姐控💕">
+    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 在下御姐控?">
     <i class="icon_replyer"></i>
     <a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;\u591c\u8272\u7684\u4fe1\u4ef0&quot;,&quot;id&quot;:&quot;13c7e5a49ce889b2e79a84e4bfa1e4bbb0095c&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=%E5%A4%9C%E8%89%B2%E7%9A%84%E4%BF%A1%E4%BB%B0&ie=utf-8&id=13c7e5a49ce889b2e79a84e4bfa1e4bbb0095c&fr=frs" target="_blank">在下御姐...</a></span>
     <span class="threadlist_reply_date pull_right j_reply_data" title="最后回复时间">
@@ -1735,7 +1736,7 @@ info = """
             <div class="threadlist_title pull_left j_th_tit ">
               <a rel="noreferrer" href="/p/6326037366" title="还是真全面屏爽啊  拼多多完美下车" target="_blank" class="j_th_tit ">还是真全面屏爽啊 拼多多完美下车</a></div>
             <div class="threadlist_author pull_right">
-              <span class="tb_icon_author " title="主题作者: 吔🍦的刘醒" data-field='{&quot;user_id&quot;:286164332}'>
+              <span class="tb_icon_author " title="主题作者: 吔?的刘醒" data-field='{&quot;user_id&quot;:286164332}'>
                 <i class="icon_author"></i>
                 <span class="frs-author-name-wrap">
                   <a rel="noreferrer" data-field='{&quot;un&quot;:&quot;CF\u6d9b\u54e5&quot;,&quot;id&quot;:&quot;6c854346e6b69be593a50e11&quot;}' class="frs-author-name j_user_card " href="/home/main/?un=CF%E6%B6%9B%E5%93%A5&ie=utf-8&id=6c854346e6b69be593a50e11&fr=frs" target="_blank">吔
@@ -1778,7 +1779,7 @@ info = """
               </div>
             </div>
             <div class="threadlist_author pull_right">
-              <span class="tb_icon_author_rely j_replyer" title="最后回复人: 吔🍦的刘醒">
+              <span class="tb_icon_author_rely j_replyer" title="最后回复人: 吔?的刘醒">
                 <i class="icon_replyer"></i>
                 <a rel="noreferrer" data-field='{&quot;un&quot;:&quot;CF\u6d9b\u54e5&quot;,&quot;id&quot;:&quot;6c854346e6b69be593a50e11&quot;}' class="frs-author-name j_user_card " href="/home/main/?un=CF%E6%B6%9B%E5%93%A5&ie=utf-8&id=6c854346e6b69be593a50e11&fr=frs" target="_blank">吔
                   <img src="//tb1.bdstatic.com/tb/cms/nickemoji/2-11.png" class="nicknameEmoji" style="width:13px;height:13px" />的刘醒</a></span>
@@ -1798,7 +1799,7 @@ info = """
     <div class="threadlist_title pull_left j_th_tit ">
     <a rel="noreferrer" href="/p/6328373022" title="了解手表最新进展，和米粉一起互动交流，进来一起沟通" target="_blank" class="j_th_tit ">了解手表最新进展，和米粉一起互动交流，进来一起沟通</a></div><div class="threadlist_author pull_right">
     <span class="tb_icon_author "
-    title="主题作者: 木子李🌞I"
+    title="主题作者: 木子李?I"
     data-field='{&quot;user_id&quot;:803906954} ' ><i class="icon_author"></i><span class="frs-author-name-wrap"><a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;\u5f7c\u5e74\u8ab0\u611f\u52a8\u8ab0&quot;,&quot;id&quot;:&quot;8aa5e5bdbce5b9b4e8aab0e6849fe58aa8e8aab0ea2f&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=%E5%BD%BC%E5%B9%B4%E8%AA%B0%E6%84%9F%E5%8A%A8%E8%AA%B0&ie=utf-8&id=8aa5e5bdbce5b9b4e8aab0e6849fe58aa8e8aab0ea2f&fr=frs" target="_blank">木子李<img src="//tb1.bdstatic.com/tb/cms/nickemoji/2-28.png" class="nicknameEmoji" style="width:13px;height:13px"/>I</a></span><span class="icon_wrap  icon_wrap_theme1 frs_bright_icons "></span></span>
     <span class="pull-right is_show_create_time" title="创建时间">11:12</span></div>
     </div>
@@ -1816,7 +1817,7 @@ info = """
     </div>
     </div>                    </div>
     <div class="threadlist_author pull_right">
-    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 木子李🌞I">
+    <span class="tb_icon_author_rely j_replyer" title="最后回复人: 木子李?I">
     <i class="icon_replyer"></i>
     <a rel="noreferrer"  data-field='{&quot;un&quot;:&quot;\u5f7c\u5e74\u8ab0\u611f\u52a8\u8ab0&quot;,&quot;id&quot;:&quot;8aa5e5bdbce5b9b4e8aab0e6849fe58aa8e8aab0ea2f&quot;} ' class="frs-author-name j_user_card " href="/home/main/?un=%E5%BD%BC%E5%B9%B4%E8%AA%B0%E6%84%9F%E5%8A%A8%E8%AA%B0&ie=utf-8&id=8aa5e5bdbce5b9b4e8aab0e6849fe58aa8e8aab0ea2f&fr=frs" target="_blank">木子李<img src="//tb1.bdstatic.com/tb/cms/nickemoji/2-28.png" class="nicknameEmoji" style="width:13px;height:13px"/>I</a></span>
     <span class="threadlist_reply_date pull_right j_reply_data" title="最后回复时间">
@@ -1835,7 +1836,7 @@ info = """
             <div class="threadlist_title pull_left j_th_tit ">
               <a rel="noreferrer" href="/p/6326490215" title="粗算下cc9pro的成本" target="_blank" class="j_th_tit ">粗算下cc9pro的成本</a></div>
             <div class="threadlist_author pull_right">
-              <span class="tb_icon_author " title="主题作者: 自然传真🌌" data-field='{&quot;user_id&quot;:867403130}'>
+              <span class="tb_icon_author " title="主题作者: 自然传真?" data-field='{&quot;user_id&quot;:867403130}'>
                 <i class="icon_author"></i>
                 <span class="frs-author-name-wrap">
                   <a rel="noreferrer" data-field='{&quot;un&quot;:&quot;\u4f20\u771f\u81ea\u7136&quot;,&quot;id&quot;:&quot;7a85e4bca0e79c9fe887aae784b6b333&quot;}' class="frs-author-name j_user_card " href="/home/main/?un=%E4%BC%A0%E7%9C%9F%E8%87%AA%E7%84%B6&ie=utf-8&id=7a85e4bca0e79c9fe887aae784b6b333&fr=frs" target="_blank">自然传真
@@ -1848,7 +1849,7 @@ info = """
             <div class="threadlist_text pull_left">
               <div class="threadlist_abs threadlist_abs_onlyline ">cc9pro价出来了，2799元，很多人说这次小米贵了，那粗略估算下成本，五摄模组估计在一千或略超一千吧，全按最保守的计算，以前记得看过一个拆机视频说imx363进价就要两三百，所以估算五摄成本一千，然后主板屏幕730G这些加起来也要一千二三百吧，全算下来cc9pro成本粗略估算两千二，应该不止，所以2799应该不贵</div></div>
             <div class="threadlist_author pull_right">
-              <span class="tb_icon_author_rely j_replyer" title="最后回复人: 小唐同学🐷">
+              <span class="tb_icon_author_rely j_replyer" title="最后回复人: 小唐同学?">
                 <i class="icon_replyer"></i>
                 <a rel="noreferrer" data-field='{&quot;un&quot;:&quot;yyddd1563&quot;,&quot;id&quot;:&quot;tb.1.c46316d2.VunasTiI7ufaJlecLkvzpg&quot;}' class="frs-author-name j_user_card " href="/home/main/?un=yyddd1563&ie=utf-8&id=tb.1.c46316d2.VunasTiI7ufaJlecLkvzpg&fr=frs" target="_blank">小唐同学
                   <img src="//tb1.bdstatic.com/tb/cms/nickemoji/2-1.png" class="nicknameEmoji" style="width:13px;height:13px" /></a></span>
@@ -1982,7 +1983,7 @@ info = """
             <div class="threadlist_title pull_left j_th_tit ">
               <a rel="noreferrer" href="/p/6318057180" title="小米8，自从升级了MIUI11。我就和不卡顿失去了联系!" target="_blank" class="j_th_tit ">小米8，自从升级了MIUI11。我就和不卡顿失去了联系!</a></div>
             <div class="threadlist_author pull_right">
-              <span class="tb_icon_author " title="主题作者: 化纤ლ" data-field='{&quot;user_id&quot;:1524248875}'>
+              <span class="tb_icon_author " title="主题作者: 化纤?" data-field='{&quot;user_id&quot;:1524248875}'>
                 <i class="icon_author"></i>
                 <span class="frs-author-name-wrap">
                   <a rel="noreferrer" data-field='{&quot;un&quot;:&quot;\u6668\u5149\u7531\u662f\u7f8e\u4e4b&quot;,&quot;id&quot;:&quot;2b31e699a8e58589e794b1e698afe7be8ee4b98bda5a&quot;}' class="frs-author-name j_user_card " href="/home/main/?un=%E6%99%A8%E5%85%89%E7%94%B1%E6%98%AF%E7%BE%8E%E4%B9%8B&ie=utf-8&id=2b31e699a8e58589e794b1e698afe7be8ee4b98bda5a&fr=frs" target="_blank">化纤
@@ -2021,7 +2022,7 @@ info = """
               </div>
             </div>
             <div class="threadlist_author pull_right">
-              <span class="tb_icon_author_rely j_replyer" title="最后回复人: 会飞的曱甴☜☞">
+              <span class="tb_icon_author_rely j_replyer" title="最后回复人: 会飞的曱甴??">
                 <i class="icon_replyer"></i>
                 <a rel="noreferrer" data-field='{&quot;un&quot;:&quot;cc924558459&quot;,&quot;id&quot;:&quot;8d4d63633932343535383435399816&quot;}' class="frs-author-name j_user_card " href="/home/main/?un=cc924558459&ie=utf-8&id=8d4d63633932343535383435399816&fr=frs" target="_blank">会飞的曱...</a></span>
               <span class="threadlist_reply_date pull_right j_reply_data" title="最后回复时间">11:31</span></div>
@@ -2033,35 +2034,32 @@ info = """
   """
 
 # info = etree.parse(r'D:\code\block\xpath\html\html.html', etree.HTMLParser(encoding='utf-8'))
-# info = etree.HTML(info)
-# sel = info.xpath("//*[@id='thread_list']/li")
-# i = 0
-# print(len(sel))
-from bs4 import BeautifulSoup as bs
-soup = bs(info, "lxml")
-# dup_check = 0  # 每个url开始为0
-# # topic倒序排列 最新的在最前面 遇到重复的正常计数处理即可
-sel = soup.find_all(class_='j_thread_list clearfix')
+info = etree.HTML(info)
+sel = info.xpath("//*[@id='thread_list']/li")
+i = 0
 print(len(sel))
+for info in sel:
+    post_details = ""
+    try:
+        post_details = info.xpath(".//a[contains(@class,'j_th_tit')]/@href")
+        if not post_details:
+            continue
+        pid = re.findall(r"(\d+)", post_details[0])[0]
+        title = info.xpath(".//a[contains(@class,'j_th_tit')]/@title")[0]
+        reply_time = info.xpath(".//span[contains(@title,'最后回复时间')]/text()")
+        if not reply_time:
+            continue
+        reply_time = re.sub(r"\s|\n|\t", "", reply_time[0])
 
-dup_check = 0
-for item in sel:
-    if dup_check == 5:  # 5个topic都重复 就不再爬这一页
-        break
-    else:
-        try:
-            final_dic = {}
-            topic_id = str(item.find_all(name="a", rel="noreferrer")[0].get("href")).split('/')[-1]  # 得到话题ID
-            topic_title = re.sub(r"\s|\n|\t", "", item.find_all(name="a", rel="noreferrer")[0].get("title")) # 得到话题ID
-            reply_time = re.sub(r"\s|\n|\t", "", item.find_all(name="span", title="最后回复时间")[0].text)  # 得到回复时间
-            final_dic["_id"] = topic_id
-            final_dic["topic_id"] = topic_id
-            final_dic["topic_title"] = topic_title
-            # final_dic["topic_lz"] = topic_lz
-            # final_dic["lz_id"] = lz_id
-            final_dic["bar_name"] = ""
-            print(topic_id, topic_title, reply_time)
-        except Exception as e:
-            print(traceback.format_exc())
-            dup_check += 1
+        i += 1
+        print(i, pid)
+        # print(i, bar_name)
+        print(i, title)
+        print(i, reply_time)
+        print("*******************************")
+        # deal_time
+
+    except Exception as e:
+        print(traceback.format_exc())
+        continue
     # break

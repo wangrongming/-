@@ -6,7 +6,7 @@
  @IDE  : PyCharm
  """
 from urllib import parse
-info = parse.unquote("__jsl_clearance=1571998717.937|0|KPZyTV%2B5GDZnDABoYkn%2BWQARzM0%3D")
+info = parse.unquote("%E5%B0%8F%E7%B1%B3")
 print(info)
 # "KPZyTV+5GDZnDABoYkn+WQARzM0="
 # "KPZyTV+5GDZnDABoYkn+WQARzM0="
