@@ -24,7 +24,7 @@ def with_params():
 def no_params():
     command = """
     function add (){
-        return 3;
+        return url;
     };
     """
     ctx = execjs.compile(command)
@@ -1608,11 +1608,42 @@ return RSA.encrypt(e, t)
 };
     """
     ctx = execjs.compile(command)
-    return ctx.call("encrypt2", '88888888', "-----BEGIN PUBLIC KEY-----MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC5gsH+AA4XWONB5TDcUd+xCz7ejOFHZKlcZDx+pF1i7Gsvi1vjyJoQhRtRSn950x498VUkx7rUxg1/ScBVfrRxQOZ8xFBye3pjAzfb22+RCuYApSVpJ3OO3KsEuKExftz9oFBv3ejxPlYc5yq7YiBO8XlTnQN0Sa4R4qhPO3I2MQIDAQAB-----END PUBLIC KEY-----")
+    return ctx.call("encrypt2", '88888888',
+                    "-----BEGIN PUBLIC KEY-----MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC5gsH+AA4XWONB5TDcUd+xCz7ejOFHZKlcZDx+pF1i7Gsvi1vjyJoQhRtRSn950x498VUkx7rUxg1/ScBVfrRxQOZ8xFBye3pjAzfb22+RCuYApSVpJ3OO3KsEuKExftz9oFBv3ejxPlYc5yq7YiBO8XlTnQN0Sa4R4qhPO3I2MQIDAQAB-----END PUBLIC KEY-----")
+
+
+def eval_func():
+    import execjs
+
+    return execjs.eval("""1+1""")
+
+
+def with_params_one(url):
+    command = """
+    function url (){
+        %s
+        return url;
+    };
+    """ % url
+    ctx = execjs.compile(command)
+    return ctx.call("url")
 
 
 if __name__ == '__main__':
-    print(with_params())
-    print(no_params())
-    print(wangyi_login())
-
+    # print(with_params())
+    # print(no_params())
+    # print(wangyi_login())
+    # print(eval_func())
+    url = """    var url = '';
+    url += 'http://mp.w';
+    url += 'eixin.qq.co';
+    url += 'm/s?src=11&';
+    url += 'timestamp=1';
+    url += '573658032&v';
+    url += 'er=1972&sig';
+    url += 'nature=21Ag';
+    url += 'g489WNRvO1i';
+    url += 'XECe2U5GlfU';
+    url += 'EauvX2mhEYo';
+    url += 'P-p-r6PbPSeo3g2osha-Sw8IMCWumL8q0g4rC3figxKWPjqZmrDY0Wr4QZdQUlVVkrMJKVZPOUxWTQ8LTGrYYpoysaa&new=1';"""
+    print(with_params_one(url))

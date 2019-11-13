@@ -1,65 +1,72 @@
-import time
+import re
 
+import execjs
 import requests
-from lxml import etree
 
 
-def one():
-    url = "http://tieba.baidu.com/f"
+def url_js(url):
+    command = """
+    function url (){
+        %s
+        return url;
+    };
+    """ % url
+    ctx = execjs.compile(command)
+    return ctx.call("url")
 
-    # querystring = {"kw":"%E5%B0%8F%E7%B1%B3","ie":"utf-8","pn":"0"}
-    querystring = {"kw":"%E5%B0%8F%E7%B1%B3","ie":"utf-8","pn":"50"}
 
+def url_pattern(text):
+    res = re.findall(r"<script>(.*?)url\.replace", text, re.S)
+    return res[0]
+
+
+def index_one():
+    pass
+
+
+def detail_one():
+    url = "https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS8HPlqRsn9otcJAb5t4tbPWTNJPXjmQUdVqXa8Fplpd9Z3Dooyeznbhkz_lgSFFvLel0j-ysgjFZPbVk6WxGvRpMxigcZt7F4JOXH1XZgj6ToWnH0q2O0zXui_-cUViHF1JnlapW9UKYwEG2iyvGfh4hUs81ZCzL5EWYq19y75jT0kcUI7b2HUCiIbQD93oyEi7EofnpKeF3TiIlBlz5hvEHpHkoPMgL3A..&type=2&query=%E5%B0%8F%E7%B1%B3&k=59&h=j"
     headers = {
-        'Connection': "keep-alive",
-        'Upgrade-Insecure-Requests': "1",
-        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36",
-        'Accept': "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
-        'Accept-Encoding': "gzip, deflate",
-        'Accept-Language': "zh-CN,zh;q=0.9",
-        'Cookie': "BAIDUID=605814558314225655B02F4A7CD0727A:FG=1; BIDUPSID=605814558314225655B02F4A7CD0727A; PSTM=1571018906; TIEBAUID=e624cd11040b60fb9b3b781a; TIEBA_USERTYPE=628f5f1020112c4945750e63; bdshare_firstime=1571041299685; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; H_PS_PSSID=1467_21112_18560_29567_29699_29220; wise_device=0; Hm_lvt_98b9d8c2fd6608d564bf2ac2ae642948=1573001604,1573002130,1573009550,1573009672; BDSFRCVID=Dk-OJeCinGA4cFTwkZJitB6YteKK0goTH6hK_yz1cxZNeuaxdimtEG0PHx8g0Ku-S2-AogKK3gOTH4PF_2uxOjjg8UtVJeC6EG0Ptf8g0M5; H_BDCLCKID_SF=tRAOoC8XfCvjDb7GbKTD-tFO5eT22-us3I0L2hcH0bT_spDm-Ujx5PPlyxrJ3j5kbITiaKJjaMb1MRnoBnr0DttbW4T--4oO5I5LLp5TtUJ1JKnTDMRhqqJXqtQyKMnitKv9-pP2LpQrh459XP68bTkA5bjZKxtq3mkjbPbDfn028DKu-n5jHjJLDG-D3D; delPer=0; PSINO=6; Hm_lpvt_98b9d8c2fd6608d564bf2ac2ae642948={}".format(int(time.time())),
-        'Cache-Control': "no-cache",
-        'Host': "tieba.baidu.com",
-        'cache-control': "no-cache"
-        }
+        'Host': 'weixin.sogou.com',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'Referer': 'https://weixin.sogou.com/weixin?type=2&query=%E5%B0%8F%E7%B1%B3&ie=utf8&s_from=input&_sug_=n&_sug_type_=1&w=01015002&oq=&ri=0&sourceid=sugg&sut=0&sst0=1573658029796&lkt=0%2C0%2C0&p=40040108',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Accept-Language': 'zh-CN,zh;q=0.9',
+        'Cookie': 'IPLOC=CN4403; SUID=B72812DA2F20910A000000005DCC0FEB; SUV=1573654502268031; ABTEST=0|1573654510|v1; SNUID=B52A13D80207963BFC1F55A902B1DCED; weixinIndexVisited=1; pgv_pvi=1177630720; sct=2; JSESSIONID=aaaH9-EIE7BZl9SZoex4w',
+    }
+    response = requests.request("GET", url, headers=headers)
+    item = {
+        "referer": url,
+        "target": url_js(url_pattern(response.text))
+    }
+    return item
 
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    html = response.text.replace('<!--', '').replace('-->', '')
-    sel = etree.HTML(html)
-    selector = sel.xpath("//*[@id='thread_list']/li")
-    print(len(selector))
-    print(html)
-    print(len(selector))
 
-def two():
-
-    url = "http://tieba.baidu.com/f"
-
-    querystring = {"kw":"%E5%B0%8F%E7%B1%B3","ie":"utf-8","pn":"0"}
-
+def detail_two(item):
+    url = item['target']
     headers = {
-        'Connection': "keep-alive",
-        'Cache-Control': "max-age=0",
-        'Upgrade-Insecure-Requests': "1",
-        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36",
-        'Accept': "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
-        'Accept-Encoding': "gzip, deflate",
-        'Accept-Language': "zh-CN,zh;q=0.9",
-        'Cookie': "BAIDUID=605814558314225655B02F4A7CD0727A:FG=1; BIDUPSID=605814558314225655B02F4A7CD0727A; PSTM=1571018906; TIEBAUID=e624cd11040b60fb9b3b781a; TIEBA_USERTYPE=628f5f1020112c4945750e63; bdshare_firstime=1571041299685; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; H_PS_PSSID=1467_21112_18560_29567_29699_29220; wise_device=0; Hm_lvt_98b9d8c2fd6608d564bf2ac2ae642948=1573001604,1573002130,1573009550,1573009672; BDSFRCVID=Dk-OJeCinGA4cFTwkZJitB6YteKK0goTH6hK_yz1cxZNeuaxdimtEG0PHx8g0Ku-S2-AogKK3gOTH4PF_2uxOjjg8UtVJeC6EG0Ptf8g0M5; H_BDCLCKID_SF=tRAOoC8XfCvjDb7GbKTD-tFO5eT22-us3I0L2hcH0bT_spDm-Ujx5PPlyxrJ3j5kbITiaKJjaMb1MRnoBnr0DttbW4T--4oO5I5LLp5TtUJ1JKnTDMRhqqJXqtQyKMnitKv9-pP2LpQrh459XP68bTkA5bjZKxtq3mkjbPbDfn028DKu-n5jHjJLDG-D3D; delPer=0; PSINO=6; Hm_lpvt_98b9d8c2fd6608d564bf2ac2ae642948=1573111493",
-        'Postman-Token': "1fe82088-8d6b-4949-9895-d2b20b6d0283,c61afcce-0cc5-42b6-bff0-fee605a4393f",
-        'Host': "tieba.baidu.com",
-        'cache-control': "no-cache"
-        }
+        'authority': "mp.weixin.qq.com",
+        'cache-control': "max-age=0,no-cache",
+        'upgrade-insecure-requests': "1",
+        'user-agent': "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36",
+        'accept': "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+        'referer': item['referer'],
+        'accept-encoding': "gzip, deflate, br",
+        'accept-language': "zh-CN,zh;q=0.9",
+        'cookie': "pgv_pvi=2501053440; pgv_si=s7603036160; pgv_info=ssid=s1978121797; pgv_pvid=437692080; _pcmgr_localtk=FuZ9z!q(Zz; _qpsvr_localtk=)OwsETEZHB; rewardsn=; wxtokenkey=777",
+        'if-modified-since': "Wed, 13 Nov 2019 23:13:57 +0800",
+        'Host': "mp.weixin.qq.com",
+        'Connection': "keep-alive"
+    }
+    response = requests.request("GET", url, headers=headers)
+    print(response.text)
 
-    response = requests.request("GET", url, headers=headers, params=querystring)
-
-    html = response.text
-    sel = etree.HTML(html)
-    selector = sel.xpath("//*[@id='thread_list']/li")
-    print(len(selector))
-    print(html)
-    print(len(selector))
 
 if __name__ == '__main__':
-    # one()
-    two()
+    # index_one()
+    detail_one_res = detail_one()
+    print(detail_one_res)
+    detail_two(detail_one_res)
