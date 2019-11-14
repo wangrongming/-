@@ -1,3 +1,5 @@
+import time
+
 import requests
 
 # curl -x "http://hty001:Hty8899@36.26.210.83:31281" httpbin.org/get
@@ -26,5 +28,4 @@ def set_proxy():
                                                       proxy_info['host'], proxy_info['port']),
                 }
         except TypeError:
-            pass
-
+            time.sleep(3)

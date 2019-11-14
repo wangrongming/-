@@ -114,7 +114,6 @@ class KafkaTemplate:
 
 
 def one_test(key, value, topic, partition, offset):
-    print("我被运行了好多次")
     print(key, value, topic, partition, offset)
 
 
@@ -122,9 +121,9 @@ if __name__ == '__main__':
     import time
     # kafka_template = KafkaTemplate(['10.1.6.25:9092', '10.1.6.24:9092'])
     kafka_template = KafkaTemplate('192.168.0.158:9092')
-    kafka_template.consume("DATA_SECURITY_FILTER", "amazing",
+    kafka_template.consume("SPIDER_SAVE_BAIDU_KAFKA", "amazing",
                            one_test,
                            async_param=True)
-    # for i in range(10):
-    #     kafka_template.produce("DATA_SECURITY_FILTER", f"{i}: sefsefesfesggsgsegesgsegsegsegse")
+    for i in range(10):
+        kafka_template.produce("SPIDER_SAVE_BAIDU_KAFKA", f"{i}: sefsefesfesggsgsegesgsegsegsegse")
     time.sleep(6000)
