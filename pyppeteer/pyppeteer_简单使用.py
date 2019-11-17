@@ -8,9 +8,17 @@ async def main():
     width, height = 1366, 768
     await page.setViewport({'width': width, 'height': height})
     await page.goto('http://quotes.toscrape.com/js/')
-    await page.screenshot(path='example.png')
-    await page.evaluate(
-        '''() =>{ Object.defineProperties(navigator,{ webdriver:{ get: () => false } }) }''')
+
+    cookies_list = await page.cookies()
+    cookies = {}
+    for cookie in cookies_list:
+        cookies[cookie['name']] = cookie['value']
+
+    page = await browser.newPage()
+
+    # await page.screenshot(path='example.png')
+    # await page.evaluate(
+    #     '''() =>{ Object.defineProperties(navigator,{ webdriver:{ get: () => false } }) }''')
     await browser.close()
 
 if __name__ == '__main__':
