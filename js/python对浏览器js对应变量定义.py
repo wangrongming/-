@@ -5,6 +5,7 @@
 pip install PyExecJS
 python  执行execjs代码实例
 """
+import random
 
 import execjs
 
@@ -18,6 +19,13 @@ def with_params():
     """
     ctx = execjs.compile(command)
     return ctx.call("add", 2, 2)
+
+
+def get_k_h(url):
+    b = int(random.random() * 100) + 1
+    a = url.find("url=")
+    url = url + "&k=" + str(b) + "&h=" + url[a + 4 + 21 + b: a + 4 + 21 + b + 1]
+    return url
 
 
 # 不带参数

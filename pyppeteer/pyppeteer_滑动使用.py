@@ -1,5 +1,7 @@
 import asyncio
+
 from pyppeteer import launch
+
 
 async def main():
     browser = await launch()
@@ -18,5 +20,6 @@ async def main():
     print(dimensions)
     # >>> {'width': 800, 'height': 600, 'deviceScaleFactor': 1}
     await browser.close()
+
 
 asyncio.get_event_loop().run_until_complete(main())
