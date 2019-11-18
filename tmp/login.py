@@ -21,7 +21,7 @@ async def main(base_url):
     width, height = 1366, 768
     await page.setViewport({'width': width, 'height': height})
 
-    # 以下为插入中间js，将淘宝会为了检测浏览器而调用的js修改其结果
+    # 以下为插入中间js，将淘宝会为了检测浏览器而调用的js修改其  结果
     await page.evaluate(
         '''() =>{ Object.defineProperties(navigator,{ webdriver:{ get: () => false } }) }''')
     await page.evaluate('''() =>{ window.navigator.chrome = { runtime: {},  }; }''')
