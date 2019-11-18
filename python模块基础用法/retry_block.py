@@ -1,14 +1,13 @@
-import logging
-
 import requests
 import tenacity
-from tenacity import stop_after_attempt, wait_fixed, stop_after_delay
+from tenacity import stop_after_attempt, wait_fixed
 
 time = 0
 
 
 def one_test(retry_state):
     print("在test之后 {}".format(1))
+
 
 # stop=stop_after_attempt(3) 让它重试3次后不再重试并抛出异常
 # @after 添加终止条件
@@ -28,7 +27,7 @@ def get_info():
     response = requests.get(url=url)
     if response.status_code != 200:
         return response.text
-    raise Exception
+    # raise Exception
 
 
 def is_need_login(res):
@@ -41,18 +40,18 @@ def is_need_login(res):
 
 @tenacity.retry(stop=stop_after_attempt(3), wait=wait_fixed(0.1))
 def req():
-        if True:
-            try:
-                print("开始请求")
-                # res = requests.get("http://www.google.com", timeout=1)
-                # # is_need_login(res)
-                # return res
-                raise Exception
-            except Exception as e:
-                print(e)
+    if True:
+        try:
+            print("开始请求")
+            # res = requests.get("http://www.google.com", timeout=1)
+            # # is_need_login(res)
+            # return res
+            raise Exception
+        except Exception as e:
+            print(e)
 
 
 if __name__ == '__main__':
     # one_test(time)
-    # get_info()
-    req()
+    get_info()
+    # req()

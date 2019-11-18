@@ -21,7 +21,7 @@
 
 # 2 运行镜像
 # docker run -p 9011:9011 -d --name c_name imagename
-# c_name为容器名  imagename为打包的镜像名 -p 9011:9011映射端口号
+# c_name为容器名  imagename为打包的镜像名 -p 9011:9011 映射端口号
 # docker run -p 9011:9011 -d --name zhtrust_mock d_t
 
 
