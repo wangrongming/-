@@ -3,6 +3,8 @@ import datetime
 
 # 使用datetime模块来获取当前的日期和时间
 # 参数如下：
+import time
+
 cur = datetime.datetime.now()
 print(cur, cur.isoformat())
 print(cur.year)
@@ -27,10 +29,14 @@ str_time = datetime.datetime.strptime("2019-10-11 11:26:34", '%Y-%m-%d %H:%M:%S'
 print(str_time)
 print(int(str_time.timestamp()))
 
-# 时间戳转日期
+# 时间戳转日期 方案一
 d = datetime.datetime.fromtimestamp(1573186027)
 str1 = d.strftime("%Y-%m-%d %H:%M:%S")
 print("str1", str1)
+
+# 时间戳转日期 方案二
+st = time.localtime(int(1573186027))
+publish_time = time.strftime('%Y-%m-%d', st)
 
 if __name__ == '__main__':
     pass
