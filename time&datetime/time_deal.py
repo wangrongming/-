@@ -3,6 +3,7 @@ import datetime
 
 # 使用datetime模块来获取当前的日期和时间
 # 参数如下：
+import random
 import time
 
 cur = datetime.datetime.now()
@@ -53,3 +54,7 @@ def getDateTimeFromISO8601String(s):
 if __name__ == '__main__':
     a = getDateTimeFromISO8601String('2018-01-01T00:00:00')
     print(a)
+    # 4542626659930211
+    # 5769657468981557
+    # 7991412311012391
+    print(str(random.random())[2:])

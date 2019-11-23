@@ -1,4 +1,5 @@
 import asyncio
+
 from pyppeteer import launch
 
 
@@ -15,11 +16,12 @@ async def main():
         cookies[cookie['name']] = cookie['value']
 
     page = await browser.newPage()
-
+    # print(page.)
     # await page.screenshot(path='example.png')
     # await page.evaluate(
     #     '''() =>{ Object.defineProperties(navigator,{ webdriver:{ get: () => false } }) }''')
     await browser.close()
+
 
 if __name__ == '__main__':
     asyncio.get_event_loop().run_until_complete(main())
