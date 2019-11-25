@@ -3,9 +3,10 @@
 # @Author    : KK
 # @Time     : 2019/10/22
 
-from kafka import KafkaProducer, KafkaConsumer, TopicPartition, OffsetAndMetadata
 import random
 import threading
+
+from kafka import KafkaProducer, KafkaConsumer, TopicPartition, OffsetAndMetadata
 
 
 class KafkaTemplate:
@@ -119,11 +120,12 @@ def one_test(key, value, topic, partition, offset):
 
 if __name__ == '__main__':
     import time
+
     # kafka_template = KafkaTemplate(['10.1.6.25:9092', '10.1.6.24:9092'])
     kafka_template = KafkaTemplate('192.168.0.158:9092')
-    kafka_template.consume("SPIDER_SAVE_BAIDU_KAFKA", "amazing",
+    kafka_template.consume("SPIDER_SAVE_OFFICIAL_ACCOUNT_KAFKA", "amazing",
                            one_test,
                            async_param=True)
     for i in range(10):
-        kafka_template.produce("SPIDER_SAVE_BAIDU_KAFKA", f"{i}: sefsefesfesggsgsegesgsegsegsegse")
+        kafka_template.produce("SPIDER_SAVE_OFFICIAL_ACCOUNT_KAFKA", f"{i}: sefsefesfesggsgsegesgsegsegsegse")
     time.sleep(6000)
