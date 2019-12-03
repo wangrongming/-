@@ -6,6 +6,8 @@
  @IDE  : PyCharm
  """
 from urllib import parse
+
+info = parse.unquote("%E5%B0%8F%E7%B1%B3")
 info = parse.unquote("%E5%B0%8F%E7%B1%B3")
 print(info)
 # "KPZyTV+5GDZnDABoYkn+WQARzM0="

@@ -1,31 +1,82 @@
-import requests
+# -*- coding: utf-8 -*-
 
-url = "https://club.huawei.com/forum.html"
+import execjs
+import requests
+import urllib3
+
+# 禁用警告
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+js_string = '''
+function decrypt(t, e) {
+    for (var n = t.split(""), i = e.split(""), a = {}, r = [], o = 0; o < n.length / 2; o++)
+        a[n[o]] = n[n.length / 2 + o];
+    for (var s = 0; s < e.length; s++)
+        r.push(a[i[s]]);
+    return r.join("")
+}
+'''
 
 headers = {
-    'Connection': "keep-alive",
-    'Cache-Control': "max-age=0",
-    'Upgrade-Insecure-Requests': "1",
-    'User-Agent': "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36",
-    'Sec-Fetch-Mode': "navigate",
-    'Sec-Fetch-User': "?1",
-    'Accept': "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
-    'Sec-Fetch-Site': "same-origin",
-    'Referer': "https://club.huawei.com/forum-2901-1.html",
-    'Accept-Encoding': "gzip, deflate, br",
-    'Accept-Language': "zh-CN,zh;q=0.9",
-    'Cookie': "_gscu_1109330234=7430576802t4co81; "
-              "HWWAFSESID=9150e8eb867d772b3d; "
-              "HWWAFSESTIME=1574310085294; "
-              "a3ps_2132_saltkey=2S96%2FrCMLj%2BfEWoZrzFO%2FDyixy0RsJlKoTZFxioFpFOPPxj4Y9Wwyyt%2B5nYGVdmV6Hpfg4fhKTaFhfytCUYxqA74z4f%2FSlRv5KkPrbAPMoYG16Vxc7VRsCIufnCrHFoCYXV0aGtleQ%3D%3D; a3ps_2132_lastvisit=1574306487; "
-              "a3ps_2132_st_p=0%7C1574310087%7C32f6699b3e713c6bfe251bef347ddeff25154f8f240e33659ce98fa4870aae81; "
-              "a3ps_2132_visitedfid=4329; a3ps_2132_viewid=tid_21951424; "
-              "Hm_lvt_ac495a6d816d7387c803953f3a2637d0=1574310090; _"
-              "pk_cvar.cn.club.vmall.com.7f49=%7B%2210%22%3A%5B%22uid%22%2C%220%22%5D%7D; _"
-              "pk_ses.cn.club.vmall.com.7f49=*; _gscbrs_1109330234=1; udmp_cm_sign_1109330234=1; a3ps_2132_acceptCookieTip=2; _dmpa_ref=%5B%22%22%2C%22%22%2C1574310350%2C%22https%3A%2F%2Fclub.huawei.com%2Fforum.html%22%5D; _dmpa_ses=d6fb1081c6d4e1a1dee4bb1b6b886bfd62204260; a3ps_2132_lastact=1574310350%09forum.php%09; a3ps_2132_currentHwLoginUrl=http%3A%2F%2Fclub.huawei.com%2Fcn%2Fforum.html; _pk_id.cn.club.vmall.com.7f49=2ea190a51680c310.1574310090.1.1574310350.1574310090.; _gscs_1109330234=74310090iyvwa411|pv:2; Hm_lpvt_ac495a6d816d7387c803953f3a2637d0=1574310350; _dmpa_ses_time=1574312150584; _dmpa_id=112259eb8ce90c741d4dee14779151574310350670.1574310351.0.1574310351..",
-    'cache-control': "no-cache",
+    "Cookie": "BAIDUID=605814558314225655B02F4A7CD0727A:FG=1; BIDUPSID=605814558314225655B02F4A7CD0727A; PSTM=1571018906; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; H_PS_PSSID=1467_21112_18560_29567_29699_29220; yjs_js_security_passport=886b4ad9441afd9c09ed281d9c94c276c2e4e043_1574755376_js; delPer=0; PSINO=6; ZD_ENTRY=baidu; BDSFRCVID=6s-sJeCCxG3JggRwYoqA0s8mW0FOeQZRddMu3J; H_BDCLCKID_SF=tR30WJbHMTrDHJTg5DTjhPrMjl-LbMT-027OKKOF5b3CfUTvKfL2KTkD3N3lW-QIyHrb0p6athF0HPonHjDKjTv03J; Hm_lvt_d101ea4d2a5c67dab98251f0b5de24dc=1574821613,1574821648; BDUSS=m92U3pPNHR6UFhXU3pGS2RES3cxVjV6OWtBaGMwVzNkeDMzZHJRZHVWUFBiQVZlSVFBQUFBJCQAAAAAAAAAAAEAAADtRffWxa7A79esx64zMzk5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM~f3V3P391db; CHKFORREG=4634288db9e03c542327bc830b7eaede; bdindexid=cmoeiomhafoio4rp5m2797r662; Hm_lpvt_d101ea4d2a5c67dab98251f0b5de24dc=1574827215",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                  "Chrome/75.0.3770.142 Safari/537.36"
 }
 
-response = requests.request("GET", url, headers=headers)
+# data_url = 'https://index.baidu.com/api/SearchApi/index?word={}&area=0&days=30'
+data_url = 'http://index.baidu.com/api/SearchApi/index?area=0&word=%E5%A4%A7%E6%A0%91&startDate=2011-01-01&endDate=2011-12-31'
+uniq_id_url = 'https://index.baidu.com/Interface/ptbk?uniqid={}'
+keys = ["all", "pc", "wise"]
 
-print(response.text)
+
+class BDIndex(object):
+
+    def __init__(self):
+        self.session = self.get_session()
+        pass
+
+    @staticmethod
+    def get_session():
+        """
+            初始化 session 会话
+        :return:
+        """
+        session = requests.session()
+        session.headers = headers
+        session.verify = False
+        return session
+
+    @staticmethod
+    def decrypt(key, data):
+        """
+            得到解密后的数据
+        :param key:  key
+        :param data: key 对应的 value
+        :return:
+        """
+        js_handler = execjs.compile(js_string)
+        return js_handler.call('decrypt', key, data)
+
+    def get_bd_index(self, key_word):
+        """
+            得到百度指数
+        :param key_word:
+        :return:
+        """
+        response = self.session.get(data_url.format(key_word)).json()
+        uniq_id = self.session.get(
+            uniq_id_url.format(response.get("data").get("uniqid"))
+        ).json().get("data")
+
+        result = []
+        data_dict = response.get("data").get("userIndexes")[0]
+        for key in keys:
+            decrypt_data = self.decrypt(uniq_id, data_dict.get(key).get("data"))
+            result.append({key: decrypt_data})
+        return result
+
+
+if __name__ == '__main__':
+    bd = BDIndex()
+    d = bd.get_bd_index("小米")
+    print(d)

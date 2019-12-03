@@ -2504,4 +2504,4 @@ def with_params_one(url):
 
 if __name__ == '__main__':
     # print(with_params())
-    print(no_params_test())
+    print(with_params())
