@@ -9,4 +9,4 @@ db.col.ensureIndex({"sid": 1}, {unique: true});
 db.getCollection('tmkf').createIndex({"insert_timestamp":1})
 db.getCollection('tmkf').createIndex({"sid":1})
 db.getCollection('jdkf').createIndex({"insert_timestamp":1})
-db.getCollection('jdkf').createIndex({"sid":1})
+db.getCollection('jdkf').createIndex({"waiter":1})
