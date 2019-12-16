@@ -75,6 +75,7 @@ def query_content():
         chat_info = info['chat_info']
         li_all.append(customer)
         if customer not in chat_info:
+            print(customer)
             li_single.append(customer)
         else:
             li_contains.append(customer)
@@ -113,5 +114,6 @@ def export_content():
 if __name__ == '__main__':
     # change()
     # query_info()
+
     query_content()
     # export_content()

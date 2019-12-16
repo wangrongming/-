@@ -51,3 +51,10 @@ db.getCollection('tmkf').find({"insert_timestamp":{"$gt":1572214458000, "$lt":15
 -- 排序
 db.getCollection('tmkf').find({"insert_timestamp":{"$gt":1572214458000, "$lt":1572290058000}}).sort({"timestamp":-1})
 
+-- 分组查询
+db.getCollection('huafen_club').aggregate([
+   {$group:{_id:"$comment.content",total:{$sum:1}}}
+])
+
+--排序
+sort([("level_1_id", 1), ("level_2_id", 1), ("level_3_id", 1)])

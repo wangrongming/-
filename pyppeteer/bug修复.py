@@ -9,8 +9,7 @@
 # self._url, max_size=None, loop=self._loop)
 # self._url, max_size = None, loop = self._loop, ping_interval = None, ping_timeout = None)
 
-# 将.userdata 信息导入到服务器中 可以绕过天猫的登陆限制
-
+# 将.userdata 信息导入到服务器中
+# 可以绕过天猫的登陆限制
 # 2 error while loading shared libraries: libX11-xcb.so.1
 # sudo apt-get install -y libx11-xcb1 libxrandr2 libasound2 libpangocairo-1.0-0 libatk1.0-0 libatk-bridge2.0-0 libgtk-3-0 libnss3 libxss1
-
