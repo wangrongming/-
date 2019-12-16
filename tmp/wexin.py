@@ -134,22 +134,22 @@ def send_data(item):
 
 
 if __name__ == '__main__':
-    # get_proxy("1")
+    get_proxy("1")
     # for i in range(1):
     #     get_detail()
     # get_index()
-    for i in range(10):
-        item = {
-            "insert_timestamp": 1576303699108,
-            "grap_time": "2019-12-14 14:08:19",
-            "from_url": "https://zizhanghao.taobao.com/subaccount/monitor/chatRecordHtml.htm?action=%2Fsubaccount%2Fmonitor%2FChatRecordQueryAction&eventSubmitDoQueryChatContent=anything&_tb_token_=e8e303ebee4ee&_input_charset=utf-8&chatContentQuery=%7B%22employeeUserNick%22%3A%5B%22cntaobaooppo%E5%AE%98%E6%96%B9%E6%97%97%E8%88%B0%E5%BA%97%22%5D%2C%22customerUserNick%22%3A%5B%22cntaobaooppo%E5%AE%98%E6%96%B9%E6%97%97%E8%88%B0%E5%BA%97%3A%E5%87%8C%E5%87%8C%22%5D%2C%22employeeAll%22%3Afalse%2C%22customerAll%22%3Afalse%2C%22start%22%3A%222019-11-30%22%2C%22end%22%3A%222019-11-30%22%2C%22beginKey%22%3Anull%2C%22endKey%22%3Anull%7D&site=0&_=1576303698197",
-            "shop_name": "oppo官方旗舰店",
-            "source_id": 3,
-            "username": "oppo官方旗舰店:羊羊",
-            "waiter": "cntaobaooppo官方旗舰店",
-            "customer": "cntaobaooppo官方旗舰店:凌凌",
-            "chat_time": "2019-11-30 17:04:43",
-            "chat_info": "div class=",
-            "sid": "3f16624c357075d8bf59f7461faa6e0a"
-        }
-        send_data(item)
+    # for i in range(10):
+    #     item = {
+    #         "insert_timestamp": 1576303699108,
+    #         "grap_time": "2019-12-14 14:08:19",
+    #         "from_url": "https://zizhanghao.taobao.com/subaccount/monitor/chatRecordHtml.htm?action=%2Fsubaccount%2Fmonitor%2FChatRecordQueryAction&eventSubmitDoQueryChatContent=anything&_tb_token_=e8e303ebee4ee&_input_charset=utf-8&chatContentQuery=%7B%22employeeUserNick%22%3A%5B%22cntaobaooppo%E5%AE%98%E6%96%B9%E6%97%97%E8%88%B0%E5%BA%97%22%5D%2C%22customerUserNick%22%3A%5B%22cntaobaooppo%E5%AE%98%E6%96%B9%E6%97%97%E8%88%B0%E5%BA%97%3A%E5%87%8C%E5%87%8C%22%5D%2C%22employeeAll%22%3Afalse%2C%22customerAll%22%3Afalse%2C%22start%22%3A%222019-11-30%22%2C%22end%22%3A%222019-11-30%22%2C%22beginKey%22%3Anull%2C%22endKey%22%3Anull%7D&site=0&_=1576303698197",
+    #         "shop_name": "oppo官方旗舰店",
+    #         "source_id": 3,
+    #         "username": "oppo官方旗舰店:羊羊",
+    #         "waiter": "cntaobaooppo官方旗舰店",
+    #         "customer": "cntaobaooppo官方旗舰店:凌凌",
+    #         "chat_time": "2019-11-30 17:04:43",
+    #         "chat_info": "div class=",
+    #         "sid": "3f16624c357075d8bf59f7461faa6e0a"
+    #     }
+    #     send_data(item)

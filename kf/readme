@@ -1,0 +1,23 @@
+运行方法:\
+    脚本运行方式：
+	指定下方脚本自动采集当前时间前一天数据：
+		sh /root/kf/data_text/jd_start.sh
+		sh /root/kf/data_text/tm_start.sh
+
+	手动指定某几天间的数据进行采集:（--start_time 开始时间）（--end_time 结束时间）
+		nohup python3 -u /root/kf/TMALL/tm_chat_spider.py --start_time '2019-11-01' --end_time '2019-11-10' > /root/kf/TMALL/tm_chat_spider_log.log 2>&1 &
+		nohup python3 -u /root/kf/JD/jd_chat_spider.py --start_time '2019-11-01' --end_time '2019-11-01' > /root/kf/JD/jd_chat_spider.log 2>&1 &
+
+
+爬取账户配置：
+	配置文件目录：kf/data_text/jd_member.txt
+	配置文件目录：kf/data_text/tm_member.txt
+	文件配置说明：
+		店铺名称(自定义即可)----用户名----密码
+
+
+文件用途:\
+    .userdata:配置好的浏览器设置文件\
+    crack_verification_code.py : 启动浏览器模块\
+    jd_code.png:用来对比破解滑块验证码的图片\
+
