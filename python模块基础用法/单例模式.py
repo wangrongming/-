@@ -9,11 +9,13 @@
 import threading
 
 
+# 这里需要注意的是，如果__new__函数返回一个已经存在的实例（不论是哪个类的），__init__不会被调用。如下面代码所示
+
 class Singleton(object):
     _instance_lock = threading.Lock()  # 保证线程安全
 
     def __init__(self):
-        self.name = 1
+        print("__init__")
 
     def __new__(cls, *args, **kwargs):
         if not hasattr(Singleton, "_instance"):
@@ -25,5 +27,5 @@ class Singleton(object):
 
 obj1 = Singleton()
 obj2 = Singleton()
-print(obj1, obj1.name)
-print(obj2, obj2.name)
+print(obj1)
+print(obj2)
