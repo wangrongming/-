@@ -21,7 +21,6 @@ def thread_one():
         t = threading.Thread(target=task, args=(i,))
         li.append(t)
         t.start()
-        t.join()
 
     for t in li:
         t.join()
