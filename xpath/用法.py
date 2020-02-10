@@ -22,3 +22,12 @@
 # xpath写法为 //a[text()='百度搜索']
 #
 # 或者 //a[contains(text(),"百度搜索")]
+
+# 兄弟节点 following-sibling::div[1]
+
+# xpath =》html
+# base_guarantee = tostring(base_guarantee[0], pretty_print=True, method='html').decode("utf-8")
+# base_guarantee = html.unescape(base_guarantee)
+
+# xpath =》删除子标签
+# info.getparent().remove(info)
