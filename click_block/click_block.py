@@ -1,10 +1,10 @@
 import click
 
 
-
 @click.group()
 def cli():
     click.echo('Hello world')
+
 
 @cli.command()
 @click.option('--count', default=2, help='Number of greetings.')
