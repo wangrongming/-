@@ -34,7 +34,7 @@ Naked==0.1.31
 numpy==1.16.4
 parsel==1.4.0
 pika==1.0.0
-Pillow==6.0.0
+Pillow==6.2.0
 ply==3.11
 psutil==5.5.1
 py==1.8.0
