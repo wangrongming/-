@@ -26,6 +26,7 @@ def init_logger():
     formatter_str_console = '%(asctime)s %(levelname)s %(pathname)s %(message)s'
     formatter_console = logging.Formatter(formatter_str_console)
     console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setLevel(logging.INFO)
     console_handler.setFormatter(formatter_console)
 
     # # 全局设置日志
