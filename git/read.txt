@@ -1,0 +1,18 @@
+1 命令
+    git add .   将修改添加到暂存区
+    git restore --staged git_block.py
+    git commit -m "登录" 提交到本地目录
+    git status
+    git pull
+    git checkout -b dev
+    git branch
+    git push
+    git push --set-upstream origin dev
+    git branch --set-upstream-to=origin/develop
+
+2 添加空文件夹
+    在空文文件中 添加 .gitkeep 文件
+
+3 添加忽略文件
+    新   建：.gitignore
+    指定文档：/git/ignore.txt
