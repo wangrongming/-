@@ -1,26 +1,33 @@
-# !/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
- @Time : 2019/10/29 14:25
- @Auth : 明明
- @IDE  : PyCharm
- """
-import logging
+import logging.handlers
 import os
+import sys
 from logging.handlers import RotatingFileHandler
 
-if not os.path.exists("logs"):
-    os.mkdir("logs")
 
-# 改动日志格式，修改相应的 elasticsearch 模板 http://wiki.skieer.com/pages/viewpage.action?pageId=27344191
-format = '{"created_at":%(created)f,"file":"%(filename)s","line":%(lineno)s,' \
-         '"app":"task_dispatcher","level":"%(levelname)s","message":"%(message)s"}'
-formatter = logging.Formatter(format)
-log_file_handler = RotatingFileHandler(filename="logs/task-dispatcher.log", maxBytes=209715200, backupCount=10,
-                                       encoding='utf-8')  # 根据文件大小最多切分为10条日志
-log_file_handler.setFormatter(formatter)
-logging.basicConfig(level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S')
-logging.getLogger("eslogger").addHandler(log_file_handler)
+def init_logger():
+    if not os.path.exists("logs"):
+        os.mkdir("logs")
 
-logger = logging.getLogger("eslogger")
-logger.info("ni hao")
+    # 日志输出到文件
+    formatter_str_file = '{"createdAt":%(created)f,"spider_name":"%(name)s","type":"%(type)s","level":"%(levelname)s",' \
+                         '"message":"%(message)s","code":%(code)s,"step":"spider","get_sku_time":%(get_sku_time)f,' \
+                         '"collect_time":%(collect_time)f,"deduplication_time":%(deduplication_time)f,' \
+                         '"save_time":%(save_time)f,"api":"%(api)s",' \
+                         '"api_url":"%(api_url)s","cost":%(cost)s}'
+    formatter_file = logging.Formatter(formatter_str_file)
+
+    file_handler = RotatingFileHandler(filename="logs/cookie_factory.log", maxBytes=200 * 1024 * 1024,
+                                       backupCount=10,
+                                       encoding='utf-8')
+    file_handler.setLevel(logging.INFO)
+    file_handler.setFormatter(formatter_file)
+
+    # 日志输出到终端
+    formatter_str_console = '%(asctime)s %(levelname)s %(pathname)s %(message)s'
+    formatter_console = logging.Formatter(formatter_str_console)
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setFormatter(formatter_console)
+
+    # # 全局设置日志
+    logging.root.addHandler(file_handler)
+    logging.root.addHandler(console_handler)
