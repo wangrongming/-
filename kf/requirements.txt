@@ -12,7 +12,7 @@ Click==7.0
 constantly==15.1.0
 copyheaders==0.0.1
 crypto==1.4.1
-cryptography==2.2.2
+cryptography==2.3
 cssselect==1.0.3
 decorator==4.4.1
 EasyProcess==0.2.7
