@@ -38,10 +38,10 @@ docker配置
 docker 命令
 
     1 docker 打包
-        docker build . -t kf_data:20030901
+        docker build . -t kf_data:20030903
 
     2 docker 运行
-        docker run -d kf_data:20030901
+        docker run -d kf_data:20030903
 
     3 docker 查看运行日志
         docker logs -f -t --tail 1000 2a38ef9f444e080c791bbb71148957fff924a9bc58731e05b881ca9929741452
@@ -50,11 +50,16 @@ docker 命令
         docker exec -it 63c41a03c81a /bin/bash
 
     5 根据容器生成镜像
-        docker commit -m "下载了chromnium浏览器" -a "mingming" efddcdf3140e kf_data:20030402
+        docker commit -m "下载了chromnium浏览器" -a "kf_data" 63c41a03c81a kf_data:20030902
 
     6 容器启停
         docker start bdfa01c255c5
         docker stop bdfa01c255c5
+
+    7 镜像传递：
+        docker push kf_data:20030903
+        docker tag kf_data:20030903 ccr.ccs.tencentyun.com/yunting-spider/kf_data:20030903
+	    docker push ccr.ccs.tencentyun.com/yunting-spider/kf_data:20030903
 
 
 Dockerfile
