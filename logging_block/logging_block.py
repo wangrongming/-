@@ -9,11 +9,8 @@ def init_logger():
         os.mkdir("logs")
 
     # 日志输出到文件
-    formatter_str_file = '{"createdAt":%(created)f,"spider_name":"%(name)s","type":"%(type)s","level":"%(levelname)s",' \
-                         '"message":"%(message)s","code":%(code)s,"step":"spider","get_sku_time":%(get_sku_time)f,' \
-                         '"collect_time":%(collect_time)f,"deduplication_time":%(deduplication_time)f,' \
-                         '"save_time":%(save_time)f,"api":"%(api)s",' \
-                         '"api_url":"%(api_url)s","cost":%(cost)s}'
+    formatter_str_file = '%(asctime)s    %(levelname)s   %(appname)s:  %(message)s'
+
     formatter_file = logging.Formatter(formatter_str_file)
 
     file_handler = RotatingFileHandler(filename="logs/cookie_factory.log", maxBytes=200 * 1024 * 1024,
@@ -23,12 +20,20 @@ def init_logger():
     file_handler.setFormatter(formatter_file)
 
     # 日志输出到终端
-    formatter_str_console = '%(asctime)s %(levelname)s %(pathname)s %(message)s'
+    formatter_str_console = '%(asctime)s    %(levelname)s   %(appname)s:  %(message)s'
     formatter_console = logging.Formatter(formatter_str_console)
     console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setLevel(logging.INFO)
     console_handler.setFormatter(formatter_console)
 
     # # 全局设置日志
-    logging.root.addHandler(file_handler)
-    logging.root.addHandler(console_handler)
+    # logging.basicConfig(level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S')
+    logging.getLogger('eslogger').addHandler(file_handler)
+    logging.getLogger('eslogger').addHandler(console_handler)
+
+
+if __name__ == '__main__':
+    init_logger()
+    logger = logging.getLogger('eslogger')
+    logger.setLevel(logging.INFO)
+    logger.info("ceshi", extra={'appname': '自定义变量'})
