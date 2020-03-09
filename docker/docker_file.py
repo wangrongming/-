@@ -30,6 +30,10 @@
 #  问题总结
 #  重启docker Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the d
 
+
+# docker rm $(docker ps -aq)
+
+
 # dns配置信息
 
 # apiVersion: v1

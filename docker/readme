@@ -1,0 +1,88 @@
+docker配置
+
+    1 docker中文说明文档  https://yeasy.gitbooks.io/docker_practice/
+
+    2 脚本安装docker
+        curl -fsSL get.docker.com -o get-docker.sh
+        sudo sh get-docker.sh --mirror Aliyun
+
+    3 启动docker ce
+        sudo systemctl enable docker
+        sudo systemctl start docker
+
+    4 建立 docker 用户组（未设置）
+        sudo groupadd docker
+        sudo usermod -aG docker $USER
+
+    5 测试 Docker 是否安装正确
+        docker run hello-world
+
+    6 镜像加速
+        1> 腾讯云 快速拉取 DockerHub 平台上的容器镜像：https://cloud.tencent.com/document/product/457/9113
+            创建或修改 /etc/docker/daemon.json
+            {
+               "registry-mirrors": [
+                   "https://mirror.ccs.tencentyun.com"
+              ]
+            }
+            docker info 查看配置是否成功
+
+        2> 容器下载加速其他：
+            RUN mv -f sources.list /etc/apt/ && apt-get update
+            sources.list:
+                deb http://mirrors.aliyun.com/debian buster main contrib non-free
+                deb http://mirrors.aliyun.com/debian buster-updates main contrib non-free
+                deb http://mirrors.aliyun.com/debian buster-backports main contrib non-free
+                deb http://mirrors.aliyun.com/debian-security buster/updates main contrib non-free
+
+docker 命令
+
+    1 docker 打包
+        docker build . -t kf_data:20030403
+
+    2 docker 运行
+        docker run -d kf_data:20030403
+
+    3 docker 查看运行日志
+        docker logs -f -t --tail 1000 671d5afd1af78d3b9b6a20d09f43467c2c66b346b40bea8ffe0b2ab73a6194ba
+
+    4 进入正在运行的容器
+        docker exec -it 6e72d560e7b9 /bin/bash
+
+    5 根据容器生成镜像
+        docker commit -m "下载了chromnium浏览器" -a "mingming" efddcdf3140e kf_data:20030402
+
+    6 容器启停
+        docker start bdfa01c255c5
+        docker stop bdfa01c255c5
+
+
+Dockerfile
+    eg1:
+        FROM python:3.6.9-slim
+        ADD . .
+        RUN mv -f sources.list /etc/apt/ \
+          && apt-get update && apt-get install -y gcc libxcomposite-dev libxcursor-dev libxi-dev libxtst-dev libglib2.0-dev libnss3-dev \
+          libasound-dev libpangocairo-1.0-0 libatk1.0-0 libatk-bridge2.0-0 libcups2-dev libxss-dev libxrandr-dev libgtk-3-0 xvfb nodejs \
+          && pip install -r requirements.txt \
+          && sed -i 's/self._url, max_size=None, loop=self._loop)/self._url, max_size=None, loop=self._loop, ping_interval=None, ping_timeout=None)/g' /usr/local/lib/python3.6/site-packages/pyppeteer/connection.py \
+          && chmod +x startup.sh \
+          && sed -i "s/\r//g" startup.sh
+        ENTRYPOINT ["./startup.sh"]
+
+    eg2:
+        FROM python:3.6.9-slim
+        RUN mkdir /root/kf
+        ADD . /root/kf
+        WORKDIR /root/kf
+        RUN mv -f sources.list /etc/apt/ \
+          && apt-get update && apt-get install -y gcc libxcomposite-dev libxcursor-dev libxi-dev libxtst-dev libglib2.0-dev libnss3-dev \
+          libasound-dev libpangocairo-1.0-0 libatk1.0-0 libatk-bridge2.0-0 libcups2-dev libxss-dev libxrandr-dev libgtk-3-0 xvfb nodejs \
+          procps ack-grep \
+          && pip install -r requirements.txt \
+          && sed -i 's/self._url, max_size=None, loop=self._loop)/self._url, max_size=None, loop=self._loop, ping_interval=None, ping_timeout=None)/g' /usr/local/lib/python3.6/site-packages/pyppeteer/connection.py \
+          && chmod +x startup.sh \
+          && sed -i "s/\r//g" startup.sh \
+          && chmod 755 /root
+        ENTRYPOINT ["./startup.sh"]
+
