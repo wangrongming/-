@@ -35,6 +35,7 @@ db.storage.aggregate( {
 } )
 --4 模糊查询
     db.getCollection('WT_SpareManage').find({"useDate":{"$regex":"2019-02"}})
+    db.getCollection('huafen_club').find({"comment.content":{$regex:"手持，也就这样了"}})
 
 --5 大于小于等于
 db.getCollection('jdkf').find({"insert_timestamp": {"$gt": 1571781600000}}).count()
@@ -58,3 +59,8 @@ db.getCollection('huafen_club').aggregate([
 
 --排序
 sort([("level_1_id", 1), ("level_2_id", 1), ("level_3_id", 1)])
+
+--分组统计
+db.getCollection('huafen_club').aggregate([
+   {$group:{_id:"$comment.content",total:{$sum:1}}}
+])
