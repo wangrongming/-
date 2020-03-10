@@ -4,7 +4,7 @@ import click
 @click.group()
 @click.pass_context
 def cli(ctx):
-    click.echo(ctx)
+    ctx.obj['DEBUG'] = False
 
 
 @cli.command()
@@ -14,4 +14,4 @@ def sync(ctx):
 
 
 if __name__ == '__main__':
-    cli()
+    cli(obj={})
