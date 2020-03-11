@@ -56,6 +56,9 @@ db.getCollection('tmkf').find({"insert_timestamp":{"$gt":1572214458000, "$lt":15
 db.getCollection('huafen_club').aggregate([
    {$group:{_id:"$comment.content",total:{$sum:1}}}
 ])
+db.getCollection('huafen_club').aggregate([
+   {$group:{_id:"$sku",total:{$sum:1}}}
+])
 
 --排序
 sort([("level_1_id", 1), ("level_2_id", 1), ("level_3_id", 1)])
