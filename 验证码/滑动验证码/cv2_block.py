@@ -35,10 +35,29 @@ def main():
     x, y = np.unravel_index(result.argmax(), result.shape)
 
     # 展示圈出来的区域
-    cv2.rectangle(template, (y, x), (y + w, x + h), (7, 249, 151), 2)
-    show(template)
+    # cv2.rectangle(template, (y, x), (y + w, x + h), (7, 249, 151), 2)
+    # show(template)
     print(y)
     return y
+
+
+def main_two():
+    otemp = 'small_code.png'
+    oblk = 'code.png'
+
+    # 读取图片
+    img_rgb = cv2.imread(otemp)
+    img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2GRAY)
+    template = cv2.imread(oblk, 0)
+    run = 1
+    w, h = template.shape[::-1]
+    res = cv2.matchTemplate(img_gray, template, cv2.TM_CCOEFF_NORMED)
+    x, y = np.unravel_index(res.argmax(), res.shape)
+
+    # cv2.rectangle(template, (y, x), (y + w, x + h), (7, 249, 151), 2)
+    # show(template)
+
+    print(x, y)
 
 
 if __name__ == '__main__':

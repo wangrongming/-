@@ -38,28 +38,29 @@ docker配置
 docker 命令
 
     1 docker 打包
-        docker build . -t kf_data:20030903
+        docker build . -t kf_data:20031801
 
     2 docker 运行
-        docker run -d kf_data:20030903
+        docker run -d kf_data:20031801
 
     3 docker 查看运行日志
-        docker logs -f -t --tail 1000 2a38ef9f444e080c791bbb71148957fff924a9bc58731e05b881ca9929741452
+        docker logs -f -t --tail 1000 0ed496596426743bcea7f4d815d73e2fec4a478650fdf4319413b2c72e0a2c39
+        docker logs 8e2168c0e99e 查看某容器日志信息
 
     4 进入正在运行的容器
-        docker exec -it 63c41a03c81a /bin/bash
+        docker exec -it 0ed496596426 /bin/bash
 
     5 根据容器生成镜像
-        docker commit -m "下载了chromnium浏览器" -a "kf_data" 63c41a03c81a kf_data:20030902
+        docker commit -m "下载了chromnium浏览器" -a "kf_data" 8e2168c0e99e kf_data:20031801
 
     6 容器启停
         docker start bdfa01c255c5
         docker stop bdfa01c255c5
 
     7 镜像传递：
-        docker push kf_data:20030903
-        docker tag kf_data:20030903 ccr.ccs.tencentyun.com/yunting-spider/kf_data:20030903
-	    docker push ccr.ccs.tencentyun.com/yunting-spider/kf_data:20030903
+        docker push kf_data:20031801
+        docker tag kf_data:20031801 ccr.ccs.tencentyun.com/yunting-spider/kf_data:20031801
+	    docker push ccr.ccs.tencentyun.com/yunting-spider/kf_data:20031801
 
 
 Dockerfile

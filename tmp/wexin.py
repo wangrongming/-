@@ -39,8 +39,8 @@ def get_proxy(retry_state):
                     'https': "{}://{}:{}@{}:{}".format(type_info, name, password, host, port),
                     'http': "{}://{}:{}@{}:{}".format(type_info, name, password, host, port),
                 }
-                print(proxies)
-                break
+                print(proxies, proxy_info.get('trueIp'))
+                return proxies
             else:
                 logger.info("当前获取ip代理 没有真实ip")
                 time.sleep(2)
@@ -134,7 +134,16 @@ def send_data(item):
 
 
 if __name__ == '__main__':
-    get_proxy("1")
+    for index, members in enumerate(['a', 'b', 'c', 'a', 'b', 'c', 'a', 'b', 'c']):
+
+        print(index, members)
+        if (index + 1) % 2 == 0:
+            print("此处休眠 1小时")
+    # CodeTimer()
+    # proxies = get_proxy("1")
+    # url = "https://httpbin.org/get"
+    # res = requests.get(url=url, proxies=proxies, timeout=5)
+    # print(res.text)
     # for i in range(1):
     #     get_detail()
     # get_index()

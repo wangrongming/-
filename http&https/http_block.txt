@@ -1,4 +1,9 @@
-####   1 
+1 屏蔽 未验证https请求告警
+    import urllib3
+    urllib3.disable_warnings()
+
+
+####   1
 ```
 info = {
     'accept': '*/*',
@@ -56,3 +61,4 @@ User-Agent：
 ```
 
 #### 请求体
+

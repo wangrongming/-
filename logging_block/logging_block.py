@@ -35,5 +35,5 @@ def init_logger():
 if __name__ == '__main__':
     init_logger()
     logger = logging.getLogger('eslogger')
-    logger.setLevel(logging.INFO)
+    # logger.setLevel(logging.INFO)
     logger.info("ceshi", extra={'appname': '自定义变量'})

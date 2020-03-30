@@ -11,10 +11,13 @@
 import json
 import random
 import re
+import ssl
 from urllib import parse
 
 import requests
 from lxml import etree
+
+ssl._create_default_https_context = ssl._create_unverified_context
 
 
 def get_cookie(response1, uigs_para, UserAgent):
@@ -37,7 +40,7 @@ def get_cookie(response1, uigs_para, UserAgent):
         "Referer": "https://weixin.sogou.com/",
         "User-Agent": UserAgent
     }
-    response2 = requests.get(url, headers=headers)
+    response2 = requests.get(url, headers=headers, verify=False)
     SetCookie = response2.headers['Set-Cookie']
     cookie_params['SUID'] = re.findall('SUID=(.*?);', SetCookie, re.S)[0]
 
@@ -54,7 +57,7 @@ def get_cookie(response1, uigs_para, UserAgent):
         "Referer": response1.url,
         "User-Agent": UserAgent
     }
-    response3 = requests.get(url, headers=headers)
+    response3 = requests.get(url, headers=headers, verify=False)
     SetCookie = response3.headers['Set-Cookie']
     cookie_params['JSESSIONID'] = re.findall('JSESSIONID=(.*?);', SetCookie, re.S)[0]
 
@@ -70,7 +73,7 @@ def get_cookie(response1, uigs_para, UserAgent):
         "Referer": "https://weixin.sogou.com/",
         "User-Agent": UserAgent
     }
-    response4 = requests.get(url, headers=headers, params=uigs_para)
+    response4 = requests.get(url, headers=headers, params=uigs_para, verify=False)
     SetCookie = response4.headers['Set-Cookie']
     cookie_params['SUV'] = re.findall('SUV=(.*?);', SetCookie, re.S)[0]
 
@@ -105,7 +108,7 @@ def main_v4(list_url, UserAgent):
         "Upgrade-Insecure-Requests": "1",
         "User-Agent": UserAgent,
     }
-    response1 = requests.get(list_url, headers=headers1)
+    response1 = requests.get(list_url, headers=headers1, verify=False)
     html = etree.HTML(response1.text)
     urls = ['https://weixin.sogou.com' + i for i in html.xpath('//div[@class="img-box"]/a/@href')]
 
@@ -128,7 +131,7 @@ def main_v4(list_url, UserAgent):
         "X-Requested-With": "XMLHttpRequest"
     }
     for url in urls:
-        response2 = requests.get(approve_url, headers=headers2)
+        response2 = requests.get(approve_url, headers=headers2, verify=False)
         url = get_k_h(url)
         headers3 = {
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -146,7 +149,7 @@ def main_v4(list_url, UserAgent):
             "Upgrade-Insecure-Requests": "1",
             "User-Agent": UserAgent
         }
-        response3 = requests.get(url, headers=headers3)
+        response3 = requests.get(url, headers=headers3, verify=False)
 
         fragments = re.findall("url \+= '(.*?)'", response3.text, re.S)
         itemurl = ''
@@ -161,14 +164,14 @@ def main_v4(list_url, UserAgent):
             "cache-control": "max-age=0",
             "user-agent": UserAgent
         }
-        response4 = requests.get(itemurl, headers=headers4)
+        response4 = requests.get(itemurl, headers=headers4, verify=False)
         html = etree.HTML(response4.text)
         print(response4.status_code)
         print(html.xpath('//meta[@property="og:title"]/@content')[0])
 
 
 if __name__ == "__main__":
-    key = "咸蛋超人"
+    key = "魅族"
     url = 'https://weixin.sogou.com/weixin?type=2&s_from=input&query={}&_sug_=n&_sug_type_=&page=1'.format(
         parse.quote(key))
     UserAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
