@@ -117,7 +117,7 @@ class Spider(object):
 
         pass_word = self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="TPL_password_1"]')))
         time.sleep(1)
-        pass_word.send_keys("zm1768389896xwmt")
+        pass_word.send_keys("")
 
         submit = self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="J_SubmitStatic"]')))
         time.sleep(1)
