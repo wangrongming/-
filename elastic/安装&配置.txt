@@ -1,0 +1,235 @@
+elk:elasticsrarch logstash kibana beats=> elasticStack
+1 访问 es 可视化界面 http://192.168.110.140:5601/app/kibana
+
+
+#安装
+1 useradd elsearch
+
+2 新建目录 itcast/es 修改为 elsearch用户目录
+    chown elsearch:elsearch itcast/ -R
+
+3 解压安装文件
+    tar -xvf file -C es
+
+4 config 配置文件修改:
+
+    conf/elasticsearch.yml
+        network.host: 192.168.1.104
+
+    conf/jvm.options:
+        -Xms128m
+        -Xmx128m
+
+    vim /etc/sysctl.conf # 一个进程在VMA(虚拟内存区域) 创建内存映射最大数量
+        vm.max_map_count=655360
+
+5 sysctl -p #使配置生效
+
+
+6 启动
+    cd bin ./elasticsearch ./elasticsecrch -d #前端 后端启动
+
+7 集群配置
+    1> 说明
+    master:node.master=true
+    data:  node.data=true 执行curd
+    客户端节点：详情用户请求，转发给其他节点
+    部落节点：tribe.* 连接多个集群
+    2> 搭建
+        创建 el-cluster
+        删除logs，删除data
+        分发到其他机器
+        修改配置文件
+            cluster.name: el-itcast-cluster
+            node.name: node01
+            node.master: true
+            node.data: true
+            network: 0.0.0.0
+            http.port: 9200
+            discovery.zen.ping.unicast.hosts: ["192.168.1.102", "192.168.1.104","192.168.1.109"]
+            discovery.zen.minimum_master_nodes: 2
+            http.cors.enabled: true
+            http.cors.allow-origin: "*"
+
+            cluster.name: el-itcast-cluster
+            node.name: node02
+            node.master: true
+            node.data: true
+            network: 0.0.0.0
+            http.port: 9200
+            discovery.zen.ping.unicast.hosts: ["192.168.1.102", "192.168.1.104","192.168.1.109"]
+            discovery.zen.minimum_master_nodes: 2
+            http.cors.enabled: true      跨域使用(可不添加)
+            http.cors.allow-origin: "*"  跨域使用(可不添加)
+
+            cluster.name: el-itcast-cluster
+            node.name: node03
+            node.master: true
+            node.data: true
+            network: 0.0.0.0
+            http.port: 9200
+            discovery.zen.ping.unicast.hosts: ["192.168.1.102", "192.168.1.104","192.168.1.109"]
+            discovery.zen.minimum_master_nodes: 2
+            http.cors.enabled: true
+            http.cors.allow-origin: "*"
+    3>  状态
+        green 主，副分片均可用
+        yellow 不是所有复制分片都可用
+        red 不是所有主要分片都可用
+
+    4> jdk 安装
+
+8 jdk 安装
+    下载jdk rpm 版本 https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+    rpm -ivh jdk-8u241-linux-x64.rpm
+
+    删除rpm安装软件：
+        rpm -qa | grep jdk
+        rpm -e --nodeps jdk1.8
+
+9 nginx 部署安装
+    sudo rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+    sudo yum install nginx
+    启动 cd /usr/local/nginx/sbin ./nginx
+         systemctl start nginx
+         /var/log/nginx
+         /usr/sbin/nginx
+
+10 FileBeat 轻量级日志采集器
+    1>下载安装包解压
+    2> 新建配置文件 itcast.yml
+        filebeat.inputs:
+        - type: stdin
+        setup.template.settings:
+          index.number_of_shards: 3
+        output.console:
+          pretty: true
+          enable: true
+    3> 读取文件配置，自定义字段
+        filebeat.inputs:
+        - type: log
+          enabled: true
+          paths:
+            - /itcast/beats/logs/*.log
+          tags: ["web", "test"] # 添加自动以tag便于后续处理
+          fields: # 添加自定义字段
+            from: test-web
+          fields_under_root: true # true为添加到根节点，false为添加到子节点中
+        setup.template.settings:
+          index.number_of_shards: 3
+        output.console:
+          pretty: true
+          enable: true
+    4> 输出到elastic 以天为单位创建数据索引
+        filebeat.inputs:
+        - type: log
+          enabled: true
+          paths:
+            - /itcast/beats/logs/*.log
+          tags: ["web", "test"] # 添加自动以tag便于后续处理
+          fields: # 添加自定义字段
+            from: test-web
+          fields_under_root: true # true为添加到根节点，false为添加到子节点中
+        setup.template.settings:
+          index.number_of_shards: 3 # 指定es索引分区数
+        output.elasticsearch:
+          hosts: ["192.168.1.121:9200", "192.168.1.122:9200", "192.168.1.123:9200"]
+
+    5> 工作原理
+        harvester:
+            读取单个文件的内容
+        prospector:
+            stdin, log
+
+    6> 读取nginxrizhi 日志文件
+        filebeat.inputs:
+        - type: log
+          enabled: true
+          paths:
+            - /var/log/nginx/*.log
+          tags: ["nginx"] # 添加自动以tag便于后续处理
+        setup.template.settings:
+          index.number_of_shards: 3 # 指定es索引分区数
+        output.elasticsearch:
+          hosts: ["192.168.1.121:9200", "192.168.1.122:9200", "192.168.1.123:9200"]
+
+    7> filebeat Module
+        ./filebeat modules enable nginx
+
+        vi nginx.yml
+            var.paths: /var/log/nginx/access.log*
+            var.paths: /var/log/nginx/error.log*
+        vi itcast_nginx.yml
+            setup.template.settings:
+              index.number_of_shards: 3 # 指定es索引分区数
+            output.elasticsearch:
+              hosts: ["192.168.1.121", "192.168.1.122", "192.168.1.123"]
+            filebeat.config.modules:
+              path: ${path.config}/modules.d/*.yml
+
+    8> Metricbeat 轻量型指标采集器
+        Module:收集对象
+        Metricset:收集指标的集合
+
+10 Kibana
+    1> 部署安装
+        上传安装包
+            wget https://artifacts.elastic.co/downloads/kibana/kibana-6.0.0-linux-x86_64.tar.gz
+            sha1sum kibana-6.0.0-linux-x86_64.tar.gz
+            tar -xzf kibana-6.0.0-linux-x86_64.tar.gz
+        修改配置文件
+            vi config/kinaba.yml
+            server.host: "192.168.1.121"
+            elasticsearch.url "http://192.168.1.121:9200"
+        启动 ./Kibana
+        通过浏览器进行访问：
+            http://192.168.40.133:5601/app/kibana
+
+    2> 数据探索 discover
+        添加数据索引 Management
+        discover 查看数据图表
+
+11 logstash 高吞吐量 数据处理引擎
+
+
+
+# error       reload.enabled: false
+    问题1 ：
+        max file descriptors [4096] for elasticsearch is too low
+    解决1：（重新启动后生效）
+        vim /etc/security/limits.conf
+        * soft nofile 65536
+        * hard nofile 131072
+        * soft nproc 4096
+        * hard nproc 4096
+
+    问题2 ：
+        max number of threads [1024] for user [elsearch] is too low,increase to as least [4096]
+    解决2：（重新启动后生效）
+        vim /etc/security/limits.d/20-nproc.conf
+        * soft nproc 4096
+        * hard nproc 4096
+
+    问题3：
+        system call filters failed to intall
+    解决3：
+        vim config/elaticsearch.yml
+            bootstrap.system_call_filter:false
+
+    问题4
+        BindTransportException[Failed to bind to [9300-9400]]; nested: BindException[无法指定被请求的地址];
+    解决4：
+        将内网ip，修改为 0.0.0.0/或者本机IP 解决问题
+
+    问题5：
+        启动成功，本机可以访问，外部访问es链接失败
+    解决5：
+        开放端口：firewall-cmd --zone=public --add-port=80/tcp --permanent
+        生效：firewall-cmd --reload
+        查看：firewall-cmd --zone=public --query-port=9200/tcp
+        删除：firewall-cmd --zone=public --remove-port=1000-2000/tcp --permanent
+
+    问题6：
+        未安装jdk 导致程序无法建立集群
+        在一些错误操作，导致环境混乱，需要清除 logs/data 文件，才能使新的配置生效
+

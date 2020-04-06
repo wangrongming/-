@@ -1,0 +1,289 @@
+1 创建空索引
+    PUT /haoke
+    {
+        "settings":{
+            "index":{
+                "number_of_shards":"2",
+                "number_of_replicas":"0"
+            }
+        }
+    }
+    #分片数：数据的最小单元块 eg:索引建立后，分片个数是不可以更改的
+    #副本数 备份 进行负载均衡
+
+2 删除索引库
+    DELETE /haoke
+
+3 插入数据 #TODO 单条如何实现
+    POST /itcast/type1/
+    {
+        "name":"张三",
+        "introduce":"我的名字叫做明明",
+    }
+
+4 更新数据
+    （全量更新）
+    PUT /itcast/person/1001
+    {
+        "name":"张三",
+        "introduce":"我的名字叫做明明"
+    }
+
+    POST /itcast/person/1001/_update
+    （局部更新）
+    {
+        "doc":{
+            "age":22
+        }
+    }
+
+5 删除数据
+    DELETE /haoke/user/1001
+
+6 搜索数据
+    1> 全局 GET /haoke/user/_search
+    2> 关键字 GET /haoke/user/_search?q=age:21
+
+7 DSL搜索
+    GET /haoke/user/_search
+
+    1> query DSL
+    2> filter DSL
+    3> 关键词解释
+        query
+        bool:合并其他查询语句
+            must
+                match
+            must_not
+            should
+            filter
+                range
+        range：寻找落在指定区间内的数据
+        match
+        match_all
+        match_phrase:短语搜索
+
+    {
+        "query":{
+            "bool":{
+                "filter":{
+                    "range":{
+                        "age":{
+                            "gt":12
+                        }
+                    }
+                },
+                "must":{
+                    "match":{
+                        "sex":"性别"
+                    }
+                }
+            }
+        }
+    }
+
+8 聚合
+    {
+        "aggs":{
+            "all_interests":{
+                "terms":{
+                    "field":"age"
+                }
+            }
+        }
+    }
+
+9 批量操作 POST /itcast/_bulk
+    _mget:批量查询
+    _bulk:插入，修改，删除
+        {action:{metadata}}\n
+        {request body}\n
+        {action:{metadata}}\n
+        {request body}\n
+        eg:
+        {"index":{"_index":"itcast", "_type":"person"}}
+        {"name":"明明", "introduce":"大家好我的名字叫明明"}
+    最佳bulk大小：
+        开始测试：1000-5000个文档之间
+        通常在5-15MB之间
+10 分页
+    size:结果数默认10
+    from:跳过开始的结果数，默认0  from=10 跳过10条数据
+    分页太深，一次请求太多的结果：性能要求过高
+
+11 映射
+    1>支持数据类型
+        string
+            string：5.X版本
+            text：需要分词内容
+            keyword：不需要分词
+    2> 创建明确索引库
+        PUT /itcast
+        {
+            "settings":{
+                "index":{
+                    "number_of_shards":"2",
+                    "number_of_replicas":"0"
+                }
+            },
+            "mappings":{
+                "properties":{
+                    "name":{
+                        "type":"text"
+                    },
+                    "mail":{
+                        "type":"keyword"
+                    }
+                }
+            }
+        }
+    3>查询映射 GET /itcast/_mapping
+
+12 结构化查询
+    1> term：精确匹配查询
+    2> terms:允许指定多个匹配条件 [21,22]
+    3> range:根据一定的范围进行查找
+    4> exists:文档是否包含指定字段或没有某个字段
+    5> match:标准查询
+    6> bool:合并多条件查询
+        must => and
+        must_not => not
+        should => or
+13 过滤查询 filter
+    精确匹配，最好用过滤语句，过滤查询可以缓存数据
+
+14 中文分词
+    1> 分词api ik,jieba
+        POST /_analyze
+        {
+            "analyzer":"standard",
+            "text":"你好我的名字叫明明"
+        }
+        {
+            "analyzer":"ik_max_word",
+            "text":"你好我的名字叫明明"
+        }
+    2> 分词器安装
+        下载
+        安装 放到p
+        重启 es
+
+15 全文搜索 相关性,分词
+    1> 构造
+        PUT /itcast
+        {
+            "settings":{
+                "index":{
+                    "number_of_shards":"1",
+                    "number_of_replicas":"0"
+                }
+            },
+            "mappings":{
+                "properties":{
+                    "name":{
+                        "type":"keyword"
+                    },
+                    "introduce":{
+                        "type":"text",
+                        "analyzer":"ik_max_word"
+                    }
+                }
+            }
+        }
+    2> 插入
+        POST /itcast/_bulk
+        {"index":{"_index":"itcast"}}
+        {"name":"明明", "introduce":"大家好我的名字叫明明"}
+
+    3> 单词搜索
+        GET /itcast/_search
+        {
+            "query":{
+                "match":{
+                    "introduce":"的名字"
+                }
+            },
+            "highlight":{
+                "fields":{
+                    "introduce":{}
+                }
+            }
+        }
+    4> 多词搜索
+        "minimum_should_match":"40%",
+        "operator":"and",
+
+        GET /itcast/_search
+        {
+            "query":{
+                "match":{
+                    "introduce":{
+                        "operator":"and",
+                        "query":"明明 阿细"
+                    }
+                }
+            },
+            "highlight":{
+                "fields":{
+                    "introduce":{}
+                }
+            }
+        }
+
+16 组合搜索
+    GET /itcast/_search
+    {
+        "query":{
+
+        }
+    }
+
+17 权重
+    "introduce":{
+        "boost":10,
+        "operator":"and"
+        "query":"明明 阿细"
+    }
+18 集群 节点
+    1> 说明
+        master:node.master=true （星号）
+            作用：控制整个集群的操作 eg：创建删除索引，管理其他非master节点
+        data:  node.data=true
+            作用：执行数据相关的操作 eg: curd
+        客户端节点：
+            作用：响应用户请求，转发给其他节点
+        部落节点：tribe.* 连接多个集群
+
+    2> 搭建
+       D:\block\elastic\安装&配置.txt =>  7 集群配置
+    3>  状态
+        green 主，副分片均可用
+        yellow 不是所有复制分片都可用
+        red 不是所有主要分片都可用
+
+19 分片和副本
+    1> 分片 shard 就是一个lucene实例
+        主分片(primary) 复制分片(replica)
+
+20 故障 转移
+    关闭副本节点，或者主节点 或自动将节点进行修复
+    避免出现双主问题:minimum_master_nodes:N/2+1
+
+21 分布式文档
+    1> 计算确定存储 原理
+        shard = hash(routing) % number_of_primary_shards
+    2> 写操作 原理
+        client => master => data => primary => replica => master => client
+    3> 搜索文档 原理
+        client 存在正在写入过程中，文档暂时未查询到
+    4> 全文搜索
+        query:
+            每个节点 查询 from+size
+            返回结果ID
+        fetch
+            确定需要取回的ID，对每个节点发送GET请求获取具体数据
+
+# 配置机器搭建es集群
+https://www.cnblogs.com/yjf512/p/4865930.html 进阶文档
+查看官方使用文档 对比使用方法
+    # TODO

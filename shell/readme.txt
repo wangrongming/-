@@ -11,3 +11,34 @@
         localtime -> /usr/share/zoneinfo/Etc/UTC
 
         ln -s ../usr/share/zoneinfo/Etc/UTC /etc/localtime
+3 yum检测某软件安装包来源
+    yum  whatprovides  */lspci
+
+4 修改桥接网络IP 为静态
+    /etc/sysconfig/network-scripts/
+
+    TYPE="Ethernet"
+    PROXY_METHOD="none"
+    BROWSER_ONLY="no"
+    ############改动部分开始############
+    #动态IP
+    #BOOTPROTO="dhcp"
+
+    #静态IP
+    BOOTPROTO="static"
+    IPADDR=192.168.1.121
+    NETMASK=255.255.255.0
+    GATEWAY=192.168.1.1
+    DNS1=114.114.114.114
+    ############改动部分结束############
+    DEFROUTE="yes"
+    IPV4_FAILURE_FATAL="no"
+    IPV6INIT="yes"
+    IPV6_AUTOCONF="yes"
+    IPV6_DEFROUTE="yes"
+    IPV6_FAILURE_FATAL="no"
+    IPV6_ADDR_GEN_MODE="stable-privacy"
+    NAME="enp0s3"
+    UUID="73ab5a69-9070-4c5a-a0b9-c5a6250af943"
+    DEVICE="enp0s3"
+    ONBOOT="yes"

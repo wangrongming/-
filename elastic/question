@@ -1,0 +1,8 @@
+1 在主节点进行插入数据的请求操作会被允许吗 ？
+    经过测试允许
+    是不是在数据节点，进行数据插入会更便利一些 ?
+    如果集群数量大于三台，如何进行 请求连接的指定配置操作 ？
+2 ilm-history-1-000001 filebeat读取日志文件生成到es中 ？ 文件用途
+
+3 kibana 调用es
+FATAL  [circuit_breaking_exception] [parent] Data too large, data for [<http_request>] would be [127531632/121.6mb], which is larger than the limit of [123273216/117.5mb], real usage: [127531632/121.6mb], new bytes reserved: [0/0b], usages [request=0/0b, fielddata=0/0b, in_flight_requests=0/0b, accounting=22518/21.9kb], with { bytes_wanted=127531632 & bytes_limit=123273216 & durability="PERMANENT" } :: {"path":"/.kibana","query":{},"statusCode":429,"response":"{\"error\":{\"root_cause\":[{\"type\":\"circuit_breaking_exception\",\"reason\":\"[parent] Data too large, data for [<http_request>] would be [127531632/121.6mb], which is larger than the limit of [123273216/117.5mb], real usage: [127531632/121.6mb], new bytes reserved: [0/0b], usages [request=0/0b, fielddata=0/0b, in_flight_requests=0/0b, accounting=22518/21.9kb]\",\"bytes_wanted\":127531632,\"bytes_limit\":123273216,\"durability\":\"PERMANENT\"}],\"type\":\"circuit_breaking_exception\",\"reason\":\"[parent] Data too large, data for [<http_request>] would be [127531632/121.6mb], which is larger than the limit of [123273216/117.5mb], real usage: [127531632/121.6mb], new bytes reserved: [0/0b], usages [request=0/0b, fielddata=0/0b, in_flight_requests=0/0b, accounting=22518/21.9kb]\",\"bytes_wanted\":127531632,\"bytes_limit\":123273216,\"durability\":\"PERMANENT\"},\"status\":429}"}
