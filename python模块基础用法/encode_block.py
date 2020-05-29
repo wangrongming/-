@@ -17,13 +17,12 @@ from urllib import parse
 # 16进制转化未中文
 # info.encode("utf-8").decode("unicode_escape")
 
-url = r"https://h5api.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?jsv=2.4.8&appKey=&t=&sign=&api=mtop.taobao.detail.getdetail&v=6.0&dataType=jsonp&ttid=2017%40taobao_h5_6.6.0&AntiCreep=true&type=jsonp&callback=&data=%7B\"itemNumId\"%3A\"606336930383\"%7D "
-url1 = r"""
-%5Cu5C0F%5Cu5361_tb
-"""
-
+url1 = r"""%B6%FA%BB%FA"""
+url_encode = r"""%B6%FA%BB%FA"""
 # print(info)
-# info = parse.quote(url1)
+info = parse.quote(url1)
+print(info)
+
 info = parse.unquote(url1)
-info = info.encode("utf-8").decode("unicode_escape")
+# info = info.encode("utf-8").decode("unicode_escape")
 print(info)

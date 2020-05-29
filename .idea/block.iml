@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/kf" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tmp/log_ceshi" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tmp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tmp_two" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

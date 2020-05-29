@@ -1,11 +1,3 @@
-# !/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
- @Time : 2019/11/26 16:06
- @Auth : 明明
- @IDE  : PyCharm
- """
-
 import sys
 
 import frida
@@ -18,10 +10,12 @@ def on_message(message, data):
         print(message)
 
 
+#  Java.use   确定hook类
+#  MainActivity.onClick.implementation，意思就是Hook前面获取到的类中的onClick方法
 jscode = """
 Java.perform(function () {
   // Function to hook is defined here
-  var MainActivity = Java.use('com.example.seccon2015.rock_paper_scissors.MainActivity');
+  var MainActivity = Java.use('com.example.seccon2015.rock_paper_scissors.MainActivity');  
 
   // Whenever button is clicked
   var onClick = MainActivity.onClick;
@@ -43,10 +37,19 @@ Java.perform(function () {
 });
 """
 
-process = frida.get_remote_device().attach('com.example.seccon2015.rock_paper_scissors')
+js_str = ""
+with open("ctf.js", "r", encoding="utf-8") as f:
+    for line in f:
+        js_str = js_str + line
+jscode = js_str
+
 # process = frida.get_usb_device().attach('com.example.seccon2015.rock_paper_scissors')
+# process = frida.get_remote_device().attach('com.example.seccon2015.rock_paper_scissors')  # 参数为包名 # TODO
+process = frida.get_remote_device().attach('com.tmall.wireless')  # 参数为包名 # TODO
 script = process.create_script(jscode)
 script.on('message', on_message)
 print('[*] Running CTF')
 script.load()
 sys.stdin.read()
+
+#         <activity android:name="com.tmall.wireless.awareness.test.AwareTriggerTestActivity" android:exported="false">

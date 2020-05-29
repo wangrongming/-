@@ -38,31 +38,42 @@ docker配置
 docker 命令
 
     1 docker 打包
-        docker build . -t kf_data:20031801
+        docker build . -t kf_data:20041301
+        docker build . -t data_crawler:base
 
     2 docker 运行
-        docker run -d kf_data:20031801
+        docker run -d kf_data:20041301
 
     3 docker 查看运行日志
-        docker logs -f -t --tail 1000 0ed496596426743bcea7f4d815d73e2fec4a478650fdf4319413b2c72e0a2c39
+        docker logs -f -t --tail 1000 b182c57fe5d72f420961268dc9c45a45ee135399a684f7276397cca89fbc862e
         docker logs 8e2168c0e99e 查看某容器日志信息
 
     4 进入正在运行的容器
-        docker exec -it 0ed496596426 /bin/bash
+        docker exec -it b182c57fe5d7 /bin/bash
 
     5 根据容器生成镜像
-        docker commit -m "下载了chromnium浏览器" -a "kf_data" 8e2168c0e99e kf_data:20031801
+        docker commit -m "下载了chromnium浏览器" -a "kf_data" 8e2168c0e99e kf_data:20042101
 
     6 容器启停
         docker start bdfa01c255c5
         docker stop bdfa01c255c5
 
     7 镜像传递：
-        docker push kf_data:20031801
-        docker tag kf_data:20031801 ccr.ccs.tencentyun.com/yunting-spider/kf_data:20031801
-	    docker push ccr.ccs.tencentyun.com/yunting-spider/kf_data:20031801
+        docker push kf_data:20040202
 
+        docker tag kf_data:20040202 ccr.ccs.tencentyun.com/yunting-spider/kf_data:20040202
+	    docker push ccr.ccs.tencentyun.com/yunting-spider/kf_data:20040202
 
+        docker tag cookie_factory:20040704 ccr.ccs.tencentyun.com/eqs-data/cookie_factory:20040704
+	    docker push ccr.ccs.tencentyun.com/eqs-data/cookie_factory:20042101
+
+    8 docker拷贝镜像
+        docker save -o 要保存的文件名  要保存的镜像
+        docker load --input 文件  /  docker load < 文件名
+        eg:
+            docker save -o eqs_data_latest.tar eqs_data:latest
+            scp eqs_data_latest.tar root@10.1.4.45:/root/
+            docker load --input eqs_data_latest.tar
 Dockerfile
     注意：apt-get install 安装顺序错误会导致 => 程序安装失败
     eg1:

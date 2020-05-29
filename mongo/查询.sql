@@ -60,10 +60,35 @@ db.getCollection('huafen_club').aggregate([
    {$group:{_id:"$sku",total:{$sum:1}}}
 ])
 
+--字段存在
+db.getCollection('huafen_club').find({ "quan_type": { $exists: true } })
+
 --排序
 sort([("level_1_id", 1), ("level_2_id", 1), ("level_3_id", 1)])
 
 --分组统计
-db.getCollection('huafen_club').aggregate([
-   {$group:{_id:"$comment.content",total:{$sum:1}}}
+db.getCollection('jd_category_20200526').aggregate([
+    {
+        $group:{
+            _id:"$cat_id",
+            total:{$sum:1}
+        }
+    }
 ])
+-- 据合统计 mongo
+db.getCollection('jd_category_20200526').aggregate(
+  [
+    {
+        $group:{
+            _id:"$cat_id",
+            total:{$sum:1}
+        }
+    },{
+        $group:{
+            _id:"$_id.id",
+            total:{$sum:1}
+        }
+    }
+  ]
+   ,{allowDiskUse:true}
+)

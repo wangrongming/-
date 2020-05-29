@@ -42,3 +42,9 @@
     UUID="73ab5a69-9070-4c5a-a0b9-c5a6250af943"
     DEVICE="enp0s3"
     ONBOOT="yes"
+
+5 python3 demo.py >/dev/null 2>&1
+  解释：标准输出和错误输出全部重定向到 /dev/null中
+
+6 scp data_crawler_latest.tar root@10.0.1.1:/root
+7

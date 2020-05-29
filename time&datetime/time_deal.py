@@ -48,6 +48,8 @@ def getDateTimeFromISO8601String(s):
 
 
 if __name__ == '__main__':
-    d = datetime.datetime.fromtimestamp(1573186027)
-    str1 = d.strftime("%Y-%m-%d %H:%M:%S")
-    print("str1", str1)
+    # d = datetime.datetime.fromtimestamp(1573186027)
+    # str1 = d.strftime("%Y-%m-%d %H:%M:%S")
+    # print("str1", str1)
+    print(datetime.datetime.now().timestamp())
+    print(time.time())

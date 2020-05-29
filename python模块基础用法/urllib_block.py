@@ -7,8 +7,6 @@
  """
 from urllib import parse
 
-info = parse.unquote("%E5%B0%8F%E7%B1%B3")
-info = parse.unquote("%E5%B0%8F%E7%B1%B3")
+info = parse.unquote(
+    "%E6%89%8B%E6%9C%BA")
 print(info)
-# "KPZyTV+5GDZnDABoYkn+WQARzM0="
-# "KPZyTV+5GDZnDABoYkn+WQARzM0="

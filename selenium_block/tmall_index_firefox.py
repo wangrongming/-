@@ -27,7 +27,7 @@ class Spider(object):
         else:
             self.proxies = ""
         if "Win" in platform.system():
-            executable_path = r'D:\block\selenium_block\geckodriver.exe'
+            executable_path = r'D:\code\block\selenium_block\tm\geckodriver.exe'
         else:
             executable_path = r'/root/gerapy/projects/scrapy_mall/scrapy_mall/until/geckodriver'
         self.driver = webdriver.Firefox(firefox_options=self._set_options(),
@@ -113,37 +113,41 @@ class Spider(object):
         self.driver.get("https://login.taobao.com/member/login.jhtml?redirectURL=https%3A%2F%2Fwww.taobao.com%2F")
         user_name = self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="TPL_username_1"]')))
         time.sleep(1)
-        user_name.send_keys("wangrongmingtaobao")
+        user_name.send_keys("小卡_tb")
 
         pass_word = self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="TPL_password_1"]')))
         time.sleep(1)
-        pass_word.send_keys("")
+        pass_word.send_keys("heweihua59")
 
         submit = self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="J_SubmitStatic"]')))
         time.sleep(1)
         submit.click()
+        time.sleep(1)
         pass
 
-    def crawler_page(self):
-        for i in range(2, 6):
-            time.sleep(5)
-            url = f"https://list.tmall.com/search_product.htm?spm=a220m.1000858.1000724.9.67d039360ach8L&cat=50106425&s={(i-1)*60}&oq=%C9%CC%B3%A1%CD%AC%BF%EE&sort=s&style=g&vmarket=35458&from=sn_1_cat&active=1&industryCatId=50106425&type=pc#J_Filter"
-            self.driver.get(url)
-            text = self.driver.page_source
+    def crawler_page(self, url, page):
+        time.sleep(5)
+        url = f"https://list.tmall.com/search_product.htm?spm=a220m.1000858.1000724.9.67d039360ach8L&cat=50106425&s={(i - 1) * 60}&oq=%C9%CC%B3%A1%CD%AC%BF%EE&sort=s&style=g&vmarket=35458&from=sn_1_cat&active=1&industryCatId=50106425&type=pc#J_Filter"
+        self.driver.get(url)
+        text = self.driver.page_source
 
-            if "J_SubmitStatic" in text:
-                self.login()
+        if "J_SubmitStatic" in text:
+            self.login()
 
-            if "小二正忙，滑动一下马上回" in text:
-                print(f"采集{i}页 出现滑块")
-                res = self.move_button()
-                if res:
-                    print("正常采集 {}页".format(i))
-                    continue
-                else:
-                    print("滑动失败，采集终止 采集 {}页".format(i))
-                    break
-            print("正常采集 {}页".format(i))
+        if "小二正忙，滑动一下马上回" in text:
+            logging.info(f"采集{page}页 出现滑块")
+            res = self.move_button()
+            if res:
+                logging.info("采集 {} 页 滑动成功".format(page))
+            else:
+                logging.info("采集 {} 页 滑动失败".format(page))
+                return
+        page_source = self.driver.page_source
+        if "J_SubmitStatic" not in page_source and "小二正忙，滑动一下马上回" not in text:
+            logging.info("正常采集 {}页".format(page))
+            return self.driver.page_source
+        else:
+            return
 
     def start(self, *args, **kwargs):
         try:
