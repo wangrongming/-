@@ -92,3 +92,62 @@ db.getCollection('jd_category_20200526').aggregate(
   ]
    ,{allowDiskUse:true}
 )
+-- 联表查询
+db.orders.aggregate([
+    {
+      $lookup:
+        {
+          from: "inventory",
+          localField: "item",
+          foreignField: "sku",
+          as: "inventory_docs"
+        }
+   },
+   { $match:{"item":{"$eq":"abc"}}},
+   { $project:{ "item":1, "inventory_docs":{"sku":1} } }
+])
+
+--快捷导出mongo数据
+--/opt/mongodb-4.2.3/bin/mongodump -h 10.1.21.4 --port 28018 -d eqs_sales -o /mnt
+--zip -r dump_20200602.zip eqs_sales/
+
+--相同SPU 根据时间导出最新一条数据
+GET eqs_tmall_goods_sales/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "terms": {
+            "spu": [
+              "596201072920"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "track_total_hits": true,
+  "size": 0,
+  "aggs": {
+    "aaa": {
+      "terms": {
+        "field": "spu"
+      },
+      "aggs": {
+        "bbb": {
+          "top_hits": {
+            "size": 1,
+            "sort": [
+              {
+                "created_at": {
+                  "order": "desc"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

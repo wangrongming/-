@@ -33,4 +33,12 @@ https://frida.re/docs/examples/android/ 抓包实例
     error:  frida.ServerNotRunningError: unable to connect to remote frida-server
     answer: adb forward tcp:27042 tcp:27042
 
+查看数据线连接设备
+    frida-ps -U  
+
+权限不足
+    如果你的手机和我的一样，直接这么运行会提示权限不足的话，
+    可以先进入adb shell，在执行su命令获取Root权限后（手机端可能会弹出Root授权提示），
+    再运行/data/local/tmp/frida-server &启动frida-server。
+
 除了JS代码部分，其他的其实只是个壳子，核心的Hook操作逻辑全在JS代码中，我们在使用时一般只改JS代码部分和指定包名的部分就可以了

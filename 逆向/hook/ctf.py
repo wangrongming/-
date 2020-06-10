@@ -15,7 +15,7 @@ def on_message(message, data):
 jscode = """
 Java.perform(function () {
   // Function to hook is defined here
-  var MainActivity = Java.use('com.example.seccon2015.rock_paper_scissors.MainActivity');  
+  var MainActivity = Java.use('com.example.seccon2015.rock_paper_scissors.MainActivity');
 
   // Whenever button is clicked
   var onClick = MainActivity.onClick;
@@ -29,7 +29,7 @@ Java.perform(function () {
     // Set our values after running the original onClick handler
     this.m.value = 0;
     this.n.value = 1;
-    this.cnt.value = 999;
+    // this.cnt.value = 999;
 
     // Log to the console that it's done, and we should have the flag!
     console.log('Done:' + JSON.stringify(this.cnt));
@@ -41,15 +41,14 @@ js_str = ""
 with open("ctf.js", "r", encoding="utf-8") as f:
     for line in f:
         js_str = js_str + line
-jscode = js_str
+# jscode = js_str
 
 # process = frida.get_usb_device().attach('com.example.seccon2015.rock_paper_scissors')
 # process = frida.get_remote_device().attach('com.example.seccon2015.rock_paper_scissors')  # 参数为包名 # TODO
-process = frida.get_remote_device().attach('com.tmall.wireless')  # 参数为包名 # TODO
+# process = frida.get_remote_device().attach('com.tmall.wireless')  # 参数为包名 # TODO
+process = frida.get_remote_device().attach('com.example.seccon2015.rock_paper_scissors')
 script = process.create_script(jscode)
 script.on('message', on_message)
 print('[*] Running CTF')
 script.load()
 sys.stdin.read()
-
-#         <activity android:name="com.tmall.wireless.awareness.test.AwareTriggerTestActivity" android:exported="false">
