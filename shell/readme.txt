@@ -45,6 +45,12 @@
 
 5 python3 demo.py >/dev/null 2>&1
   解释：标准输出和错误输出全部重定向到 /dev/null中
+  nohup python3 tmall_detail_1.py > log.log 2>&1
+  nohup python3 tmall_detail_2.py > log.log 2>&1
+  nohup python3 tmall_detail_3.py > log.log 2>&1
+  nohup python3 tmall_detail_4.py > log.log 2>&1
+  nohup python3 tmall_detail_4.py
+  nohup python3 tmall_detail_2.py 1>> log.log &
 
 6 scp data_crawler_latest.tar root@10.0.1.1:/root
 7

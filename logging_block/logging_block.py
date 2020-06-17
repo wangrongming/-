@@ -3,6 +3,12 @@ import os
 import sys
 from logging.handlers import RotatingFileHandler
 
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+
 
 def init_logger():
     if not os.path.exists("logs"):
