@@ -1,0 +1,32 @@
+linux
+    https://www.linux.org/
+
+linux kernel website
+    https://www.kernel.org/
+    https://www.kernel.org/doc/Documentation/admin-guide/devices.txt
+
+linux main distributions
+    Red Hat: http://www.redhat.com
+    SuSE: https://www.suse.com
+    Fedora: https://getfedora.org/
+    CentOS: http://www.centos.org/
+    Debian: http://www.debian.org/
+    Ubuntu: http://www.ubuntu.com/
+    Gentoo: http://www.gentoo.org/
+
+自由软件技术交流网：
+    http://freesf.tw/
+    B2D: http://b2d-linux.com/
+
+硬件对系统的支持
+    Red Hat 的硬件支持： https://hardware.redhat.com/?pagename=hcl
+    Open SuSE 的硬件支持： http://en.opensuse.org/Hardware?LANG=en_UK
+    Linux 对笔记本电脑的支持： http://www.linux-laptop.net/
+    Linux 对打印机的支持： http://www.openprinting.org/
+    Linux 硬件支持的中文 HowTo ： http://www.linux.org.tw/CLDP/HOWTO/hardware.html#hardware
+
+虚拟机软件
+    Virtualbox  官网 （ https://www.virtualbox.org ）
+    Virtualbox  官网教学 （ https://www.virtualbox.org/manual/ch01.html ）
+    Fedora  教学 http://docs.fedoraproject.org/en-US/Fedora/13/html/Virtualization_Guide/part-Virtualization-
+    Virtualization_Reference_Guide.html

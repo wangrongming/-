@@ -1,8 +1,0 @@
-linux
-    1 查看某命令 需要下载安装源
-        1> 下线搜索 https://packages.ubuntu.com
-        2> yum provides xxxxxxxxxxxxxxxxx
-        3> apt-cache showpkg  vim
-
-    2 替换文件里面内容
-        sed -i "s/\r//g" tm_start.sh
