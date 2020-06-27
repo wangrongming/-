@@ -10,4 +10,16 @@
     yum provides xxx
     eg: yum provides lsb_release
 
-4
+4 防火墙
+    systemctl status firewalld
+    systemctl start firewalld
+    systemctl stop firewalld
+
+5 ssh-keygen
+
+6 各类硬件设备名称:
+    /dev/sd[a-d] SATA硬盘
+    /dev/cdrom CDROM
+    /dev/lp[0-2] 打印机
+    /dev/fd[0-1] 软盘机
+    /dev/md[0-127] 磁盘阵列的设备文件名

@@ -24,9 +24,14 @@ linux main distributions
     Linux 对笔记本电脑的支持： http://www.linux-laptop.net/
     Linux 对打印机的支持： http://www.openprinting.org/
     Linux 硬件支持的中文 HowTo ： http://www.linux.org.tw/CLDP/HOWTO/hardware.html#hardware
+    https://www.kernel.org/doc/Documentation/devices.txt
 
 虚拟机软件
     Virtualbox  官网 （ https://www.virtualbox.org ）
     Virtualbox  官网教学 （ https://www.virtualbox.org/manual/ch01.html ）
     Fedora  教学 http://docs.fedoraproject.org/en-US/Fedora/13/html/Virtualization_Guide/part-Virtualization-
     Virtualization_Reference_Guide.html
+
+网络学习参考资料
+    计算机基础 （ http://www.study-area.org/compu/compu.htm ）
+    网络基础 （ http://www.study-area.org/network/network.htm ）
