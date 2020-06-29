@@ -349,3 +349,13 @@ GET /megacorp/employee/_search
         }
     }
 }
+
+{
+    "aggs":{
+        "all_interests":{
+            "terms":{
+                "field":"age"
+            }
+        }
+    }
+}
