@@ -6,7 +6,13 @@
 import random
 import threading
 
-from kafka import KafkaProducer, KafkaConsumer, TopicPartition, OffsetAndMetadata
+from kafka import KafkaConsumer
+from kafka import KafkaProducer, TopicPartition, OffsetAndMetadata
+
+# kafka消费
+consumer = KafkaConsumer('EQS-TASK-JD-SKU-PROMOTION', group_id='eqs-task', bootstrap_servers=['10.1.21.19:9092'])
+for msg in consumer:
+    pass
 
 
 class KafkaTemplate:
