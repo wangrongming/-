@@ -4,6 +4,8 @@
  @Time : 2020/9/18 9:19
  @IDE  : PyCharm
  """
+import json
+
 import pandas as pd
 from pymongo import MongoClient
 
@@ -122,24 +124,44 @@ def export_tmall():
         dis_li.append(spu)
 
         # promotion
-        promotion = tmall_goods_promotion.find_one({"spu": spu})
-        if promotion:
-            subtitles = promotion.get("data", {}).get("subtitles", "")
-            title = promotion.get("data", {}).get("title", "")
-            coupon_name = promotion.get("data", {}).get("couponDisplayName", "")
-            promotion = f"{subtitles}|{title}|{coupon_name}"
-        else:
+        promotion_li = tmall_goods_promotion.find({"spu": spu}).sort([("_id", -1)])
+        promotion_dis = []
+        if promotion_li.count() == 0:
             promotion = ""
+        else:
+            promotion_res = []
+            for promotion in promotion_li:
+                uuid = promotion.get("data", {}).get("uuid", "")
+                if uuid in promotion_dis:
+                    continue
+                promotion_dis.append(uuid)
+                subtitles = promotion.get("data", {}).get("subtitles", "")
+                title = promotion.get("data", {}).get("title", "")
+                coupon_name = promotion.get("data", {}).get("couponDisplayName", "")
+                promotion_one = f"{subtitles}|{title}|{coupon_name}"
+                promotion_res.append(promotion_one)
+            promotion = json.dumps(promotion_res, ensure_ascii=False)
 
         # prom
-        prom = tmall_goods_prom.find_one({"spu": spu})
-        if prom:
-            icon_text = prom.get("data", {}).get("iconText", "")
-            title = prom.get("data", {}).get("title", "")
-            type_ = prom.get("data", {}).get("type", "")
-            prom_activity = f"{icon_text}|{title}|{type_}"
-        else:
+        prom_li = tmall_goods_prom.find({"spu": spu}).sort([("_id", -1)])
+        prom_dis = []
+        if prom_li.count() == 0:
             prom_activity = ""
+        else:
+            prom_activity_li = []
+            for prom in prom_li:
+                activity_id = prom.get("data", {}).get("activityId", "")
+                if activity_id in prom_dis:
+                    continue
+                prom_dis.append(activity_id)
+
+                icon_text = prom.get("data", {}).get("iconText", "")
+                title = prom.get("data", {}).get("title", "")
+                type_ = prom.get("data", {}).get("type", "")
+                contentText = prom.get("data", {}).get("contentText", "")
+                prom_activity_one = f"{icon_text}|{title}|{type_}|{contentText}"
+                prom_activity_li.append(prom_activity_one)
+            prom_activity = json.dumps(prom_activity_li, ensure_ascii=False)
 
         # config
         dis_sku_li = []
