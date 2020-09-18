@@ -101,37 +101,25 @@ jd_goods_price = dest_db.get_collection("jd_price_20200918")
 jd_goods_promotion = dest_db.get_collection("jd_goods_promotion")
 jd_goods_prom = dest_db.get_collection("jd_goods_prom")
 
+choashi = ['583273797163', '14061404967', '612515873452', '571300993084', '612756322851', '523245470255',
+           '526924651900', '593645217773', '45517937143', '543442473995']
+
 
 def export_tmall():
     dis_li = []
-    config_li = tmall_goods_config.find({})
+    detail_li = tmall_goods_detail.find({"data.status": {"$exists": True}})
     res_li = []
-    for config in config_li:
-        spu = config["spu"]
-        sku = config["sku"]
-        product_params = config['path_str']
-        if sku in dis_li:
+    for detail in detail_li:
+        spu = detail["spu"]
+        shop_name = detail.get("data", {}).get("seller", {}).get("shop_name", "")
+        product_name = detail.get("data", {}).get("item", {}).get("title", "")
+        status = detail.get("data", {}).get("status", "")
+        spu_stock = detail.get("data", {}).get("spu_stock", "")
+        spu_price = detail.get("data", {}).get("spu_price", "")
+        # product_params = config['path_str']
+        if spu in dis_li:
             continue
-        dis_li.append(sku)
-
-        # detail
-        detail = tmall_goods_detail.find_one({"spu": spu, "data.status": {"$exists": True}})
-        if detail:
-            shop_name = detail.get("data", {}).get("seller", {}).get("shop_name", "")
-            product_name = detail.get("data", {}).get("item", {}).get("title", "")
-            status = detail.get("data", {}).get("status", "")
-        else:
-            shop_name = ""
-            product_name = ""
-            status = ""
-
-        original_price = None
-        # price
-        price = tmall_goods_price.find_one({"sku": sku})
-        if price:
-            prom_price = price.get("price", "")
-        else:
-            prom_price = ""
+        dis_li.append(spu)
 
         # promotion
         promotion = tmall_goods_promotion.find_one({"spu": spu})
@@ -153,29 +141,124 @@ def export_tmall():
         else:
             prom_activity = ""
 
-        # stock
-        stock = tmall_goods_stock.find_one({"sku": sku})
-        if stock:
-            stock_ = stock.get("quantity", "")
-        else:
-            stock_ = ""
+        # config
+        dis_sku_li = []
+        config_li = tmall_goods_config.find({"spu": spu})
+        if config_li.count() > 0:
+            for config in config_li:
+                product_params = config['path_str']
+                sku = config['sku']
+                if sku in dis_sku_li:
+                    continue
+                dis_sku_li.append(sku)
 
-        item = {
-            "url": f"https://detail.tmall.com/item.htm?id={spu}&skuId={sku}",
-            "sku": sku,
-            "spu": spu,
-            "shop_name": shop_name,
-            "product_name": product_name,
-            "product_params": product_params,
-            "original_price": original_price,
-            "prom_price": prom_price,
-            "promotion": promotion,
-            "prom_activity": prom_activity,
-            "stock": stock_,
-            "status": status,
-            "area": final_res.get(spu, ""),
-        }
-        res_li.append(item)
+                # price
+                price = tmall_goods_price.find_one({"sku": sku})
+                if price:
+                    prom_price = price.get("price", "")
+                else:
+                    prom_price = ""
+
+                # stock
+                stock = tmall_goods_stock.find_one({"sku": sku})
+                if stock:
+                    stock_ = stock.get("quantity", "")
+                else:
+                    stock_ = ""
+
+                # area
+                if spu in choashi:
+                    area = final_res.get(spu, "")
+                    for key in area.keys():
+                        item = {
+                            "url": f"https://detail.tmall.com/item.htm?id={spu}&skuId={sku}",
+                            "sku": sku,
+                            "spu": spu,
+                            "shop_name": shop_name,
+                            "product_name": product_name,
+                            "product_params": product_params,
+                            "original_price": "",
+                            "prom_price": prom_price,
+                            "promotion": promotion,
+                            "prom_activity": prom_activity,
+                            "stock": stock_,
+                            "status": status,
+                            "area": f"{key}|{area[key]}",
+                        }
+                        res_li.append(item)
+                else:
+                    item = {
+                        "url": f"https://detail.tmall.com/item.htm?id={spu}&skuId={sku}",
+                        "sku": sku,
+                        "spu": spu,
+                        "shop_name": shop_name,
+                        "product_name": product_name,
+                        "product_params": product_params,
+                        "original_price": "",
+                        "prom_price": prom_price,
+                        "promotion": promotion,
+                        "prom_activity": prom_activity,
+                        "stock": stock_,
+                        "status": status,
+                        "area": "",
+                    }
+                    res_li.append(item)
+        else:
+            # area
+            if spu in choashi:
+                area = final_res.get(spu, "")
+                for key in area.keys():
+                    item = {
+                        "url": f"https://detail.tmall.com/item.htm?id={spu}&skuId={sku}",
+                        "sku": sku,
+                        "spu": spu,
+                        "shop_name": shop_name,
+                        "product_name": product_name,
+                        "product_params": "",
+                        "original_price": "",
+                        "prom_price": spu_price,
+                        "promotion": promotion,
+                        "prom_activity": prom_activity,
+                        "stock": spu_stock,
+                        "status": status,
+                        "area": f"{key}|{area[key]}",
+                    }
+                    res_li.append(item)
+            else:
+                item = {
+                    "url": f"https://detail.tmall.com/item.htm?id={spu}&skuId={sku}",
+                    "sku": sku,
+                    "spu": spu,
+                    "shop_name": shop_name,
+                    "product_name": product_name,
+                    "product_params": "",
+                    "original_price": "",
+                    "prom_price": spu_price,
+                    "promotion": promotion,
+                    "prom_activity": prom_activity,
+                    "stock": spu_stock,
+                    "status": status,
+                    "area": "",
+                }
+                res_li.append(item)
+
+            # item = {
+            #     "url": f"https://detail.tmall.com/item.htm?id={spu}&skuId={sku}",
+            #     "sku": sku,
+            #     "spu": spu,
+            #     "shop_name": shop_name,
+            #     "product_name": product_name,
+            #     "product_params": "",
+            #     "original_price": "",
+            #     "prom_price": spu_price,
+            #     "promotion": promotion,
+            #     "prom_activity": prom_activity,
+            #     "stock": spu_stock,
+            #     "status": status,
+            #     "area": "",
+            # }
+            # res_li.append(item)
+
     to_excel("tmall", res_li)
 
 
@@ -246,5 +329,5 @@ def to_excel(excel_name, li):
 
 
 if __name__ == '__main__':
-    # export_tmall()
-    export_jd()
+    export_tmall()
+    # export_jd()
