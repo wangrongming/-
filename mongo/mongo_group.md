@@ -13,3 +13,7 @@
 3) 查询
 `fhdfgh`
 `dfgsdf`
+
+
+db.adminCommand( { setParameter: 1, maxTransactionLockRequestTimeoutMillis: 5000 })
+

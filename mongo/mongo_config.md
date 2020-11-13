@@ -10,4 +10,9 @@
 ``
 ``
 ``
-``
+`
+设置事务等待时间
+db.adminCommand( { setParameter: 1, maxTransactionLockRequestTimeoutMillis: 5000 })
+`
+
+./bin/mongod --dbpath /mnt/mongo/00/data/ --logpath /mnt/mongo/00/logs/monog.log --bind_ip 0.0.0.0 --port 28018 --fork --replSet rs
