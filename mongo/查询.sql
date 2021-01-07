@@ -282,3 +282,5 @@ db.getCollection('tmall_detail_once').aggregate(
 db.getCollectionNames()
 -- 创建collection
 db.createCollection('ai_taobao_keyword_list')
+
+-- 修改店铺名称
