@@ -38,11 +38,19 @@ docker配置
 docker 命令
 
     1 docker 打包
-        docker build . -t kf_data:20041301
+        docker build . -t screenshot:20082101
+        docker build . -t ccr.ccs.tencentyun.com/yunting-spider/screenshot-remote:20082101
+        docker build . -t screenshot:20082101
+        docker build . -t kf_data:20082001
         docker build . -t data_crawler:base
 
     2 docker 运行
         docker run -d kf_data:20041301
+        docker run -d --name=server-db --net=host kf_data:20041301
+        docker run -d --account=server-db --redis_url=host --plat=host kf_data:20041301
+
+        docker run 4ea57ab80fc8
+        docker run -it 4ea57ab80fc8 /bin/bash
 
     3 docker 查看运行日志
         docker logs -f -t --tail 1000 b182c57fe5d72f420961268dc9c45a45ee135399a684f7276397cca89fbc862e
@@ -52,7 +60,13 @@ docker 命令
         docker exec -it b182c57fe5d7 /bin/bash
 
     5 根据容器生成镜像
+        -a 提交的镜像作者；
+        -m 提交时文字说明
+        -c 使用Dockerfile指令来创建镜像
+
+                             提交时文字说明       提交的镜像作者  容器名称
         docker commit -m "下载了chromnium浏览器" -a "kf_data" 8e2168c0e99e kf_data:20042101
+        docker commit -m "更新userdata目录"      -a "kf_data" 85c0b4cfd3e1 kf_data:20082101
 
     6 容器启停
         docker start bdfa01c255c5
@@ -74,33 +88,24 @@ docker 命令
             docker save -o eqs_data_latest.tar eqs_data:latest
             scp eqs_data_latest.tar root@10.1.4.45:/root/
             docker load --input eqs_data_latest.tar
+
+    9 执行进入某镜像
+        docker run -it d7ef98153870 /bin/bash
+
+    10 复制docker文件到宿主机
+                   容器名称              docker文件所在目录                宿主机目录
+        docker cp e5f202dde8d2: /screenshot/logs /root/tmp
+
 Dockerfile
     注意：apt-get install 安装顺序错误会导致 => 程序安装失败
     eg1:
-        FROM python:3.6.9-slim
+        FROM python:3.7
+        ENV TZ "Asia/Shanghai"
+        # 设置code文件夹是工作目录
+        WORKDIR /mnt/docker_demo
+        #宿主机文件的全路径  docker容器下的文件夹路径
         ADD . .
-        RUN mv -f sources.list /etc/apt/ \
-          && apt-get update && apt-get install -y gcc libxcomposite-dev libxcursor-dev libxi-dev libxtst-dev libglib2.0-dev libnss3-dev \
-          libasound-dev libpangocairo-1.0-0 libatk1.0-0 libatk-bridge2.0-0 libcups2-dev libxss-dev libxrandr-dev libgtk-3-0 xvfb nodejs \
-          && pip install -r requirements.txt \
-          && sed -i 's/self._url, max_size=None, loop=self._loop)/self._url, max_size=None, loop=self._loop, ping_interval=None, ping_timeout=None)/g' /usr/local/lib/python3.6/site-packages/pyppeteer/connection.py \
-          && chmod +x startup.sh \
-          && sed -i "s/\r//g" startup.sh
-        ENTRYPOINT ["./startup.sh"]
-
-    eg2:
-        FROM python:3.6.9-slim
-        RUN mkdir /root/kf
-        ADD . /root/kf
-        WORKDIR /root/kf
-        RUN mv -f sources.list /etc/apt/ \
-          && apt-get update && apt-get install -y gcc libxcomposite-dev libxcursor-dev libxi-dev libxtst-dev libglib2.0-dev libnss3-dev \
-          libasound-dev libpangocairo-1.0-0 libatk1.0-0 libatk-bridge2.0-0 libcups2-dev libxss-dev libxrandr-dev libgtk-3-0 xvfb nodejs \
-          procps ack-grep \
-          && pip install -r requirements.txt \
-          && sed -i 's/self._url, max_size=None, loop=self._loop)/self._url, max_size=None, loop=self._loop, ping_interval=None, ping_timeout=None)/g' /usr/local/lib/python3.6/site-packages/pyppeteer/connection.py \
-          && chmod +x startup.sh \
-          && sed -i "s/\r//g" startup.sh \
-          && chmod 755 /root
-        ENTRYPOINT ["./startup.sh"]
-
+        # 安装支持
+        RUN chmod 755 start.sh && sed -i "s/\r//g" start.sh
+        # 容器每次启动需要执行的命令
+        ENTRYPOINT ["./start.sh"]
