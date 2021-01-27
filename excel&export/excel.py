@@ -6,6 +6,7 @@
  @IDE  : PyCharm
  """
 import platform
+from urllib import parse
 
 import openpyxl
 import pymongo
@@ -99,6 +100,52 @@ def export_jd():
     print("存储完毕")
 
 
+def parse_dt(li):
+    li_new = []
+    for info in li:
+        dt = {}
+        for key in info.keys():
+            value = info[key]
+            if isinstance(value, dict):
+                for sub_key in value.keys():
+                    if sub_key == "url":
+                        dt[f"{key}.{sub_key}"] = parse.urljoin("https://", value[sub_key])
+                    else:
+                        dt[f"{key}.{sub_key}"] = value[sub_key]
+            else:
+                dt[key] = value
+        li_new.append(dt)
+    return li_new
+
+
+def parse_dict(info):
+    if isinstance(info, dict):
+        keys = [key for key in info.keys()]
+        for i in keys:
+            if isinstance(info[i], dict):
+                deal_dt = info.pop(i)
+                deal_new = {f"{i}-{_}": deal_dt[_] for _ in deal_dt.keys()}
+                deal_new = parse_dict(deal_new)
+                info.update(deal_new)
+            elif isinstance(info[i], list):
+                deal_li = info.pop(i)
+                deal_new = {f"{i}-{_[0]}": _[1] for _ in enumerate(deal_li)}
+                deal_new = parse_dict(deal_new)
+                info.update(deal_new)
+            else:
+                continue
+        return info
+    elif isinstance(info, list):
+        deal_dt = {str(_[0]): _[1] for _ in enumerate(info)}
+        deal_dt = parse_dict(deal_dt)
+        return deal_dt
+    else:
+        return {}
+
+
 if __name__ == '__main__':
     # export()
-    generate_sheet()
+    # generate_sheet()
+    dt = {"one": {"two": {"three": "hong"}}}
+    res = parse_dict(dt)
+    print(res)
