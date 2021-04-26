@@ -359,3 +359,82 @@ GET /megacorp/employee/_search
         }
     }
 }
+
+
+https://blog.csdn.net/qq_34171923/article/details/103138591
+POST  my_index/_update_by_query
+{
+    "query": {
+        "bool": {
+            "filter": [
+            {
+                "term": {
+                    "aa": "***"
+                }
+            }
+        ]
+    }
+},
+"script": {
+    "inline": "ctx._source.c1= params.c1;ctx._source._source.c2= params.c2;",
+    "params": {
+        "c1": "1",
+        "c2": "2"
+    },
+        "lang": "painless"
+    }
+}
+
+GET eqs_goods_list_first/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "nested": {
+            "path": "mongo",
+            "query": {
+              "term": {
+                "mongo.id": {
+                  "value": "604b59feefed2d3634b5153c"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
+
+GET eqs_tmall_detail/_search
+{
+  "sort": [
+    {
+      "created_at": {
+        "order": "desc"
+      }
+    }
+  ],
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "shop_id": {
+              "value": "396016490"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "NAME": {
+      "cardinality": {
+        "field": "spu"
+      }
+    }
+  }
+}
