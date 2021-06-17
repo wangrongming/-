@@ -3,6 +3,12 @@
         a> mongo中新建 text 数据库，
         b> text 数据库中，新建 keyword 集合，里面存入需要采集关键词
         c> text 数据库中，新建 list 集合，并设置唯一索引：db.getCollection("list").ensureIndex({new_id:1},{unique:true}); 
+        d> 各数据库说明：
+            keyword:待采集关键词数据库
+            list:新闻去重库
+            content:新闻内容数据库
+            comment:新闻评论数据库
+            reply:新闻评论回复数据库
     2  安装依赖
         pip install -r requirements.txt
     3 运行代码：
@@ -22,7 +28,7 @@
 	2 采集其中具体某新闻的链接为：http://finance.people.com.cn/n1/2021/0419/c1004-32081225.html
 	3 采集后数据如下：`
 	
-    新闻内容表：
+    新闻内容表：content
     {
         "news_id":"n1/2021/0419/c1004-32081225",
         "news_source":"强国论坛",  # 新闻来源：人民网-人民日报，强国论坛
@@ -38,7 +44,7 @@
         "insert_timestamp":1618791278000 # 数据插入时间
     }
         
-    新闻评论表：
+    新闻评论表：comment
     {
         "title":"",
         "news_url":"",
@@ -52,7 +58,7 @@
         "insert_timestamp":1618791278000 # 数据插入时间
     }
         
-    新闻评论回复表:
+    新闻评论回复表:reply
     {
         "title":"",
         "news_url":"",
