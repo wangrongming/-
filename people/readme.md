@@ -3,6 +3,8 @@
         a> mongo中新建 text 数据库，
         b> text 数据库中，新建 keyword 集合，里面存入需要采集关键词
         c> text 数据库中，新建 list 集合，并设置唯一索引：db.getCollection("list").ensureIndex({new_id:1},{unique:true});
+    2  安装依赖
+        pip install -r requirements.txt
     2 运行代码：
         python3 run.py --mongo=mongodb://root:Bqi7io41KUIx@192.168.21.22:27017 --start_time='20210615 00:00:00' --interval=3600 --max_page=100 --worker=10
 

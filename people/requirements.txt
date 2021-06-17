@@ -6,6 +6,5 @@ pymongo==3.9.0
 jsonpath==0.81
 retry==0.9.2
 tenacity==5.0.3
-glom==19.10.0
 absl-py
 pysocks==1.7.1
