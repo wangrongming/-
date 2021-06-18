@@ -27,7 +27,8 @@ def save_db(collection, item):
     try:
         collection.insert_one(item)
     except Exception as e:
-        es_logger.error(e)
+        # es_logger.error(e)
+        pass
 
 
 def update_db(collection, condition, item):
