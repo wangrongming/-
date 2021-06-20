@@ -140,5 +140,5 @@ def showTextDrop(text, startPos, func):
 
 
 if __name__ == '__main__':
-    showTextDrop('淡妆浓抹总相宜', (150, 200), makeTextParaDrop)
+    showTextDrop('赶紧来下单呀', (150, 200), makeTextParaDrop)
     # showTextDrop('淡妆浓抹总相宜', (150,200), makeTextDropMotion)

@@ -10,3 +10,4 @@ absl-py
 pillow
 pysocks==1.7.1
 imageio
+opencv-python
