@@ -12,7 +12,7 @@
     2  安装依赖
         pip3 install -r requirements.txt
     3 运行代码：
-        python3 run.py --mongo=mongodb://devUser:Pa55word@112.74.191.185:28018 --start_time='2021-06-21 09:00:00' --end_time='2021-06-21 10:00:00' --interval=3600 --max_page=10 --worker=1
+        python3 run.py --mongo=mongodb://devUser:Pa55word@112.74.191.185:28018 --interval=14400 --max_page=20 --worker=1
 
 ###动态配置参数说明：
     --mongo=mongodb://root:Bqi7io41KUIx@192.168.21.22:27017

@@ -59,6 +59,9 @@ def get_list(dt, start_time, end_time, page=1):
     es_logger.info(f"人民网 采集关键词：{keyword} 第{page}页")
     for _ in li:
         item = {
+            "keyword": keyword,
+            "website_url": "http://www.people.com.cn/",
+            "website_name": "人民网",
             "news_id": _.get("id", ""),
             "news_url": _.get("url", ""),  # 新闻在人民网链接
             "news_source": _.get("originalName", ""),  # 新闻来源：人民网-人民日报，强国论坛
@@ -82,47 +85,58 @@ def get_list(dt, start_time, end_time, page=1):
 
 
 def get_detail(dt):
-    url = dt['news_url']
-    headers = {
-        "Proxy-Connection": "keep-alive",
-        "Upgrade-Insecure-Requests": "1",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-        "Accept-Encoding": "gzip, deflate",
-        "Accept-Language": "zh-CN,zh;q=0.9",
-    }
-    res = requests.get(url=url, headers=headers)
-    content = ""
-    selector = etree.HTML(res.content.decode("gbk"))
-    box_con = selector.xpath("//div[@class='box_con']")
-    show_text = selector.xpath("//div[@class='show_text']")
-    col = selector.xpath("//div[@class='col col-1 fl']")
-    two = selector.xpath("//div[@class='w1200 rm_txt cf']")
-    three = selector.xpath("//div[@class='WB_detail']")
-    four = selector.xpath("//div[@class='content clear clearfix']")
-    five = selector.xpath("//div[@class='col col-1']")
-    if box_con:
-        content = box_con[0].xpath("string(.)").strip()
-    elif show_text:
-        content = show_text[0].xpath("string(.)").strip()
-    elif col:
-        content = col[0].xpath("string(.)").strip()
-    elif two:
-        content = two[0].xpath("string(.)").strip()
-    elif three:
-        content = three[0].xpath("string(.)").strip()
-    elif four:
-        content = four[0].xpath("string(.)").strip()
-    elif five:
-        content = five[0].xpath("string(.)").strip()
-    else:
-        # es_logger.error("其他selector:{}".format(url))
-        pass
-    if content:
-        dt.pop("_id", None)
-        dt['insert_timestamp'] = int(time.time() * 1000)
-        dt['content'] = content
-        save_db(content_col, dt)
+    try:
+        url = dt['news_url']
+        if "people" not in url:
+            return
+        headers = {
+            "Proxy-Connection": "keep-alive",
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9",
+        }
+        res = requests.get(url=url, headers=headers)
+        selector = etree.HTML(res.content.decode("gbk"))
+        editor = selector.xpath("//div[@class='edit cf']")
+
+        if editor:
+            editor = editor[0].xpath("string(.)").strip()
+            dt['editor'] = editor
+
+        content = ""
+        box_con = selector.xpath("//div[@class='box_con']")
+        show_text = selector.xpath("//div[@class='show_text']")
+        col = selector.xpath("//div[@class='col col-1 fl']")
+        two = selector.xpath("//div[@class='w1200 rm_txt cf']")
+        three = selector.xpath("//div[@class='WB_detail']")
+        four = selector.xpath("//div[@class='content clear clearfix']")
+        five = selector.xpath("//div[@class='col col-1']")
+        if box_con:
+            content = box_con[0].xpath("string(.)").strip()
+        elif show_text:
+            content = show_text[0].xpath("string(.)").strip()
+        elif col:
+            content = col[0].xpath("string(.)").strip()
+        elif two:
+            content = two[0].xpath("string(.)").strip()
+        elif three:
+            content = three[0].xpath("string(.)").strip()
+        elif four:
+            content = four[0].xpath("string(.)").strip()
+        elif five:
+            content = five[0].xpath("string(.)").strip()
+        else:
+            # es_logger.error("其他selector:{}".format(url))
+            pass
+        if content:
+            dt.pop("_id", None)
+            dt['insert_timestamp'] = int(time.time() * 1000)
+            dt['content'] = content
+            save_db(content_col, dt)
+    except Exception as e:
+        es_logger.info(f"{traceback.format_exc()}{e}")
 
 
 def main_list(start_time, end_time):
