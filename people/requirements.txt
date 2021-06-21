@@ -1,6 +1,6 @@
 --index-url=https://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
 requests[socks]==2.21.0
-lxml==4.3.1
+lxml==4.6.3
 pymongo==3.9.0
 jsonpath==0.81
 retry==0.9.2
