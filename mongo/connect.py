@@ -60,3 +60,25 @@ def dict_data_pre_process(data_):
 
 dict_data_pre_process(li)
 print(li)
+
+# 指定用户名密码验证建立mongo
+# ./bin/mongod --dbpath /mnt/mongodb/data --logpath /mnt/mongodb/mongod.log --bind_ip 0.0.0.0 --port=28018 --auth --logappend --fork
+# ./bin/mongod --dbpath /mnt/mongodb/data --logpath /mnt/mongodb/mongod.log --bind_ip 0.0.0.0 --port=28018 --logappend --fork
+# ./bin/mongo --host 127.0.0.1 --port 28018  (当前服务器内网ip)
+# 然后创建一个用户 devUser, 密码是 P@55w0rd
+# use admin
+# db.createUser({
+#     user:"devUser",
+#     pwd:"Pa55word",
+#     roles:[{
+#         role:"root",
+#         db:"admin"
+#     }]
+# })
+# db.auth("devUser", "Pa55word")
+# db.changeUserPassword("devUser","Pa55word");
+# ip: 112.74.191.185
+# 端口：28018
+# db:admin
+# user: devUser
+# pwd: Pa55word
