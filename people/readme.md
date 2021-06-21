@@ -10,17 +10,17 @@
             comment:新闻评论数据库
             reply:新闻评论回复数据库
     2  安装依赖
-        pip install -r requirements.txt
+        pip3 install -r requirements.txt
     3 运行代码：
-        python3 run.py --mongo=mongodb://root:Bqi7io41KUIx@192.168.21.22:27017 --start_time='2021-06-18 09:00:00' --end_time='2021-06-18 10:00:00' --interval=3600 --max_page=10 --worker=1
+        python3 run.py --mongo=mongodb://devUser:Pa55word@112.74.191.185:28018 --start_time='2021-06-21 09:00:00' --end_time='2021-06-21 10:00:00' --interval=3600 --max_page=10 --worker=1
 
 ###动态配置参数说明：
     --mongo=mongodb://root:Bqi7io41KUIx@192.168.21.22:27017
     --start_time=20210615 采集新闻最早发布时间
     --end_time==20210615(默认 end_time=start_time+interval)  采集新闻最晚发布时间
     --interval=14400   轮询采集时间范围(秒),默认14400（4小时）
-    --max_page=100    默认最大采集页数：100
-    --worker=1   默认工作线程：1 (依据服务器配置 调整 1-30，越多运行采集越快)
+    --max_page=100    默认最大采集页数：
+    --worker=1   默认工作线程：1 (依据服务器配置 调整 1-30，越多运行采集越快)100
     --plat=list|detail|comment|reply   启动时采集内容：可单个或多个  单个配置示例：--plat=list
     
 ###数据格式：以"中考认数"为关键词
@@ -30,7 +30,10 @@
 	
     新闻内容表：content
     {
-        "news_id":"n1/2021/0419/c1004-32081225",
+        "keyword":"",
+        "website_url":"c1004-32081225",
+        "website_name":"c1004-32081225",
+        "news_id":"32081225",
         "news_source":"强国论坛",  # 新闻来源：人民网-人民日报，强国论坛
         "news_url":"http://finance.people.com.cn/n1/2021/0419/c1004-32081225.html",  # 来源url
         "news_type":"",  # 类别（社会，科技）
