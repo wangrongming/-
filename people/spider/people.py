@@ -98,11 +98,30 @@ def get_detail(dt):
             "Accept-Language": "zh-CN,zh;q=0.9",
         }
         res = requests.get(url=url, headers=headers)
-        selector = etree.HTML(res.content.decode("gbk"))
-        editor = selector.xpath("//div[@class='edit cf']")
+        selector = None
+        try:
+            selector = etree.HTML(res.content.decode("gbk"))
+        except Exception as e:
+            pass
+            try:
+                selector = etree.HTML(res.content.decode("utf-8"))
+            except Exception as e:
+                pass
 
-        if editor:
-            editor = editor[0].xpath("string(.)").strip()
+        if selector is None:
+            return
+
+        editor_one = selector.xpath("//*[@class='edit cf']")
+        editor_two = selector.xpath("//*[contains(text(),'责编')]")
+        editor_three = selector.xpath("//*[@class='edit clearfix']")
+        if editor_one:
+            editor = editor_one[0].xpath("string(.)").strip()
+            dt['editor'] = editor
+        elif editor_two:
+            editor = editor_two[0].xpath("string(.)").strip()
+            dt['editor'] = editor
+        elif editor_three:
+            editor = editor_three[0].xpath("string(.)").strip()
             dt['editor'] = editor
 
         content = ""
@@ -184,7 +203,7 @@ def main_detail():
             if len(elements) == 0:
                 es_logger.info("详情页 采集完成，程序退出")
                 break
-            start_position = elements[-1]["_id"]
+            start_position = elements[0]["_id"]
             end_position = elements[-1]["_id"]
             es_logger.info(
                 f"开始采集 详情页内容 start_position：{start_position};end_position:{end_position}; len:{len(elements)}")
@@ -194,7 +213,7 @@ def main_detail():
             pool.join()
 
             condition = {"collection": "list_position"}
-            item = {"list_position": elements[-1]["_id"]}
+            item = {"list_position": end_position}
             update_db(position_col, condition, item)
 
             time.sleep(1)

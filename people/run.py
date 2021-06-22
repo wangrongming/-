@@ -8,8 +8,9 @@ from service import es_logger
 
 flags.DEFINE_integer("worker", 1, help="爬虫节点运行的线程数")
 flags.DEFINE_string("plat", "list|detail|comment|reply", help="eg: list|detail|comment|reply 或 list")
-flags.DEFINE_integer("max_page", 10, help="最大采集页数")
+flags.DEFINE_integer("max_page", 100, help="最大采集页数")
 flags.DEFINE_string("mongo", "mongodb://root:Bqi7io41KUIx@192.168.21.22:27017", help="mongo数据库")
+# flags.DEFINE_string("mongo", "mongodb://devUser:Pa55word@112.74.191.185:28018", help="mongo数据库")
 flags.DEFINE_integer("interval", 14400, help="采集时间间隔（秒）")
 flags.DEFINE_string("start_time", "", help="采集新闻开始时间：默认当前时间-时间间隔  格式:2021-06-15 00:00:00")
 flags.DEFINE_string("end_time", "", help="采集新闻开始时间：默认当前时间-时间间隔  格式:2021-06-15 00:00:00")

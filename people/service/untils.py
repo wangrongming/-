@@ -38,7 +38,7 @@ def update_db(collection, condition, item):
         es_logger.error(e)
 
 
-def get_data(collection, query=None, limit=200):
+def get_data(collection, query=None, limit=20):
     """
     从指定集合获取数据(查询用)
     :param query:
