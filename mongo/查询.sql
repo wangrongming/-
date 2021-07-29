@@ -107,6 +107,21 @@ db.orders.aggregate([
    { $project:{ "item":1, "inventory_docs":{"sku":1} } }
 ])
 
+db.getCollection('tmall_comment_web_20210728').aggregate(
+  [
+    { $match:{"sort":{"$eq":"追评时间排序"}}}
+    ,
+    {
+        $group:{
+            _id:"$spu",
+            total:{$sum:1}
+        }
+    },
+    { $match:{"total":{"$gte":2}}}
+  ]
+   ,{allowDiskUse:true}
+)
+
 --快捷导出mongo数据
 --/opt/mongodb-4.2.3/bin/mongodump -h 10.1.21.4 --port 28018 -d eqs_sales -o /mnt
 --zip -r dump_20200602.zip eqs_sales/

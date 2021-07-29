@@ -63,6 +63,7 @@ print(li)
 
 # 指定用户名密码验证建立mongo
 # ./bin/mongod --dbpath /mnt/mongodb/data --logpath /mnt/mongodb/mongod.log --bind_ip 0.0.0.0 --port=28018 --auth --logappend --fork
+# ./bin/mongod --dbpath /mnt/mongodb/data --logpath /mnt/mongodb/mongod.log --bind_ip 0.0.0.0 --port=28018 --auth --logappend --fork
 # ./bin/mongod --dbpath /mnt/mongodb/data --logpath /mnt/mongodb/mongod.log --bind_ip 0.0.0.0 --port=28018 --logappend --fork
 # ./bin/mongo --host 127.0.0.1 --port 28018  (当前服务器内网ip)
 # 然后创建一个用户 devUser, 密码是 P@55w0rd
